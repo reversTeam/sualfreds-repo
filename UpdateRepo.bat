@@ -107,6 +107,7 @@ ECHO dsstdfx.bin>>exclude.txt
 ECHO exclude.txt>>exclude.txt
 ECHO temp\%%f\media\Original-Bello.xbt>>exclude.txt
 ECHO temp\%%f\media\ElegantDark.xbt>>exclude.txt
+ECHO temp\%%f\media\Light-by-Incubus.xbt>>exclude.txt
 
 ECHO -------------------------------------------------------------------------
 ECHO.

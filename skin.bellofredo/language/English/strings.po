@@ -462,7 +462,23 @@ msgctxt "#31111"
 msgid "Scroll down for more options"
 msgstr ""
 
-#: empty strings from id 31112 to 31123
+msgctxt "#31112"
+msgid "Popular Right Now"
+msgstr ""
+
+msgctxt "#31113"
+msgid "New Uploaded Videos"
+msgstr ""
+
+msgctxt "#31114"
+msgid "My Channel"
+msgstr ""
+
+msgctxt "#31115"
+msgid "My Subscriptions"
+msgstr ""
+
+#: empty strings from id 31116 to 31123
 
 msgctxt "#31124"
 msgid "Flashing Lights"
@@ -959,7 +975,19 @@ msgctxt "#31268"
 msgid "Thumb List"
 msgstr ""
 
-#: empty strings from id 31269 to 31279
+msgctxt "#31269"
+msgid "My IMDb Top250 Movies"
+msgstr ""
+
+msgctxt "#31270"
+msgid "Recently watched episodes"
+msgstr ""
+
+msgctxt "#31271"
+msgid "Enable Widget Content Switch Function"
+msgstr ""
+
+#: empty strings from id 31272 to 31279
 #: Playlist Editor labels
 
 msgctxt "#31280"
