@@ -2,7 +2,7 @@
 <includes> 
 
 	<include name="WidgetContainer">
-		<visible>![Window.IsActive(1110) | Window.IsActive(1113) | Window.IsActive(1114) | Window.IsActive(1115) | Window.IsActive(ShutdownMenu) | Window.IsActive(ProgressDialog) | Window.IsActive(PlayerControls) | Window.IsActive(Favourites) | Window.IsActive(script-skinshortcuts.xml) | Window.IsActive(script-globalsearch-main.xml) | Window.IsActive(script-ExtendedInfo Script-DialogInfo.xml) | Window.IsActive(script-ExtendedInfo Script-DialogVideoInfo.xml)]</visible>	
+		<visible>![Window.IsActive(1110) | Window.IsActive(1113) | Window.IsActive(1114) | Window.IsActive(1115) | Window.IsActive(ShutdownMenu) | Window.IsActive(ProgressDialog) | Window.IsActive(PlayerControls) | Window.IsActive(Favourites) | Window.IsActive(script-skinshortcuts.xml) | Window.IsActive(script-globalsearch-main.xml) | Window.IsActive(script-ExtendedInfo Script-DialogInfo.xml) | Window.IsActive(script-ExtendedInfo Script-DialogVideoInfo.xml)]</visible>			
 		<control type="image">
 			<include>FullscreenDimensions</include>
 			<texture background="true">views/list/shine.png</texture>	
@@ -468,9 +468,11 @@
 				<onright condition="stringcompare(Skin.String(QuickNavWidgetMoviesType),3)">Skin.SetString(QuickNavWidgetMoviesType,4)</onright>
 				<onright condition="stringcompare(Skin.String(QuickNavWidgetMoviesType),4)">Skin.SetString(QuickNavWidgetMoviesType,5)</onright>
 				<onright condition="stringcompare(Skin.String(QuickNavWidgetMoviesType),5)">Skin.SetString(QuickNavWidgetMoviesType,6)</onright>
-				<onright condition="stringcompare(Skin.String(QuickNavWidgetMoviesType),6)">Skin.SetString(QuickNavWidgetMoviesType,1)</onright>
+				<onright condition="stringcompare(Skin.String(QuickNavWidgetMoviesType),6)">Skin.SetString(QuickNavWidgetMoviesType,7)</onright>
+				<onright condition="stringcompare(Skin.String(QuickNavWidgetMoviesType),7)">Skin.SetString(QuickNavWidgetMoviesType,1)</onright>
 				<!-- on left switches -->
-				<onleft condition="stringcompare(Skin.String(QuickNavWidgetMoviesType),1)">Skin.SetString(QuickNavWidgetMoviesType,6)</onleft>
+				<onleft condition="stringcompare(Skin.String(QuickNavWidgetMoviesType),1)">Skin.SetString(QuickNavWidgetMoviesType,7)</onleft>
+				<onleft condition="stringcompare(Skin.String(QuickNavWidgetMoviesType),7)">Skin.SetString(QuickNavWidgetMoviesType,6)</onleft>
 				<onleft condition="stringcompare(Skin.String(QuickNavWidgetMoviesType),6)">Skin.SetString(QuickNavWidgetMoviesType,5)</onleft>
 				<onleft condition="stringcompare(Skin.String(QuickNavWidgetMoviesType),5)">Skin.SetString(QuickNavWidgetMoviesType,4)</onleft>
 				<onleft condition="stringcompare(Skin.String(QuickNavWidgetMoviesType),4)">Skin.SetString(QuickNavWidgetMoviesType,3)</onleft>
@@ -969,7 +971,7 @@
 			<control type="fixedlist" id="653">	
 				<visible>System.HasAddon(plugin.audio.tuneinradio)</visible>
 				<include>WidgetSquareLayout</include>
-				<content target="music">$VAR[QuickNav_WidgetListContentYouTube]</content>
+				<content target="video">$VAR[QuickNav_WidgetListContentYouTube]</content>
 			</control>
 			<control type="button" id="66">
 				<description>invisible control button for category</description>

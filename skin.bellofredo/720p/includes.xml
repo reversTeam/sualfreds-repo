@@ -592,6 +592,7 @@
 		<left>45</left>
 		<top>525</top>
 		<include>HomeNowPlayingCoversSlideAnimations</include>
+		<visible>!Window.Previous(startup)</visible>
 		<visible>![Window.IsActive(1113) | Window.IsActive(1114) | Window.IsActive(1115) | Window.IsActive(ShutdownMenu) | [Window.IsActive(ContextMenu) + [Window.IsVisible(Favourites) | Window.IsVisible(playercontrols)]] | Window.IsActive(script-globalsearch-main.xml) | Window.IsActive(Favourites)] + Player.HasAudio</visible>			
 		<control type="image">
 			<left>-110</left>
@@ -1799,31 +1800,32 @@
 </variable>
 
 <variable name="QuickNav_WidgetListContentMovies">
-	<value condition="!Window.IsVisible(3050) + stringcompare(Skin.String(QuickNavWidgetMoviesType),1)">videodb://recentlyaddedmovies/</value>
-	<value condition="!Window.IsVisible(3050) + stringcompare(Skin.String(QuickNavWidgetMoviesType),2)">plugin://service.library.data.provider?type=recommendedmovies&amp;reload=$INFO[Window(Home).Property(recommendedmovies)]</value>
-	<value condition="!Window.IsVisible(3050) + stringcompare(Skin.String(QuickNavWidgetMoviesType),3)">plugin://service.library.data.provider?type=randommovies&amp;reload=$INFO[Window(Home).Property(randommovies)]</value>
-	<value condition="!Window.IsVisible(3050) + stringcompare(Skin.String(QuickNavWidgetMoviesType),4)">plugin://script.extendedinfo?info=incinemas</value>
-	<value condition="!Window.IsVisible(3050) + stringcompare(Skin.String(QuickNavWidgetMoviesType),5)">plugin://script.extendedinfo?info=trendingmovies</value>
-	<value condition="!Window.IsVisible(3050) + stringcompare(Skin.String(QuickNavWidgetMoviesType),6)">special://skin/extras/playlists/Top250.xsp</value>
+	<value condition="[Window.IsVisible(playercontrols) | !Window.IsVisible(3050)] + stringcompare(Skin.String(QuickNavWidgetMoviesType),1)">videodb://recentlyaddedmovies/</value>
+	<value condition="[Window.IsVisible(playercontrols) | !Window.IsVisible(3050)] + stringcompare(Skin.String(QuickNavWidgetMoviesType),2)">plugin://service.library.data.provider?type=recommendedmovies&amp;reload=$INFO[Window(Home).Property(recommendedmovies)]</value>
+	<value condition="[Window.IsVisible(playercontrols) | !Window.IsVisible(3050)] + stringcompare(Skin.String(QuickNavWidgetMoviesType),3)">plugin://service.library.data.provider?type=randommovies&amp;reload=$INFO[Window(Home).Property(randommovies)]</value>
+	<value condition="[Window.IsVisible(playercontrols) | !Window.IsVisible(3050)] + stringcompare(Skin.String(QuickNavWidgetMoviesType),4)">plugin://script.extendedinfo?info=incinemas</value>
+	<value condition="[Window.IsVisible(playercontrols) | !Window.IsVisible(3050)] + stringcompare(Skin.String(QuickNavWidgetMoviesType),5)">plugin://script.extendedinfo?info=trendingmovies</value>
+	<value condition="[Window.IsVisible(playercontrols) | !Window.IsVisible(3050)] + stringcompare(Skin.String(QuickNavWidgetMoviesType),6)">special://skin/extras/playlists/Top250.xsp</value>
+	<value condition="[Window.IsVisible(playercontrols) | !Window.IsVisible(3050)] + stringcompare(Skin.String(QuickNavWidgetMoviesType),7)">special://skin/extras/playlists/UnseenMovies.xsp</value>
 </variable>
 <variable name="QuickNav_WidgetListContentTVShows">
-	<value condition="!Window.IsVisible(3050) + stringcompare(Skin.String(QuickNavWidgetTVShowsType),1)">videodb://recentlyaddedepisodes</value>
-	<value condition="!Window.IsVisible(3050) + stringcompare(Skin.String(QuickNavWidgetTVShowsType),2)">plugin://service.library.data.provider?type=recommendedepisodes&amp;reload=$INFO[Window(Home).Property(recommendedepisodes)]</value>
-	<value condition="!Window.IsVisible(3050) + stringcompare(Skin.String(QuickNavWidgetTVShowsType),3)">plugin://service.library.data.provider?type=randomepisodes&amp;reload=$INFO[Window(Home).Property(randomepisodes)]</value>
-	<value condition="!Window.IsVisible(3050) + stringcompare(Skin.String(QuickNavWidgetTVShowsType),4)">plugin://script.extendedinfo?info=trendingshows</value>
-	<value condition="!Window.IsVisible(3050) + stringcompare(Skin.String(QuickNavWidgetTVShowsType),5)">special://skin/extras/playlists/TVShowsRecentlyPlayed.xsp</value>
+	<value condition="[Window.IsVisible(playercontrols) | !Window.IsVisible(3050)] + stringcompare(Skin.String(QuickNavWidgetTVShowsType),1)">videodb://recentlyaddedepisodes</value>
+	<value condition="[Window.IsVisible(playercontrols) | !Window.IsVisible(3050)] + stringcompare(Skin.String(QuickNavWidgetTVShowsType),2)">plugin://service.library.data.provider?type=recommendedepisodes&amp;reload=$INFO[Window(Home).Property(recommendedepisodes)]</value>
+	<value condition="[Window.IsVisible(playercontrols) | !Window.IsVisible(3050)] + stringcompare(Skin.String(QuickNavWidgetTVShowsType),3)">plugin://service.library.data.provider?type=randomepisodes&amp;reload=$INFO[Window(Home).Property(randomepisodes)]</value>
+	<value condition="[Window.IsVisible(playercontrols) | !Window.IsVisible(3050)] + stringcompare(Skin.String(QuickNavWidgetTVShowsType),4)">plugin://script.extendedinfo?info=trendingshows</value>
+	<value condition="[Window.IsVisible(playercontrols) | !Window.IsVisible(3050)] + stringcompare(Skin.String(QuickNavWidgetTVShowsType),5)">special://skin/extras/playlists/TVShowsRecentlyPlayed.xsp</value>
 </variable>
 <variable name="QuickNav_WidgetListContentMusic">
-	<value condition="!Window.IsVisible(3050) + stringcompare(Skin.String(QuickNavWidgetMusicType),1)">plugin://service.library.data.provider?type=recentalbums&amp;reload=$INFO[Window(Home).Property(recentalbums)]</value>
-	<value condition="!Window.IsVisible(3050) + stringcompare(Skin.String(QuickNavWidgetMusicType),2)">plugin://service.library.data.provider?type=recommendedalbums&amp;reload=$INFO[Window(Home).Property(recommendedalbums)]</value>
-	<value condition="!Window.IsVisible(3050) + stringcompare(Skin.String(QuickNavWidgetMusicType),3)">plugin://service.library.data.provider?type=randomalbums&amp;reload=$INFO[Window(Home).Property(randomalbums)]</value>
-	<value condition="!Window.IsVisible(3050) + stringcompare(Skin.String(QuickNavWidgetMusicType),4)">plugin://script.extendedinfo?info=topartists&amp;&amp;limit=20</value>
-	<value condition="!Window.IsVisible(3050) + stringcompare(Skin.String(QuickNavWidgetMusicType),5)">musicdb://recentlyplayedalbums/</value>
+	<value condition="[Window.IsVisible(playercontrols) | !Window.IsVisible(3050)] + stringcompare(Skin.String(QuickNavWidgetMusicType),1)">plugin://service.library.data.provider?type=recentalbums&amp;reload=$INFO[Window(Home).Property(recentalbums)]</value>
+	<value condition="[Window.IsVisible(playercontrols) | !Window.IsVisible(3050)] + stringcompare(Skin.String(QuickNavWidgetMusicType),2)">plugin://service.library.data.provider?type=recommendedalbums&amp;reload=$INFO[Window(Home).Property(recommendedalbums)]</value>
+	<value condition="[Window.IsVisible(playercontrols) | !Window.IsVisible(3050)] + stringcompare(Skin.String(QuickNavWidgetMusicType),3)">plugin://service.library.data.provider?type=randomalbums&amp;reload=$INFO[Window(Home).Property(randomalbums)]</value>
+	<value condition="[Window.IsVisible(playercontrols) | !Window.IsVisible(3050)] + stringcompare(Skin.String(QuickNavWidgetMusicType),4)">plugin://script.extendedinfo?info=topartists&amp;&amp;limit=20</value>
+	<value condition="[Window.IsVisible(playercontrols) | !Window.IsVisible(3050)] + stringcompare(Skin.String(QuickNavWidgetMusicType),5)">musicdb://recentlyplayedalbums/</value>
 </variable>
 <variable name="QuickNav_WidgetListContentTuneIn">
-	<value condition="!Window.IsVisible(3050) + stringcompare(Skin.String(QuickNavWidgetTuneInType),1)">plugin://plugin.audio.tuneinradio/?path=recents</value>
-	<value condition="!Window.IsVisible(3050) + stringcompare(Skin.String(QuickNavWidgetTuneInType),2)">plugin://plugin.audio.tuneinradio/?path=browse&amp;id=presets</value>
-	<value condition="!Window.IsVisible(3050) + stringcompare(Skin.String(QuickNavWidgetTuneInType),3)">plugin://plugin.audio.tuneinradio/?path=browse&amp;c=local</value>
+	<value condition="[Window.IsVisible(playercontrols) | !Window.IsVisible(3050)] + stringcompare(Skin.String(QuickNavWidgetTuneInType),1)">plugin://plugin.audio.tuneinradio/?path=recents</value>
+	<value condition="[Window.IsVisible(playercontrols) | !Window.IsVisible(3050)] + stringcompare(Skin.String(QuickNavWidgetTuneInType),2)">plugin://plugin.audio.tuneinradio/?path=browse&amp;id=presets</value>
+	<value condition="[Window.IsVisible(playercontrols) | !Window.IsVisible(3050)] + stringcompare(Skin.String(QuickNavWidgetTuneInType),3)">plugin://plugin.audio.tuneinradio/?path=browse&amp;c=local</value>
 </variable>
 <variable name="QuickNav_WidgetListContentPlaylists">
 	<value condition="!Window.IsVisible(3050)">$INFO[Container(20).ListItem.Property(widgetPlaylist)]</value>
@@ -1904,7 +1906,8 @@
 	<value condition="stringcompare(Skin.String(QuickNavWidgetMoviesType),4)">[CAPITALIZE]$LOCALIZE[31256][/CAPITALIZE]</value>
 	<value condition="stringcompare(Skin.String(QuickNavWidgetMoviesType),5)">[CAPITALIZE]$LOCALIZE[31257][/CAPITALIZE]</value>
 	<value condition="stringcompare(Skin.String(QuickNavWidgetMoviesType),6)">[CAPITALIZE]$LOCALIZE[31269][/CAPITALIZE]</value>
-</variable>[/CAPITALIZE]
+	<value condition="stringcompare(Skin.String(QuickNavWidgetMoviesType),7)">[CAPITALIZE]$LOCALIZE[31263][/CAPITALIZE]</value>
+</variable>
 <variable name="QuickNavSettingsTVShowName">
 	<value condition="stringcompare(Skin.String(QuickNavWidgetTVShowsType),1)">[CAPITALIZE]$LOCALIZE[31242][/CAPITALIZE]</value>
 	<value condition="stringcompare(Skin.String(QuickNavWidgetTVShowsType),2)">[CAPITALIZE]$LOCALIZE[31002] $LOCALIZE[575][/CAPITALIZE]</value>
@@ -1959,10 +1962,10 @@
 
 
 <variable name="QuickNavWidgetHeaderTitle">
-	<value condition="StringCompare(Container(20).ListItem.Property(widget),movies)">$VAR[QuickNavSettingsMovieName]</value>
-	<value condition="StringCompare(Container(20).ListItem.Property(widget),tvshows)">$VAR[QuickNavSettingsTVShowName]</value>
-	<value condition="StringCompare(Container(20).ListItem.Property(widget),music)">$VAR[QuickNavSettingsMusicName]</value>
-	<value condition="StringCompare(Container(20).ListItem.Property(widget),tunein)">$VAR[QuickNavSettingsTuneInName]</value>
+	<value condition="StringCompare(Container(20).ListItem.Property(widget),movies) | Control.HasFocus(250) | Control.HasFocus(25)">$VAR[QuickNavSettingsMovieName]</value>
+	<value condition="StringCompare(Container(20).ListItem.Property(widget),tvshows) | Control.HasFocus(350) | Control.HasFocus(35)">$VAR[QuickNavSettingsTVShowName]</value>
+	<value condition="StringCompare(Container(20).ListItem.Property(widget),music) | Control.HasFocus(450) | Control.HasFocus(45)">$VAR[QuickNavSettingsMusicName]</value>
+	<value condition="StringCompare(Container(20).ListItem.Property(widget),tunein) | Control.HasFocus(550) | Control.HasFocus(55)">$VAR[QuickNavSettingsTuneInName]</value>
 	<value condition="StringCompare(Container(20).ListItem.Property(widget),amazondb)">$VAR[QuickNavSettingsAmazonDBName]</value>
 	<value condition="StringCompare(Container(20).ListItem.Property(widget),amazon)">$VAR[QuickNavSettingsAmazonName]</value>
 	<value condition="StringCompare(Container(20).ListItem.Property(widget),widgetgroup1)">$INFO[Skin.String(widgetgroup1)]</value>
@@ -1975,14 +1978,14 @@
 </variable>
 
 <variable name="QuickNavWidgetListItemLabel">
-	<value condition="StringCompare(Container(20).ListItem.Property(widget),movies)">$INFO[Container(250).ListItem.Label]</value>
-	<value condition="StringCompare(Container(20).ListItem.Property(widget),tvshows) + !IsEmpty(Container(350).ListItem.TVShowTitle)">$INFO[Container(350).ListItem.TVShowTitle]</value>
-	<value condition="StringCompare(Container(20).ListItem.Property(widget),tvshows) + !IsEmpty(Container(350).ListItem.Label)">$INFO[Container(350).ListItem.Label]</value>
-	<value condition="StringCompare(Container(20).ListItem.Property(widget),music) + !IsEmpty(Container(450).ListItem.Thumb)">$INFO[Container(450).ListItem.Label]$INFO[Container(450).ListItem.Year, (,)]</value>
-	<value condition="StringCompare(Container(20).ListItem.Property(widget),music) + IsEmpty(Container(450).ListItem.DBID)">$LOCALIZE[31044]</value>
-	<value condition="StringCompare(Container(20).ListItem.Property(widget),rssvideowidget) + !IsEmpty(Container(650).ListItem.Label)">$INFO[Container(650).ListItem.Label]</value>
+	<value condition="StringCompare(Container(20).ListItem.Property(widget),movies) | Control.HasFocus(25) | Control.HasFocus(250)">$INFO[Container(250).ListItem.Label]</value>
+	<value condition="[StringCompare(Container(20).ListItem.Property(widget),tvshows) | Control.HasFocus(35) | Control.HasFocus(350)] + !IsEmpty(Container(350).ListItem.TVShowTitle)">$INFO[Container(350).ListItem.TVShowTitle]</value>
+	<value condition="[StringCompare(Container(20).ListItem.Property(widget),tvshows) | Control.HasFocus(35) | Control.HasFocus(350)] + !IsEmpty(Container(350).ListItem.Label)">$INFO[Container(350).ListItem.Label]</value>
+	<value condition="[StringCompare(Container(20).ListItem.Property(widget),music) | Control.HasFocus(45) | Control.HasFocus(450)] + !IsEmpty(Container(450).ListItem.Thumb)">$INFO[Container(450).ListItem.Label]$INFO[Container(450).ListItem.Year, (,)]</value>
+	<value condition="[StringCompare(Container(20).ListItem.Property(widget),music) | Control.HasFocus(45) | Control.HasFocus(450)] + IsEmpty(Container(450).ListItem.DBID)">$LOCALIZE[31044]</value>
+	<value condition="[StringCompare(Container(20).ListItem.Property(widget),rssvideowidget) | Control.HasFocus(65) | Control.HasFocus(650)] + !IsEmpty(Container(650).ListItem.Label)">$INFO[Container(650).ListItem.Label]</value>
 	<value condition="StringCompare(Container(20).ListItem.Property(widget),youtube) + !IsEmpty(Container(653).ListItem.Label)">$INFO[Container(653).ListItem.Label]</value>
-	<value condition="StringCompare(Container(20).ListItem.Property(widget),tunein) + !IsEmpty(Container(550).ListItem.Label)">$INFO[Container(550).ListItem.Label]</value>
+	<value condition="[StringCompare(Container(20).ListItem.Property(widget),tunein) | Control.HasFocus(55) | Control.HasFocus(550)] + !IsEmpty(Container(550).ListItem.Label)">$INFO[Container(550).ListItem.Label]</value>
 	<value condition="StringCompare(Container(20).ListItem.Property(widget),amazondb) + !IsEmpty(Container(750).ListItem.Label)">$INFO[Container(750).ListItem.Label]</value>
 	<value condition="StringCompare(Container(20).ListItem.Property(widget),amazon) + !IsEmpty(Container(751).ListItem.Label)">$INFO[Container(751).ListItem.Label]</value>
 	<value condition="StringCompare(Container(20).ListItem.Property(widget),widgetgroup1) + !IsEmpty(Container(551).ListItem.Label)">$INFO[Container(551).ListItem.Label]</value>
@@ -1995,15 +1998,15 @@
 </variable>
 
 <variable name="QuickNavWidgetListItemLabel2">
-	<value condition="StringCompare(Container(20).ListItem.Property(widget),movies) + !stringcompare(Skin.String(QuickNavWidgetMoviesType),4) + ![IsEmpty(Container(250).ListItem.Year) + IsEmpty(Container(250).ListItem.Rating) + IsEmpty(Container(250).ListItem.Duration)]">$INFO[Container(250).ListItem.Year]$INFO[Container(250).ListItem.Rating, • ]$INFO[Container(250).ListItem.Duration, • , $LOCALIZE[12391]]</value>
-	<value condition="StringCompare(Container(20).ListItem.Property(widget),movies) + ![IsEmpty(Container(250).ListItem.Premiered) + IsEmpty(Container(250).ListItem.Rating) + IsEmpty(Container(250).ListItem.Duration)]">$INFO[Container(250).ListItem.Premiered]$INFO[Container(250).ListItem.Rating, • ]$INFO[Container(250).ListItem.Duration, • , $LOCALIZE[12391]]</value>
-	<value condition="StringCompare(Container(20).ListItem.Property(widget),tvshows) + !stringcompare(Skin.String(QuickNavWidgetTVShowsType),4) + !IsEmpty(Container(350).ListItem.Title)">$INFO[Container(350).ListItem.Season]$INFO[Container(350).ListItem.Episode,x,. ]$INFO[Container(350).ListItem.Title]</value>
-	<value condition="StringCompare(Container(20).ListItem.Property(widget),tvshows) + !IsEmpty(Container(350).ListItem.TVShowTitle)">$INFO[Container(350).ListItem.Premiered]$INFO[Container(350).ListItem.Rating, • ]</value>
-	<value condition="StringCompare(Container(20).ListItem.Property(widget),music) + !stringcompare(Skin.String(QuickNavWidgetMusicType),4) + !IsEmpty(Container(450).ListItem.Artist)">$INFO[Container(450).ListItem.Artist]</value>
-	<value condition="StringCompare(Container(20).ListItem.Property(widget),music) + stringcompare(Skin.String(QuickNavWidgetMusicType),5) + !IsEmpty(Container(450).ListItem.DBID)">$INFO[Container(450).ListItem.Artist]</value>
-	<value condition="StringCompare(Container(20).ListItem.Property(widget),music) + stringcompare(Skin.String(QuickNavWidgetMusicType),5) + IsEmpty(Container(450).ListItem.DBID)">$LOCALIZE[340]</value>
-	<value condition="StringCompare(Container(20).ListItem.Property(widget),music)">$INFO[Container(450).ListItem.Property(Listeners),,  $LOCALIZE[15200] $LOCALIZE[20455]]</value>		
-	<value condition="StringCompare(Container(20).ListItem.Property(widget),tunein)">$LOCALIZE[31138]</value>
+	<value condition="[StringCompare(Container(20).ListItem.Property(widget),movies) | Control.HasFocus(25) | Control.HasFocus(250)] + !stringcompare(Skin.String(QuickNavWidgetMoviesType),4) + ![IsEmpty(Container(250).ListItem.Year) + IsEmpty(Container(250).ListItem.Rating) + IsEmpty(Container(250).ListItem.Duration)]">$INFO[Container(250).ListItem.Year]$INFO[Container(250).ListItem.Rating, • ]$INFO[Container(250).ListItem.Duration, • , $LOCALIZE[12391]]</value>
+	<value condition="[StringCompare(Container(20).ListItem.Property(widget),movies) | Control.HasFocus(25) | Control.HasFocus(250)] + ![IsEmpty(Container(250).ListItem.Premiered) + IsEmpty(Container(250).ListItem.Rating) + IsEmpty(Container(250).ListItem.Duration)]">$INFO[Container(250).ListItem.Premiered]$INFO[Container(250).ListItem.Rating, • ]$INFO[Container(250).ListItem.Duration, • , $LOCALIZE[12391]]</value>
+	<value condition="[StringCompare(Container(20).ListItem.Property(widget),tvshows) | Control.HasFocus(35) | Control.HasFocus(350)] + !stringcompare(Skin.String(QuickNavWidgetTVShowsType),4) + !IsEmpty(Container(350).ListItem.Title)">$INFO[Container(350).ListItem.Season]$INFO[Container(350).ListItem.Episode,x,. ]$INFO[Container(350).ListItem.Title]</value>
+	<value condition="[StringCompare(Container(20).ListItem.Property(widget),tvshows) | Control.HasFocus(35) | Control.HasFocus(350)] + !IsEmpty(Container(350).ListItem.TVShowTitle)">$INFO[Container(350).ListItem.Premiered]$INFO[Container(350).ListItem.Rating, • ]</value>
+	<value condition="[StringCompare(Container(20).ListItem.Property(widget),music) | Control.HasFocus(45) | Control.HasFocus(450)] + !stringcompare(Skin.String(QuickNavWidgetMusicType),4) + !IsEmpty(Container(450).ListItem.Artist)">$INFO[Container(450).ListItem.Artist]</value>
+	<value condition="[StringCompare(Container(20).ListItem.Property(widget),music) | Control.HasFocus(45) | Control.HasFocus(450)] + stringcompare(Skin.String(QuickNavWidgetMusicType),5) + !IsEmpty(Container(450).ListItem.DBID)">$INFO[Container(450).ListItem.Artist]</value>
+	<value condition="[StringCompare(Container(20).ListItem.Property(widget),music) | Control.HasFocus(45) | Control.HasFocus(450)] + stringcompare(Skin.String(QuickNavWidgetMusicType),5) + IsEmpty(Container(450).ListItem.DBID)">$LOCALIZE[340]</value>
+	<value condition="[StringCompare(Container(20).ListItem.Property(widget),music) | Control.HasFocus(45) | Control.HasFocus(450)]">$INFO[Container(450).ListItem.Property(Listeners),,  $LOCALIZE[15200] $LOCALIZE[20455]]</value>		
+	<value condition="[StringCompare(Container(20).ListItem.Property(widget),tunein) | Control.HasFocus(55) | Control.HasFocus(550)]">$LOCALIZE[31138]</value>
 	<value condition="StringCompare(Container(20).ListItem.Property(widget),amazondb)">$LOCALIZE[31052]</value>
 	<value condition="StringCompare(Container(20).ListItem.Property(widget),amazon)">$LOCALIZE[31052]</value>
 	<value condition="StringCompare(Container(20).ListItem.Property(widget),youtube)">YouTube</value>
@@ -2026,20 +2029,20 @@
 
 <variable name="QuickNavWidgetFanart">	
 	<!--movies-->
-	<value condition="ControlGroup(9050).HasFocus + !IsEmpty(Container(250).ListItem.Art(fanart))">$INFO[Container(250).ListItem.Art(fanart)]</value>
-	<value condition="ControlGroup(9050).HasFocus + !IsEmpty(Container(250).ListItem.Property(FanartImage))">$INFO[Container(250).ListItem.Property(FanartImage)]</value>
-	<value condition="ControlGroup(9050).HasFocus + IsEmpty(Container(250).ListItem.Art(fanart)) + IsEmpty(Container(250).ListItem.Property(FanartImage))">SKINDEFAULT.jpg</value>
+	<value condition="[ControlGroup(9050).HasFocus | Control.HasFocus(25) | Control.HasFocus(250)]+ !IsEmpty(Container(250).ListItem.Art(fanart))">$INFO[Container(250).ListItem.Art(fanart)]</value>
+	<value condition="[ControlGroup(9050).HasFocus | Control.HasFocus(25) | Control.HasFocus(250)] + !IsEmpty(Container(250).ListItem.Property(FanartImage))">$INFO[Container(250).ListItem.Property(FanartImage)]</value>
+	<value condition="[ControlGroup(9050).HasFocus | Control.HasFocus(25) | Control.HasFocus(250)] + IsEmpty(Container(250).ListItem.Art(fanart)) + IsEmpty(Container(250).ListItem.Property(FanartImage))">SKINDEFAULT.jpg</value>
 	<!--tvshows-->
-	<value condition="ControlGroup(9060).HasFocus + !IsEmpty(Container(350).ListItem.Art(fanart))">$INFO[Container(350).ListItem.Art(fanart)]</value>
-	<value condition="ControlGroup(9060).HasFocus + !IsEmpty(Container(350).ListItem.Property(FanartImage))">$INFO[Container(350).ListItem.Property(FanartImage)]</value>
-	<value condition="ControlGroup(9060).HasFocus + IsEmpty(Container(350).ListItem.Art(fanart)) + IsEmpty(Container(350).ListItem.Property(FanartImage))">SKINDEFAULT.jpg</value>
+	<value condition="[ControlGroup(9060).HasFocus | Control.HasFocus(35) | Control.HasFocus(350)] + !IsEmpty(Container(350).ListItem.Art(fanart))">$INFO[Container(350).ListItem.Art(fanart)]</value>
+	<value condition="[ControlGroup(9060).HasFocus | Control.HasFocus(35) | Control.HasFocus(350)] + !IsEmpty(Container(350).ListItem.Property(FanartImage))">$INFO[Container(350).ListItem.Property(FanartImage)]</value>
+	<value condition="[ControlGroup(9060).HasFocus | Control.HasFocus(35) | Control.HasFocus(350)] + IsEmpty(Container(350).ListItem.Art(fanart)) + IsEmpty(Container(350).ListItem.Property(FanartImage))">SKINDEFAULT.jpg</value>
 	<!--music-->
-	<value condition="ControlGroup(9070).HasFocus + !IsEmpty(Container(450).ListItem.Art(fanart))">$INFO[Container(450).ListItem.Art(fanart)]</value>
-	<value condition="ControlGroup(9070).HasFocus + !IsEmpty(Container(450).ListItem.Property(FanartImage))">$INFO[Container(450).ListItem.Property(FanartImage)]</value>
-	<value condition="ControlGroup(9070).HasFocus + IsEmpty(Container(450).ListItem.Art(fanart)) + IsEmpty(Container(450).ListItem.Property(FanartImage))">SKINDEFAULT.jpg</value>
+	<value condition="[ControlGroup(9070).HasFocus | Control.HasFocus(45) | Control.HasFocus(450)] + !IsEmpty(Container(450).ListItem.Art(fanart))">$INFO[Container(450).ListItem.Art(fanart)]</value>
+	<value condition="[ControlGroup(9070).HasFocus | Control.HasFocus(45) | Control.HasFocus(450)] + !IsEmpty(Container(450).ListItem.Property(FanartImage))">$INFO[Container(450).ListItem.Property(FanartImage)]</value>
+	<value condition="[ControlGroup(9070).HasFocus | Control.HasFocus(45) | Control.HasFocus(450)] + IsEmpty(Container(450).ListItem.Art(fanart)) + IsEmpty(Container(450).ListItem.Property(FanartImage))">SKINDEFAULT.jpg</value>
 	<!--rss video feed-->
-	<value condition="ControlGroup(9099).HasFocus + !IsEmpty(Container(650).ListItem.Art(fanart))">$INFO[Container(650).ListItem.Art(fanart)]</value>
-	<value condition="ControlGroup(9099).HasFocus + !IsEmpty(Container(650).ListItem.Property(FanartImage))">$INFO[Container(650).ListItem.Property(FanartImage)]</value>  
+	<value condition="[ControlGroup(9099).HasFocus | Control.HasFocus(65) | Control.HasFocus(650)]+ !IsEmpty(Container(650).ListItem.Art(fanart))">$INFO[Container(650).ListItem.Art(fanart)]</value>
+	<value condition="[ControlGroup(9099).HasFocus | Control.HasFocus(65) | Control.HasFocus(650)] + !IsEmpty(Container(650).ListItem.Property(FanartImage))">$INFO[Container(650).ListItem.Property(FanartImage)]</value> 
 	<!--playlists-->
 	<value condition="ControlGroup(9071).HasFocus + !IsEmpty(Container(651).ListItem.Art(fanart))">$INFO[Container(651).ListItem.Art(fanart)]</value>
 	<value condition="ControlGroup(9071).HasFocus + IsEmpty(Container(651).ListItem.Art(fanart))">SKINDEFAULT.jpg</value>		
@@ -2063,7 +2066,8 @@
 	<value condition="ControlGroup(9091).HasFocus + StringCompare(Container(552).ListItem.Property(background),DefaultAddon)">$INFO[Container(552).ListItem.Property(defaultID),special://home/addons/,/fanart.jpg]</value>
 	<value condition="ControlGroup(9093).HasFocus + StringCompare(Container(553).ListItem.Property(background),DefaultAddon)">$INFO[Container(553).ListItem.Property(defaultID),special://home/addons/,/fanart.jpg]</value>
 	<value condition="ControlGroup(9094).HasFocus + StringCompare(Container(554).ListItem.Property(background),DefaultAddon)">$INFO[Container(554).ListItem.Property(defaultID),special://home/addons/,/fanart.jpg]</value>
-	<!-- not set: 550 tunein widget -->
+	<!--main menu background duplicate as fallback-->	
+	<value condition="!Window.IsVisible(playercontrols)">$INFO[Container(20).ListItem.Property(Background)]</value>
 </variable>
 
 <variable name="backgroundMainmenu">
@@ -2319,7 +2323,7 @@
 	<onload condition="Window.IsActive(1113)">Dialog.Close(1120)</onload>
 	<onload condition="Window.IsActive(1114)">Dialog.Close(1121)</onload>
 	<onload condition="Window.IsActive(1115)">Dialog.Close(1122)</onload>
-	<onload condition="Window.IsActive(3000)">Dialog.Close(3000)</onload>
+	<onload condition="Window.IsActive(3000) + !Window.IsVisible(script-cu-lrclyrics-main.xml)">Dialog.Close(3000)</onload>
 	<onload condition="Window.IsActive(3001)">Dialog.Close(3001)</onload>
 	<onload condition="Window.IsActive(3002)">Dialog.Close(3002)</onload>
 	<onload condition="Window.IsActive(3003)">Dialog.Close(3003)</onload>
