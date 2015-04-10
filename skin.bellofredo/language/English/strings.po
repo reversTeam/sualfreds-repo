@@ -482,7 +482,15 @@ msgctxt "#31116"
 msgid "Diffuse Widget Fanarts"
 msgstr ""
 
-#: empty strings from id 31117 to 31123
+msgctxt "#31117"
+msgid "Handwritten Disc Art"
+msgstr ""
+
+msgctxt "#31118"
+msgid "Show Disc Art"
+msgstr ""
+
+#: empty strings from id 31119 to 31123
 
 msgctxt "#31124"
 msgid "Flashing Lights"
@@ -1122,7 +1130,7 @@ msgid "Now Playing"
 msgstr ""
 
 msgctxt "#31317"
-msgid "Deactivate Vignette (Better for Ambilight)"
+msgid "Amiblight Compatiblity Mode"
 msgstr ""
 
 #: empty strings from id 31318 to 31349

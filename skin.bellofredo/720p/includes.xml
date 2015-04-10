@@ -590,7 +590,7 @@
 	<control type="group">	
 		<visible>!SubString(Player.Filenameandpath,extras/intro/intro.mp4) + !SubString(Player.Filenameandpath,extras\intro\intro.mp4)</visible>
 		<!-- Music Cover -->
-		<control type="group" id="25">
+		<control type="group" id="2555">
 			<left>45</left>
 			<top>525</top>
 			<include>HomeNowPlayingCoversSlideAnimations</include>
@@ -604,16 +604,75 @@
 				<texture background="true">views/list/shine.png</texture>
 				<animation effect="fade" end="40" reversible="false" condition="true" time="0">Conditional</animation>
 			</control>
-			<control type="image">
-				<left>3</left>
-				<top>-50</top>
-				<width>155</width>
-				<height>155</height>
-				<texture diffuse="osd/cd_diffuse.png" background="true" fallback="osd/cd.png">$INFO[Player.FolderPath,,cdart.png]</texture>
-				<aspectratio>keep</aspectratio>
-				<include>CDImageAnim</include>
-				<visible>!Player.IsInternetStream</visible>
-			</control>				
+			<control type="group">
+				<visible>Player.HasAudio + !Player.IsInternetStream + IntegerGreaterThan(MusicPlayer.Time,0)</visible>
+				<animation type="Hidden" reversible="false">
+					<effect type="slide" start="0,0" end="0,60" tween="sine" easing="out" time="600" delay="0" />
+					<effect type="fade" start="100" end="0" time="500" delay="0"/>
+				</animation>
+				<animation type="Visible" reversible="false">
+					<effect type="fade" start="0" end="100" time="500" delay="500"/>
+					<effect type="slide" start="0,60" end="0,0" tween="sine" easing="out" time="700" delay="300" />
+				</animation>
+				<control type="image">
+					<left>3</left>
+					<top>-50</top>
+					<width>155</width>
+					<height>155</height>
+					<texture diffuse="osd/cd_diffuse.png" background="true" fallback="osd/cd.png">$INFO[Player.FolderPath,,cdart.png]</texture>
+					<aspectratio>keep</aspectratio>
+					<include>CDImageAnim</include>
+					<visible>Skin.HasSetting(HideHandwrittenDiscArt) + !Player.IsInternetStream</visible>
+				</control>
+				<control type="group">
+					<visible>!Skin.HasSetting(HideHandwrittenDiscArt) + !Player.IsInternetStream</visible>
+					<animation effect="zoom" start="69" end="69" center="auto" time="0" delay="0" condition="true">Conditional</animation>
+					<left>-224</left>
+					<top>-95</top>
+					<include>CDImageAnim2Home</include>
+					<control type="group">						
+						<width>225</width>
+						<height>225</height>											
+						<animation effect="rotate" end="-3600" center="auto" time="100000" loop="true" reversible="false" condition="true">Conditional</animation>
+						<control type="image">						
+							<width>225</width>
+							<height>225</height>
+							<texture background="true" diffuse="osd/cd_diffuse.png">osd/cdr.png</texture>
+							<aspectratio>keep</aspectratio>		
+						</control>
+						<control type="textbox">
+							<left>48</left>
+							<top>30</top>
+							<width>130</width>
+							<height>40</height>
+							<align>center</align>
+							<aligny>top</aligny>
+							<font>Hand_16</font>
+							<textcolor>ccblack</textcolor>
+							<label>$INFO[MusicPlayer.Artist]</label>	
+							<animation effect="fade" start="75" end="75" time="0" delay="0" condition="true">Conditional</animation>
+						</control>
+						<control type="textbox">
+							<left>63</left>
+							<top>148</top>
+							<width>100</width>
+							<height>58</height>
+							<align>center</align>
+							<aligny>center</aligny>
+							<font>Hand_16</font>
+							<textcolor>ccblack</textcolor>
+							<label>$INFO[MusicPlayer.Album]</label>	
+							<animation effect="fade" start="75" end="75" time="0" delay="0" condition="true">Conditional</animation>
+						</control>
+					</control>					
+					<control type="image">						
+						<width>225</width>
+						<height>225</height>
+						<texture background="true" diffuse="osd/cd_diffuse.png">osd/cdr_shadow_top.png</texture>
+						<aspectratio>keep</aspectratio>						
+					</control>	
+				</control>
+			</control>
 			<control type="image">
 				<left>0</left>
 				<top>0</top>
@@ -621,7 +680,6 @@
 				<height>160</height>
 				<aspectratio align="center" aligny="center" scalediffuse="false">scale</aspectratio>
 				<texture background="true" fallback="thumbs/fallback_square.png" diffuse="thumbs/music_diffuse.png">thumbs/thumb_back.png</texture>
-				<fadetime>800</fadetime>
 			</control>				
 			<control type="image">
 				<left>0</left>
@@ -639,7 +697,6 @@
 				<height>174</height>
 				<aspectratio align="center" aligny="center">stretch</aspectratio>
 				<texture background="true">thumbs/music_overlay.png</texture>
-				<fadetime>800</fadetime>
 			</control>
 			<control type="image">
 				<left>0</left>
@@ -1727,9 +1784,6 @@
 	</control>
 </include>
 
-
-
-
 <variable name="MenuGroupHeader">
 	<value condition="!StringCompare(Window.Property(groupname),mainmenu) + !IsEmpty(Window.Property(groupDisplayName))">$LOCALIZE[31050] $INFO[Window.Property(groupDisplayName),","]</value>			
 	<value condition="StringCompare(Window.Property(groupname),widgetgroup1)">$LOCALIZE[31049] $INFO[Skin.String(widgetgroup1),","]</value>		
@@ -2635,5 +2689,7 @@
 		<texture background="true" diffuse="thumbs/video_diffuse.png">thumbs/video_overlay_noglass.png</texture>
 	</control>
 </include>
+
+
 
 </includes>
