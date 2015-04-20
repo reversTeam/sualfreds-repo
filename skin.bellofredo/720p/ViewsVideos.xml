@@ -370,16 +370,6 @@
 							<aligny>center</aligny>
 							<label>$INFO[ListItem.Label]</label>
 						</control>
-						<!--<control type="image">
-							<left>530</left>
-							<top>11</top>
-							<width>53</width>
-							<height>22</height>
-							<colordiffuse>55ffffff</colordiffuse>
-							<aspectratio align="center" aligny="center">keep</aspectratio>
-							<texture background="true">$INFO[ListItem.mpaa,flags/mpaa/tv/,.png]</texture>
-							<visible>!stringcompare(ListItem.Overlay,OverlayUnWatched.png) + [Container.Content(TVShows) | Container.Content(Seasons)]</visible>
-						</control>-->
 						<control type="image">
 							<left>530</left>
 							<top>11</top>
@@ -389,6 +379,7 @@
 							<aspectratio align="center" aligny="center">stretch</aspectratio>
 							<texture>flags/empty.png</texture>
 							<visible>!Stringcompare(ListItem.Label,..)</visible>
+							<visible>!IsEmpty(ListItem.Property(unWatchedEpisodes))</visible>
 							<visible>[Container.Content(TVShows) | Container.Content(Seasons)]</visible>
 						</control>
 						<control type="label">
@@ -487,16 +478,6 @@
 								<scroll>true</scroll>
 								<label>$INFO[ListItem.Label]</label>
 							</control>
-							<!--<control type="image">
-								<left>530</left>
-								<top>11</top>
-								<width>53</width>
-								<height>22</height>
-								<colordiffuse>ffcccccc</colordiffuse>
-								<aspectratio align="center" aligny="center">keep</aspectratio>
-								<texture background="true">$INFO[ListItem.mpaa,flags/mpaa/tv/,.png]</texture>
-								<visible>!stringcompare(ListItem.Overlay,OverlayUnWatched.png) + [Container.Content(TVShows) | Container.Content(Seasons)]</visible>
-							</control>-->
 							<control type="image">
 								<left>530</left>
 								<top>11</top>
@@ -506,6 +487,7 @@
 								<aspectratio align="center" aligny="center">keep</aspectratio>
 								<texture>flags/empty.png</texture>
 								<visible>!Stringcompare(ListItem.Label,..)</visible>
+								<visible>!IsEmpty(ListItem.Property(unWatchedEpisodes))</visible>
 								<visible>[Container.Content(TVShows) | Container.Content(Seasons)]</visible>
 							</control>
 							<control type="label">
@@ -3587,12 +3569,14 @@
 		<itemlayout height="720" width="1280">
 			<control type="image">
 				<include>FullscreenDimensions</include>
+				<include>BackgroundAnimation</include>
 				<texture background="true">$INFO[ListItem.Art(fanart)]</texture>
 			</control>
 		</itemlayout>
 		<focusedlayout height="720" width="1280">
 			<control type="image">
-				<include>FullscreenDimensions</include>
+				<include>FullscreenDimensions</include>				
+				<include>BackgroundAnimation</include>
 				<texture background="true">$INFO[ListItem.Art(fanart)]</texture>
 			</control>
 		</focusedlayout>
@@ -4073,12 +4057,14 @@
 		<itemlayout height="720" width="1280">
 			<control type="image">
 				<include>FullscreenDimensions</include>
+				<include>BackgroundAnimation</include>
 				<texture background="true">$INFO[ListItem.Art(fanart)]</texture>
 			</control>
 		</itemlayout>
 		<focusedlayout height="720" width="1280">
 			<control type="image">
 				<include>FullscreenDimensions</include>
+				<include>BackgroundAnimation</include>
 				<texture background="true">$INFO[ListItem.Art(fanart)]</texture>
 			</control>
 		</focusedlayout>
@@ -5280,6 +5266,7 @@
 					<!--smooth background fade-->
 					<control type="group">
 						<visible>!Skin.HasSetting(HideBGFanart)</visible>
+						<include>BackgroundAnimation</include>
 						<animation type="WindowOpen" tween="sine" easing="out">
 							<effect type="fade" start="0" end="100" time="1000"/>
 						</animation>
