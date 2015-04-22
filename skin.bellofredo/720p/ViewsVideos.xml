@@ -5293,7 +5293,7 @@
 							<timeperimage>5000</timeperimage>
 							<fadetime>1000</fadetime>
 							<imagepath background="true">$INFO[ListItem.Path,,/extrafanart/]</imagepath>
-							<visible>!Skin.HasSetting(HideBGFanart) + Skin.HasSetting(ViewsExtraFanart)</visible>
+							<visible>!Skin.HasSetting(HideBGFanart) + Skin.HasSetting(ViewsExtraFanart)+ !SubString(Container.Folderpath,plugin://,left)</visible>
 						</control>
 					</control>
 					<control type="group">
@@ -5733,16 +5733,6 @@
 										<aspectratio align="left" aligny="center">stretch</aspectratio>
 										<texture background="true">flags/sets/sets.png</texture>
 										<visible>Substring(ListItem.Path,videodb://movies/sets/)</visible>
-									</control>
-									<control type="image">
-										<left>0</left>
-										<top>0</top>
-										<width>50</width>
-										<height>22</height>
-										<colordiffuse>44white</colordiffuse>
-										<aspectratio align="left" aligny="center">stretch</aspectratio>
-										<texture background="true">$INFO[ListItem.mpaa,flags/mpaa/tv/,.png]</texture>
-										<visible>Container.Content(TVShows) + !IsEmpty(ListItem.mpaa)</visible>
 									</control>
 									<control type="label">
 										<left>45</left>

@@ -1,5 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes> 
+	<include name="ParamWidgetCounterLoading">
+		<control type="label">
+			<left>0</left>
+			<top>236</top>
+			<width>1280</width>
+			<height>70</height>
+			<aligny>top</aligny>
+			<align>center</align>
+			<label>$INFO[Container($PARAM[Container]).CurrentItem] / $INFO[Container($PARAM[Container]).NumItems]</label>
+			<textcolor>77white</textcolor>
+			<shadowcolor>55000000</shadowcolor>
+			<font>FontSize_16</font>				
+			<visible>!Container($PARAM[Container]).IsUpdating</visible>
+			<include>VisibleFadeEffect4</include>
+			<visible>!stringcompare(ListItem.Label,..) + !Skin.HasSetting(HideWidgetCounter) + IntegerGreaterThan(Container($PARAM[Container]).NumItems,0)</visible>
+		</control>
+		<!--<control type="label">
+			<left>0</left>
+			<top>237</top>
+			<width>1280</width>
+			<height>70</height>
+			<font>FontSize_14B</font>		
+			<shadowcolor>77000000</shadowcolor>
+			<aligny>top</aligny>
+			<align>center</align>
+			<label>0 / $INFO[Container($PARAM[Container]).NumItems]</label>
+			<font>FontSize_18B</font>
+			<textcolor>77white</textcolor>
+			<shadowcolor>99000000</shadowcolor>						
+			<visible>!Container($PARAM[Container]).IsUpdating</visible>
+			<include>VisibleFadeEffect4</include>
+			<visible>!stringcompare(ListItem.Label,..) + !Skin.HasSetting(HideWidgetCounter) + !IntegerGreaterThan(Container($PARAM[Container]).NumItems,0)</visible>
+		</control>-->
+		<control type="grouplist">			
+			<visible>Container($PARAM[Container]).IsUpdating</visible>
+			<include>DownUpAnimation</include>
+			<left>295</left>
+			<top>451</top>
+			<width>707</width>
+			<height>70</height>
+			<height>70</height>
+			<align>left</align>
+			<itemgap>10</itemgap>			
+			<orientation>horizontal</orientation>
+			<control type="image">
+				<width>20</width>
+				<height>20</height>
+				<aligny>center</aligny>
+				<aspectratio aligny="center">keep</aspectratio>
+				<colordiffuse>CC05ADDA</colordiffuse>				
+				<shadowcolor>77000000</shadowcolor>
+				<aspectratio>keep</aspectratio>
+				<texture background="true">dialogs/busy/busy.png</texture>
+				<animation effect="rotate" start="0" end="-360" center="auto" time="1500" loop="true" condition="true">conditional</animation>
+			</control>
+			<control type="group">
+				<control type="label">
+					<height>18</height>
+					<width>auto</width>
+					<label>$LOCALIZE[31006]</label>
+					<align>center</align>
+					<font>FontSize_22</font>
+					<textcolor>blue</textcolor>
+					<shadowcolor>77000000</shadowcolor>
+					<include name="FakeFadeFastLabel">
+						<param name="condition">true</param>
+					</include>
+				</control>
+				<control type="label">
+					<height>18</height>
+					<width>auto</width>
+					<label>$LOCALIZE[31007]</label>
+					<align>center</align>
+					<font>FontSize_22</font>
+					<textcolor>blue</textcolor>
+					<shadowcolor>77000000</shadowcolor>
+					<include name="FakeFadeFastLabel2">
+						<param name="condition">true</param>
+					</include>
+				</control>
+			</control>
+		</control>
+
+	</include>
 
 	<include name="WidgetContainer">
 		<visible>![Window.IsActive(1110) | Window.IsActive(1113) | Window.IsActive(1114) | Window.IsActive(1115) | Window.IsActive(ShutdownMenu) | Window.IsActive(ProgressDialog) | Window.IsActive(PlayerControls) | Window.IsActive(Favourites) | Window.IsActive(script-skinshortcuts.xml) | Window.IsActive(script-globalsearch-main.xml) | Window.IsActive(script-ExtendedInfo Script-DialogInfo.xml) | Window.IsActive(script-ExtendedInfo Script-DialogVideoInfo.xml)]</visible>			
@@ -55,6 +139,8 @@
 
 	<include name="WidgetBottomLabels">
 		<control type="button">
+			<visible>!Container($PARAM[Container]).IsUpdating</visible>
+			<include>DownUpAnimation</include>
 			<left>288</left>
 			<top>445</top>
 			<width>707</width>
@@ -391,11 +477,11 @@
 			<include>WidgetContainer</include>
 			<control type="group" id="4513">
 				<animation reversible="false" effect="slide" start="0,0" end="0,-242" time="100" tween="quadratic" easing="out">Hidden</animation>
-				<visible>Container(250).OnNext</visible>					
+				<visible>Container(250).OnNext + IntegerGreaterThan(Container(250).NumItems,1)</visible>					
 			</control>
 			<control type="group" id="4514">
 				<animation reversible="false" effect="slide" start="0,0" end="0,242" time="100" tween="quadratic" easing="out">Hidden</animation>
-				<visible>Container(250).OnPrevious</visible>
+				<visible>Container(250).OnPrevious + IntegerGreaterThan(Container(250).NumItems,1)</visible>
 			</control>
 			<control type="group">
 				<visible>!IntegerGreaterThan(Container(250).NumItems,5)</visible>
@@ -466,7 +552,12 @@
 				<onleft condition="stringcompare(Skin.String(QuickNavWidgetMoviesType),3)">Skin.SetString(QuickNavWidgetMoviesType,2)</onleft>
 				<onleft condition="stringcompare(Skin.String(QuickNavWidgetMoviesType),2)">Skin.SetString(QuickNavWidgetMoviesType,1)</onleft>
 			</control>
-			<include>WidgetBottomLabels</include>
+			<include name="WidgetBottomLabels">
+				<param name="Container">250</param>
+			</include>			
+			<include name="ParamWidgetCounterLoading">
+				<param name="Container">250</param>
+			</include>
 		</control>
 
 		<!-- =========== -->
@@ -479,11 +570,11 @@
 			<include>WidgetContainer</include>	
 			<control type="group" id="4513">
 				<animation reversible="false" effect="slide" start="0,0" end="0,-242" time="100" tween="quadratic" easing="out">Hidden</animation>
-				<visible>Container(350).OnNext</visible>					
+				<visible>Container(350).OnNext + IntegerGreaterThan(Container(350).NumItems,1)</visible>					
 			</control>
 			<control type="group" id="4514">
 				<animation reversible="false" effect="slide" start="0,0" end="0,242" time="100" tween="quadratic" easing="out">Hidden</animation>
-				<visible>Container(350).OnPrevious</visible>
+				<visible>Container(350).OnPrevious + IntegerGreaterThan(Container(350).NumItems,1)</visible>
 			</control>
 			<control type="group">
 				<visible>!IntegerGreaterThan(Container(350).NumItems,5)</visible>
@@ -551,7 +642,12 @@
 				<onleft condition="stringcompare(Skin.String(QuickNavWidgetTVShowsType),3)">Skin.SetString(QuickNavWidgetTVShowsType,2)</onleft>
 				<onleft condition="stringcompare(Skin.String(QuickNavWidgetTVShowsType),2)">Skin.SetString(QuickNavWidgetTVShowsType,1)</onleft>
 			</control>
-			<include>WidgetBottomLabels</include>
+			<include name="WidgetBottomLabels">
+				<param name="Container">350</param>
+			</include>			
+			<include name="ParamWidgetCounterLoading">
+				<param name="Container">350</param>
+			</include>
 		</control>
 
 		<!-- =========== -->
@@ -564,11 +660,11 @@
 			<include>WidgetContainer</include>
 			<control type="group" id="4513">
 				<animation reversible="false" effect="slide" start="0,0" end="0,-242" time="100" tween="quadratic" easing="out">Hidden</animation>
-				<visible>Container(450).OnNext</visible>					
+				<visible>Container(450).OnNext + IntegerGreaterThan(Container(450).NumItems,1)</visible>					
 			</control>
 			<control type="group" id="4514">
 				<animation reversible="false" effect="slide" start="0,0" end="0,242" time="100" tween="quadratic" easing="out">Hidden</animation>
-				<visible>Container(450).OnPrevious</visible>
+				<visible>Container(450).OnPrevious + IntegerGreaterThan(Container(450).NumItems,1)</visible>
 			</control>
 			<control type="group">
 				<include>BackgroundVignette</include>
@@ -644,7 +740,12 @@
 				<onleft condition="stringcompare(Skin.String(QuickNavWidgetMusicType),3)">Skin.SetString(QuickNavWidgetMusicType,2)</onleft>
 				<onleft condition="stringcompare(Skin.String(QuickNavWidgetMusicType),2)">Skin.SetString(QuickNavWidgetMusicType,1)</onleft>
 			</control>
-			<include>WidgetBottomLabels</include>
+			<include name="WidgetBottomLabels">
+				<param name="Container">450</param>
+			</include>			
+			<include name="ParamWidgetCounterLoading">
+				<param name="Container">450</param>
+			</include>
 		</control>
 
 		<!-- =========== -->
@@ -656,11 +757,11 @@
 			<include>WidgetContainer</include>				
 			<control type="group" id="4513">
 				<animation reversible="false" effect="slide" start="0,0" end="0,-242" time="100" tween="quadratic" easing="out">Hidden</animation>
-				<visible>Container(750).OnNext</visible>					
+				<visible>Container(750).OnNext + IntegerGreaterThan(Container(750).NumItems,1)</visible>					
 			</control>
 			<control type="group" id="4514">
 				<animation reversible="false" effect="slide" start="0,0" end="0,242" time="100" tween="quadratic" easing="out">Hidden</animation>
-				<visible>Container(750).OnPrevious</visible>
+				<visible>Container(750).OnPrevious + IntegerGreaterThan(Container(750).NumItems,1)</visible>
 			</control>
 			<control type="group">
 				<visible>!IntegerGreaterThan(Container(750).NumItems,5)</visible>
@@ -731,7 +832,12 @@
 				<onleft condition="stringcompare(Skin.String(QuickNavWidgetAmazonDBType),3)">Skin.SetString(QuickNavWidgetAmazonDBType,2)</onleft>
 				<onleft condition="stringcompare(Skin.String(QuickNavWidgetAmazonDBType),2)">Skin.SetString(QuickNavWidgetAmazonDBType,1)</onleft>
 			</control>
-			<include>WidgetBottomLabels</include>
+			<include name="WidgetBottomLabels">
+				<param name="Container">750</param>
+			</include>				
+			<include name="ParamWidgetCounterLoading">
+				<param name="Container">750</param>
+			</include>
 		</control>
 
 		<!-- =========== -->
@@ -743,11 +849,11 @@
 			<include>WidgetContainer</include>	
 			<control type="group" id="4513">
 				<animation reversible="false" effect="slide" start="0,0" end="0,-242" time="100" tween="quadratic" easing="out">Hidden</animation>
-				<visible>Container(751).OnNext</visible>					
+				<visible>Container(751).OnNext + IntegerGreaterThan(Container(751).NumItems,1)</visible>					
 			</control>
 			<control type="group" id="4514">
 				<animation reversible="false" effect="slide" start="0,0" end="0,242" time="100" tween="quadratic" easing="out">Hidden</animation>
-				<visible>Container(751).OnPrevious</visible>
+				<visible>Container(751).OnPrevious + IntegerGreaterThan(Container(751).NumItems,1)</visible>
 			</control>
 			<control type="group">
 				<visible>!IntegerGreaterThan(Container(751).NumItems,5)</visible>
@@ -815,7 +921,12 @@
 				<onleft condition="!Skin.HasSetting(LockWidgetSwitch) + stringcompare(Skin.String(QuickNavWidgetAmazonType),3)">Skin.SetString(QuickNavWidgetAmazonType,2)</onleft>
 				<onleft condition="!Skin.HasSetting(LockWidgetSwitch) + stringcompare(Skin.String(QuickNavWidgetAmazonType),2)">Skin.SetString(QuickNavWidgetAmazonType,1)</onleft>
 			</control>
-			<include>WidgetBottomLabels</include>
+			<include name="WidgetBottomLabels">
+				<param name="Container">751</param>
+			</include>		
+			<include name="ParamWidgetCounterLoading">
+				<param name="Container">751</param>
+			</include>
 		</control>
 
 		<!-- =========== -->
@@ -829,11 +940,11 @@
 			<include>WidgetContainer</include>
 			<control type="group" id="4513">
 				<animation reversible="false" effect="slide" start="0,0" end="0,-242" time="100" tween="quadratic" easing="out">Hidden</animation>
-				<visible>Container(550).OnNext</visible>					
+				<visible>Container(550).OnNext + IntegerGreaterThan(Container(550).NumItems,1)</visible>					
 			</control>
 			<control type="group" id="4514">
 				<animation reversible="false" effect="slide" start="0,0" end="0,242" time="100" tween="quadratic" easing="out">Hidden</animation>
-				<visible>Container(550).OnPrevious</visible>
+				<visible>Container(550).OnPrevious + IntegerGreaterThan(Container(550).NumItems,1)</visible>
 			</control>
 			<control type="group">
 				<visible>!IntegerGreaterThan(Container(550).NumItems,4)</visible>
@@ -898,7 +1009,12 @@
 				<onleft condition="stringcompare(Skin.String(QuickNavWidgetTuneInType),3">Skin.SetString(QuickNavWidgetTuneInType,2)</onleft>
 				<onleft condition="stringcompare(Skin.String(QuickNavWidgetTuneInType),2)">Skin.SetString(QuickNavWidgetTuneInType,1)</onleft>
 			</control>
-			<include>WidgetBottomLabels</include>
+			<include name="WidgetBottomLabels">
+				<param name="Container">550</param>
+			</include>			
+			<include name="ParamWidgetCounterLoading">
+				<param name="Container">550</param>
+			</include>
 		</control>
 
 		<!-- =========== -->
@@ -912,11 +1028,11 @@
 			<include>WidgetContainer</include>
 			<control type="group" id="4513">
 				<animation reversible="false" effect="slide" start="0,0" end="0,-242" time="100" tween="quadratic" easing="out">Hidden</animation>
-				<visible>Container(653).OnNext</visible>					
+				<visible>Container(653).OnNext + IntegerGreaterThan(Container(653).NumItems,1)</visible>					
 			</control>
 			<control type="group" id="4514">
 				<animation reversible="false" effect="slide" start="0,0" end="0,242" time="100" tween="quadratic" easing="out">Hidden</animation>
-				<visible>Container(653).OnPrevious</visible>
+				<visible>Container(653).OnPrevious + IntegerGreaterThan(Container(653).NumItems,1)</visible>
 			</control>
 			<control type="group">
 				<visible>!IntegerGreaterThan(Container(653).NumItems,4)</visible>
@@ -983,7 +1099,12 @@
 				<onleft condition="stringcompare(Skin.String(QuickNavWidgetYouTubeType),3">Skin.SetString(QuickNavWidgetYouTubeType,2)</onleft>
 				<onleft condition="stringcompare(Skin.String(QuickNavWidgetYouTubeType),2)">Skin.SetString(QuickNavWidgetYouTubeType,1)</onleft>
 			</control>
-			<include>WidgetBottomLabels</include>
+			<include name="WidgetBottomLabels">
+				<param name="Container">653</param>
+			</include>			
+			<include name="ParamWidgetCounterLoading">
+				<param name="Container">653</param>
+			</include>
 		</control>
 
 		<!-- =========== -->
@@ -997,11 +1118,11 @@
 			<include>WidgetContainer</include>
 			<control type="group" id="4513">
 				<animation reversible="false" effect="slide" start="0,0" end="0,-242" time="100" tween="quadratic" easing="out">Hidden</animation>
-				<visible>Container(551).OnNext</visible>					
+				<visible>Container(551).OnNext + IntegerGreaterThan(Container(551).NumItems,1)</visible>					
 			</control>
 			<control type="group" id="4514">
 				<animation reversible="false" effect="slide" start="0,0" end="0,242" time="100" tween="quadratic" easing="out">Hidden</animation>
-				<visible>Container(551).OnPrevious</visible>
+				<visible>Container(551).OnPrevious + IntegerGreaterThan(Container(551).NumItems,1)</visible>
 			</control>
 			<control type="group">
 				<visible>!IntegerGreaterThan(Container(551).NumItems,4)</visible>
@@ -1046,7 +1167,12 @@
 					<include>skinshortcuts-group-widgetgroup1</include>
 				</content>
 			</control>
-			<include>WidgetBottomLabels</include>
+			<include name="WidgetBottomLabels">
+				<param name="Container">551</param>
+			</include>		
+			<include name="ParamWidgetCounterLoading">
+				<param name="Container">551</param>
+			</include>
 		</control>
 
 		<!-- =========== -->
@@ -1060,11 +1186,11 @@
 			<include>WidgetContainer</include>
 			<control type="group" id="4513">
 				<animation reversible="false" effect="slide" start="0,0" end="0,-242" time="100" tween="quadratic" easing="out">Hidden</animation>
-				<visible>Container(552).OnNext</visible>					
+				<visible>Container(552).OnNext + IntegerGreaterThan(Container(552).NumItems,1)</visible>					
 			</control>
 			<control type="group" id="4514">
 				<animation reversible="false" effect="slide" start="0,0" end="0,242" time="100" tween="quadratic" easing="out">Hidden</animation>
-				<visible>Container(552).OnPrevious</visible>
+				<visible>Container(552).OnPrevious + IntegerGreaterThan(Container(552).NumItems,1)</visible>
 			</control>
 			<control type="group">
 				<visible>!IntegerGreaterThan(Container(552).NumItems,4)</visible>
@@ -1109,7 +1235,12 @@
 					<include>skinshortcuts-group-widgetgroup2</include>
 				</content>
 			</control>
-			<include>WidgetBottomLabels</include>
+			<include name="WidgetBottomLabels">
+				<param name="Container">552</param>
+			</include>				
+			<include name="ParamWidgetCounterLoading">
+				<param name="Container">552</param>
+			</include>
 		</control>
 
 		<!-- =========== -->
@@ -1123,11 +1254,11 @@
 			<include>WidgetContainer</include>
 			<control type="group" id="4513">
 				<animation reversible="false" effect="slide" start="0,0" end="0,-242" time="100" tween="quadratic" easing="out">Hidden</animation>
-				<visible>Container(553).OnNext</visible>					
+				<visible>Container(553).OnNext + IntegerGreaterThan(Container(553).NumItems,1)</visible>					
 			</control>
 			<control type="group" id="4514">
 				<animation reversible="false" effect="slide" start="0,0" end="0,242" time="100" tween="quadratic" easing="out">Hidden</animation>
-				<visible>Container(553).OnPrevious</visible>
+				<visible>Container(553).OnPrevious + IntegerGreaterThan(Container(553).NumItems,1)</visible>
 			</control>
 			<control type="group">
 				<visible>!IntegerGreaterThan(Container(553).NumItems,4)</visible>
@@ -1172,7 +1303,12 @@
 					<include>skinshortcuts-group-widgetgroup3</include>
 				</content>
 			</control>
-			<include>WidgetBottomLabels</include>
+			<include name="WidgetBottomLabels">
+				<param name="Container">553</param>
+			</include>		
+			<include name="ParamWidgetCounterLoading">
+				<param name="Container">553</param>
+			</include>
 		</control>
 
 		<!-- =========== -->
@@ -1186,11 +1322,11 @@
 			<include>WidgetContainer</include>
 			<control type="group" id="4513">
 				<animation reversible="false" effect="slide" start="0,0" end="0,-242" time="100" tween="quadratic" easing="out">Hidden</animation>
-				<visible>Container(554).OnNext</visible>					
+				<visible>Container(554).OnNext + IntegerGreaterThan(Container(554).NumItems,1)</visible>					
 			</control>
 			<control type="group" id="4514">
 				<animation reversible="false" effect="slide" start="0,0" end="0,242" time="100" tween="quadratic" easing="out">Hidden</animation>
-				<visible>Container(554).OnPrevious</visible>
+				<visible>Container(554).OnPrevious + IntegerGreaterThan(Container(554).NumItems,1)</visible>
 			</control>
 			<control type="group">
 				<visible>!IntegerGreaterThan(Container(554).NumItems,4)</visible>
@@ -1235,7 +1371,12 @@
 					<include>skinshortcuts-group-widgetgroup4</include>
 				</content>
 			</control>
-			<include>WidgetBottomLabels</include>
+			<include name="WidgetBottomLabels">
+				<param name="Container">554</param>
+			</include>			
+			<include name="ParamWidgetCounterLoading">
+				<param name="Container">554</param>
+			</include>
 		</control>
 
 		<!-- =========== -->
@@ -1249,11 +1390,11 @@
 			<include>WidgetContainer</include>
 			<control type="group" id="4513">
 				<animation reversible="false" effect="slide" start="0,0" end="0,-242" time="100" tween="quadratic" easing="out">Hidden</animation>
-				<visible>Container(650).OnNext</visible>					
+				<visible>Container(650).OnNext + IntegerGreaterThan(Container(650).NumItems,1)</visible>					
 			</control>
 			<control type="group" id="4514">
 				<animation reversible="false" effect="slide" start="0,0" end="0,242" time="100" tween="quadratic" easing="out">Hidden</animation>
-				<visible>Container(650).OnPrevious</visible>
+				<visible>Container(650).OnPrevious + IntegerGreaterThan(Container(650).NumItems,1)</visible>
 			</control>
 			<control type="group">
 				<visible>!IntegerGreaterThan(Container(650).NumItems,4)</visible>
@@ -1339,7 +1480,12 @@
 				<onleft condition="stringcompare(Skin.String(RSSVideoFeedURL),NBA)">Skin.SetString(RSSVideoFeedURL,GameTrailers)</onleft>
 				<onleft condition="stringcompare(Skin.String(RSSVideoFeedURL),Custom)">Skin.SetString(RSSVideoFeedURL,NBA)</onleft>
 			</control>
-			<include>WidgetBottomLabels</include>
+			<include name="WidgetBottomLabels">
+				<param name="Container">650</param>
+			</include>		
+			<include name="ParamWidgetCounterLoading">
+				<param name="Container">650</param>
+			</include>
 		</control>
 
 		<!-- =========== -->
@@ -1353,11 +1499,11 @@
 			<include>WidgetContainer</include>
 			<control type="group" id="4513">
 				<animation reversible="false" effect="slide" start="0,0" end="0,-242" time="100" tween="quadratic" easing="out">Hidden</animation>
-				<visible>Container(651).OnNext</visible>					
+				<visible>Container(651).OnNext + IntegerGreaterThan(Container(651).NumItems,1)</visible>					
 			</control>
 			<control type="group" id="4514">
 				<animation reversible="false" effect="slide" start="0,0" end="0,242" time="100" tween="quadratic" easing="out">Hidden</animation>
-				<visible>Container(651).OnPrevious</visible>
+				<visible>Container(651).OnPrevious + IntegerGreaterThan(Container(651).NumItems,1)</visible>
 			</control>
 			<control type="group">
 				<visible>!IntegerGreaterThan(Container(651).NumItems,4)</visible>
@@ -1400,7 +1546,12 @@
 				<include>WidgetSquareLayout</include>
 				<content target="music">$VAR[QuickNav_WidgetListContentPlaylists]</content>
 			</control>
-			<include>WidgetBottomLabels</include>
+			<include name="WidgetBottomLabels">
+				<param name="Container">651</param>
+			</include>		
+			<include name="ParamWidgetCounterLoading">
+				<param name="Container">651</param>
+			</include>
 		</control>
 
 		<!-- =========== -->
@@ -1414,11 +1565,11 @@
 			<include>WidgetContainer</include>
 			<control type="group" id="4513">
 				<animation reversible="false" effect="slide" start="0,0" end="0,-242" time="100" tween="quadratic" easing="out">Hidden</animation>
-				<visible>Container(652).OnNext</visible>					
+				<visible>Container(652).OnNext + IntegerGreaterThan(Container(652).NumItems,1)</visible>					
 			</control>
 			<control type="group" id="4514">
 				<animation reversible="false" effect="slide" start="0,0" end="0,242" time="100" tween="quadratic" easing="out">Hidden</animation>
-				<visible>Container(652).OnPrevious</visible>
+				<visible>Container(652).OnPrevious + IntegerGreaterThan(Container(652).NumItems,1)</visible>
 			</control>
 			<control type="group">
 				<visible>!IntegerGreaterThan(Container(652).NumItems,4)</visible>
@@ -1461,7 +1612,12 @@
 				<include>WidgetPosterLayout</include>
 				<content target="videos">$VAR[QuickNav_WidgetListContentPlaylists]</content>
 			</control>
-			<include>WidgetBottomLabels</include>
+			<include name="WidgetBottomLabels">
+				<param name="Container">652</param>
+			</include>			
+			<include name="ParamWidgetCounterLoading">
+				<param name="Container">652</param>
+			</include>
 		</control>
 	</include>
 

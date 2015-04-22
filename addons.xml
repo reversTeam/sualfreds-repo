@@ -253,6 +253,28 @@
 		<license>GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007</license> 
 	</extension> 
 </addon> 
+<addon id="script.loosefiles" 
+       name="Loose Files" 
+       version="0.0.3" 
+       provider-name="KodeKarnage"> 
+    <requires> 
+        <import addon="xbmc.python" version="2.1.0"/> 
+    </requires> 
+<extension point="xbmc.python.script" 
+            library="default.py"> 
+    </extension> 
+    <extension point="xbmc.addon.metadata"> 
+        <summary lang="en">Loose Files</summary> 
+        <description lang="en">Compares the files in your Video Sources with those in your Library. 
+            The unmatched files are provided in a list and you can play them, rename them, or move them to a different folder.</description> 
+        <language>en</language> 
+        <platform>all</platform> 
+        <license>GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007</license> 
+        <email>subliminal.karnage at gmail dot com</email> 
+        <forum></forum> 
+        <source>https://github.com/KODeKarnage/script.loosefiles/</source> 
+    </extension> 
+</addon> 
 <addon id="script.playalbum" name="Play Album Script" version="2.0.1" provider-name="ronie"> 
 	<requires> 
 		<import addon="xbmc.python" version="2.12.0"/> 
@@ -330,7 +352,7 @@
         <email></email> 
     </extension> 
 </addon> 
-<addon id="skin.bellofredo" version="4.1.8" name="Bello Fredo" provider-name="sualfred"> 
+<addon id="skin.bellofredo" version="4.1.9" name="Bello Fredo" provider-name="sualfred"> 
   <requires> 
 		<import addon="xbmc.gui" version="5.8.0" /> 
 		<import addon="service.skin.widgets" version="0.0.29"/> 
