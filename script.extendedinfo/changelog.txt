@@ -1,0 +1,89 @@
+v2.0.7
+- added RateMedia call
+- fixes for special chars in search terms for some calls
+- fix specials episodes
+- fix for case when no data available
+- fix for filter window page change logic
+- localization
+- updated C & H URL range to include latest images
+- show list title in filter window
+- instantly show busydialog when using extendedactorinfo
+- fix onclick for tvshow infodialog calls
+- code cleanup, small bugfixes
+
+v2.0.6
+- fixes concerning plugin handling
+- new look for movie set part from movie info dialog
+- fixes for movie lists (also for removing / refreshing list items)
+- some more fixes for filter window
+- fixed 0.0 rating (not allowed)
+- context menu fixes
+- some more small stuff
+
+v2.0.5
+- added "Remove from list" context menu entry
+
+v2.0.4
+- fixed infodialog option
+- better matching for movie info dialog
+- fixed iconpanel call
+- fixed Android - Helix errors
+- de-activated Buggalo Script for now
+- fixed RottenTomatoes low-quality thumbs
+- added similartvshows call (TheMovieDB)
+- also clear prop cache when clearing cache
+- allow missing containers for movieinfo dialog
+- some more bugfixes
+
+v2.0.3
+- fixed auth token caching
+- skin compatibility
+- bg loading for list images, no bg load for poster
+- fixed tvshow keyword call
+- fixed trakt rating
+- param process fixes
+- bounce effect for list end
+- fixes for actor search
+- fixed escape chars for plots in info dialogs
+- some more small fixes
+
+v2.0.2
+- skin compatibility
+- fixed some param/id parsing stuff
+- fixed manage dialog
+- missing translations
+- use original_language tag for country property
+- fix session_id caching
+- adjusted some cache time values
+- fixed wrong onclick action in account menu
+
+v2.0.1
+- small fixes
+- repo release version
+
+v2.0.0
+- Standalone part: MovieDB Browser, extended Info dialogs for movies / TV /seasons / episodes /actors
+- localization
+- too much to count
+
+v1.0.0
+- new calls
+- rewritten caching engine
+
+v0.8.0
+- many Bugfixes
+- removed GoogleMaps functionality and daemon mode
+- exchanged API key
+- some new functions (mostlovedtracks, albumshouts)
+
+v0.0.5
+Fixes & Additions for various info lists from Rotten Tomatoes, TheMovieDB and Trakt.tv (See README file for details).
+
+v0.0.3
+Modified Utils.py and default.py to fix the issues with movie sets in Gotham.
+
+v0.0.2
+File handling updates.
+
+v0.0.1
+Initial Release.
