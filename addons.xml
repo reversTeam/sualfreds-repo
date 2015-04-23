@@ -237,7 +237,7 @@
 		<source>https://github.com/ronie/script.cu.lrclyrics/</source> 
 	</extension> 
 </addon> 
-<addon id="script.extendedinfo" name="ExtendedInfo Script" version="2.0.7a" provider-name="phil65"> 
+<addon id="script.extendedinfo" name="ExtendedInfo Script" version="2.0.8" provider-name="phil65"> 
 	<requires> 
 		<import addon="xbmc.python" version="2.1.0"/> 
 		<import addon="script.module.simplejson" version="2.0.10"/> 

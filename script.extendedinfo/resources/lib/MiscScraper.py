@@ -48,26 +48,17 @@ def GetCandHInfo():
     else:
         items = []
         for i in range(1, 10):
-            url = 'http://www.explosm.net/comics/%i/' % random.randrange(1, 3868)
-            try:
-                response = GetStringFromUrl(url)
-            except:
-                log("Error when fetching CandH data from net. URL: " + url)
+            url = r'http://www.explosm.net/comics/%i/' % random.randrange(1, 3868)
+            response = GetStringFromUrl(url)
             if response:
-                regex = ur'src="([^"]+)"'
-                matches = re.findall(regex, response)
-                if matches:
-                    for item in matches:
-                        if item.startswith('http://www.explosm.net/db/files/Comics/'):
-                            dateregex = '[0-9][0-9]\.[0-9][0-9]\.[0-9][0-9][0-9][0-9]'
-                            datematches = re.findall(dateregex, response)
-                            newitem = {'Image': item,
-                                       'Thumb': item,
-                                       'Path': "plugin://script.extendedinfo?info=setfocus",
-                                       'Poster': item,
-                                       'Title': datematches[0]}
-                            items.append(newitem)
-                            break
+                keyword = re.search("<meta property=\"og:image\".*?content=\"([^\"]*)\"", response).group(1)
+                url = re.search("<meta property=\"og:url\".*?content=\"([^\"]*)\"", response).group(1)
+                newitem = {'Image': keyword,
+                           'Thumb': keyword,
+                           'Path': "plugin://script.extendedinfo?info=setfocus",
+                           'Poster': keyword,
+                           'Title': url}
+                items.append(newitem)
         save_to_file(items, filename, ADDON_DATA_PATH)
         return items
 
