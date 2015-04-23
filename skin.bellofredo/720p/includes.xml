@@ -2120,7 +2120,7 @@
 	<value condition="[StringCompare(Container(20).ListItem.Property(widget),movies) | Control.HasFocus(25) | Control.HasFocus(250)] + !stringcompare(Skin.String(QuickNavWidgetMoviesType),4) + ![IsEmpty(Container(250).ListItem.Year) + IsEmpty(Container(250).ListItem.Rating) + IsEmpty(Container(250).ListItem.Duration)]">$INFO[Container(250).ListItem.Year]$INFO[Container(250).ListItem.Rating, • ]$INFO[Container(250).ListItem.Duration, • , $LOCALIZE[12391]]</value>
 	<value condition="[StringCompare(Container(20).ListItem.Property(widget),movies) | Control.HasFocus(25) | Control.HasFocus(250)] + ![IsEmpty(Container(250).ListItem.Premiered) + IsEmpty(Container(250).ListItem.Rating) + IsEmpty(Container(250).ListItem.Duration)]">$INFO[Container(250).ListItem.Premiered]$INFO[Container(250).ListItem.Rating, • ]$INFO[Container(250).ListItem.Duration, • , $LOCALIZE[12391]]</value>
 	<value condition="[StringCompare(Container(20).ListItem.Property(widget),tvshows) | Control.HasFocus(35) | Control.HasFocus(350)] + !stringcompare(Skin.String(QuickNavWidgetTVShowsType),4) + !IsEmpty(Container(350).ListItem.Title)">$INFO[Container(350).ListItem.Season]$INFO[Container(350).ListItem.Episode,x,. ]$INFO[Container(350).ListItem.Title]</value>
-	<value condition="[StringCompare(Container(20).ListItem.Property(widget),tvshows) | Control.HasFocus(35) | Control.HasFocus(350)] + !IsEmpty(Container(350).ListItem.TVShowTitle)">$INFO[Container(350).ListItem.Premiered]$INFO[Container(350).ListItem.Rating, • ]</value>
+	<value condition="[StringCompare(Container(20).ListItem.Property(widget),tvshows) | Control.HasFocus(35) | Control.HasFocus(350)] + !IsEmpty(Container(350).ListItem.TVShowTitle)">$INFO[Container(350).ListItem.Premiered,, • ]$INFO[Container(350).ListItem.Rating]</value>
 	<value condition="[StringCompare(Container(20).ListItem.Property(widget),music) | Control.HasFocus(45) | Control.HasFocus(450)] + !stringcompare(Skin.String(QuickNavWidgetMusicType),4) + !IsEmpty(Container(450).ListItem.Artist)">$INFO[Container(450).ListItem.Artist]</value>
 	<value condition="[StringCompare(Container(20).ListItem.Property(widget),music) | Control.HasFocus(45) | Control.HasFocus(450)] + stringcompare(Skin.String(QuickNavWidgetMusicType),5) + !IsEmpty(Container(450).ListItem.DBID)">$INFO[Container(450).ListItem.Artist]</value>
 	<value condition="[StringCompare(Container(20).ListItem.Property(widget),music) | Control.HasFocus(45) | Control.HasFocus(450)] + stringcompare(Skin.String(QuickNavWidgetMusicType),5) + IsEmpty(Container(450).ListItem.DBID)">$LOCALIZE[340]</value>
@@ -2262,29 +2262,6 @@
 	<value condition="Container.Content(TVShows) + [[StringCompare(Container.FolderPath,videodb://tvshows/titles/) | !SubString(Container.FolderPath,videodb://tvshows/titles/,left)]]">$LOCALIZE[31002]</value>
 	<value condition="[Container.Content(TVShows) + SubString(Container.FolderPath,videodb://tvshows/titles/,left) + [!StringCompare(Container.FolderPath,videodb://tvshows/titles/)]]">$LOCALIZE[33054]</value>
 	<value condition="Container.Content(Episodes)">$LOCALIZE[20360]</value>
-</variable>
-
-<variable name="ExtendedInfoActorContentInfoLabels">
-	<value condition="StringCompare(Window.Property(switchcontent),1)">$LOCALIZE[31079]</value>
-	<value condition="StringCompare(Window.Property(switchcontent),2)">$LOCALIZE[31078]</value>
-	<value condition="StringCompare(Window.Property(switchcontent),3)">$LOCALIZE[31077]</value>
-	<value condition="StringCompare(Window.Property(switchcontent),4)">$LOCALIZE[31076]</value>
-	<value condition="StringCompare(Window.Property(switchcontent),5)">$LOCALIZE[20445]</value>
-	<value>$LOCALIZE[31074]</value>
-</variable>
-
-<variable name="ExtendedInfoPlot">
-	<value condition="IsEmpty(Window.Property(movie.Plot))">No plot information available...</value>
-	<value>[COLOR=selected]$INFO[Window.Property(movie.TagLine),, ][/COLOR]$INFO[Window.Property(movie.Plot)]</value>
-</variable>
-
-<variable name="ExtendedInfoVideoContentInfoLabels">
-	<value condition="StringCompare(Window.Property(switchcontent),1)">$LOCALIZE[31073]</value>
-	<value condition="StringCompare(Window.Property(switchcontent),5)">$LOCALIZE[31072]</value>
-	<value condition="StringCompare(Window.Property(switchcontent),2)">$LOCALIZE[31075]</value>
-	<value condition="StringCompare(Window.Property(switchcontent),3)">$LOCALIZE[31077]</value>
-	<value condition="StringCompare(Window.Property(switchcontent),4)">$LOCALIZE[20445]</value>
-	<value>$LOCALIZE[31074]</value>
 </variable>
 
 <variable name="VideoInfoStarRating">
