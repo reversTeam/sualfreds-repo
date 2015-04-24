@@ -798,8 +798,21 @@ msgctxt "#31195"
 msgid "Revenue"
 msgstr ""
 
-#: empty strings from id 31195 to 31199
-#: scripts labels
+msgctxt "#31196"
+msgid "In Production"
+msgstr ""
+
+msgctxt "#31197"
+msgid "Post Production"
+msgstr ""
+
+msgctxt "#31198"
+msgid "Ended"
+msgstr ""
+
+msgctxt "#31199"
+msgid "Returning Series"
+msgstr ""
 
 msgctxt "#31200"
 msgid "My Movies"
@@ -1089,7 +1102,35 @@ msgctxt "#31271"
 msgid "Enable Widget Content Switch Function"
 msgstr ""
 
-#: empty strings from id 31272 to 31279
+msgctxt "#31272"
+msgid "Budget"
+msgstr ""
+
+msgctxt "#31273"
+msgid "Place of Birth"
+msgstr ""
+
+msgctxt "#31274"
+msgid "Birthday"
+msgstr ""
+
+msgctxt "#31275"
+msgid "Deathday"
+msgstr ""
+
+msgctxt "#31276"
+msgid "Also known as"
+msgstr ""
+
+msgctxt "#31277"
+msgid "Filmography"
+msgstr ""
+
+msgctxt "#31278"
+msgid "Planned"
+msgstr ""
+
+#: empty strings from id 31279 to 31279
 #: Playlist Editor labels
 
 msgctxt "#31280"

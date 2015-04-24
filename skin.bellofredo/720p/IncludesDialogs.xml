@@ -1108,11 +1108,21 @@
 					<align>justify</align>
 					<textcolor>99white</textcolor>
 					<shadowcolor>99000000</shadowcolor>
-					<label>$INFO[Window.Property(movie.omdb.tomatoConsensus),[COLOR=blue]$LOCALIZE[31193]: [/COLOR] ","[CR][CR]][COLOR=blue]$INFO[Window.Property(movie.TagLine),,[CR]][/COLOR]$VAR[ExtendedInfoPlot]</label>
+					<label>$INFO[Window.Property(movie.omdb.tomatoConsensus),[COLOR=white]$LOCALIZE[31193]:[/COLOR] ","[CR][CR]][COLOR=white]$LOCALIZE[207]:[/COLOR][CR]$INFO[Window.Property(movie.TagLine),[COLOR=blue],[/COLOR] - ]$VAR[ExtendedInfoPlot]</label>
 					<autoscroll time="3000" delay="10000" repeat="5000">Skin.HasSetting(AutoScroll)</autoscroll>
 					<visible>IsEmpty(Window.Property(switchcontent)) + $PARAM[visible]</visible>						
 				</control>
 			</include>
+
+			<variable name="ExtendedInfoContentInfoStatus">
+				<value condition="StringCompare(Window.Property(movie.Status),Released)">$LOCALIZE[31107]</value>
+				<value condition="StringCompare(Window.Property(movie.Status),Post Production)">$LOCALIZE[31197]</value>
+				<value condition="StringCompare(Window.Property(movie.Status),In Production)">$LOCALIZE[31196]</value>
+				<value condition="StringCompare(Window.Property(movie.Status),Ended)">$LOCALIZE[31198]</value>
+				<value condition="StringCompare(Window.Property(movie.Status),Returning Series)">$LOCALIZE[31199]</value>
+				<value condition="StringCompare(Window.Property(movie.Status),Planned)">$LOCALIZE[31278]</value>
+				<value>$INFO[Window.Property(movie.Status)]</value>
+			</variable>
 
 			<variable name="ExtendedInfoActorContentInfoLabels">
 				<value condition="StringCompare(Window.Property(switchcontent),1)">$LOCALIZE[31079]</value>
@@ -1126,6 +1136,12 @@
 			<variable name="ExtendedInfoPlot">
 				<value condition="IsEmpty(Window.Property(movie.Plot))">$LOCALIZE[31194]</value>
 				<value>$INFO[Window.Property(movie.Plot)]</value>
+			</variable>
+
+			<variable name="ExtendedInfoSeenIn">
+				<value condition="IntegerGreaterThan(Container(250).NumItems,0) + IntegerGreaterThan(Container(150).NumItems,0)">$INFO[Container(150).NumItems,, $LOCALIZE[31079]] / $INFO[Container(250).NumItems,, $LOCALIZE[31078]]</value>
+				<value condition="IntegerGreaterThan(Container(250).NumItems,0) + !IntegerGreaterThan(Container(150).NumItems,0)">$INFO[Container(250).NumItems,, $LOCALIZE[31078]]</value>
+				<value condition="!IntegerGreaterThan(Container(250).NumItems,0) + IntegerGreaterThan(Container(150).NumItems,0)">$INFO[Container(150).NumItems,, $LOCALIZE[31079]]</value>
 			</variable>
 
 			<variable name="ExtendedInfoVideoContentInfoLabels">
