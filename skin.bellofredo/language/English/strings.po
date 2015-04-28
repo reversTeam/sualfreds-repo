@@ -1130,8 +1130,9 @@ msgctxt "#31278"
 msgid "Planned"
 msgstr ""
 
-#: empty strings from id 31279 to 31279
-#: Playlist Editor labels
+msgctxt "#31279"
+msgid "Menu Position"
+msgstr ""
 
 msgctxt "#31280"
 msgid "Open Playlist"
@@ -1189,8 +1190,15 @@ msgctxt "#31293"
 msgid "Default Addon Fanart [COLOR=55white](if available)[/COLOR]"
 msgstr ""
 
-#: empty strings from id 31293 to 31299
-#: video and Music OSD Labels
+msgctxt "#31294"
+msgid "BelloFredo - Extrapack"
+msgstr ""
+
+#: empty strings from id 31295 to 31298
+
+msgctxt "#31299"
+msgid "Conditional Weather Fanarts"
+msgstr ""
 
 msgctxt "#31300"
 msgid "Muted"
@@ -1264,7 +1272,23 @@ msgctxt "#31317"
 msgid "Amiblight Compatiblity Mode"
 msgstr ""
 
-#: empty strings from id 31318 to 31349
+msgctxt "#31318"
+msgid "Use Extrapack Weather Fanarts"
+msgstr ""
+
+msgctxt "#31319"
+msgid "Download Extras & available Updates"
+msgstr ""
+
+msgctxt "#31320"
+msgid "Force Extrapack Refresh"
+msgstr ""
+
+msgctxt "#31321"
+msgid "Check of Updates on Startup"
+msgstr ""
+
+#: empty strings from id 31322 to 31349
 #: PVR
 
 msgctxt "#31350"
@@ -1330,7 +1354,15 @@ msgctxt "#31380"
 msgid "Custom Widgets"
 msgstr ""
 
-#: empty strings from id 31381 to 31408
+msgctxt "#31381"
+msgid "Center"
+msgstr ""
+
+msgctxt "#31382"
+msgid "Bottom"
+msgstr ""
+
+#: empty strings from id 31383 to 31408
 #: settings Category Description & Header Labels
 
 msgctxt "#31409"
