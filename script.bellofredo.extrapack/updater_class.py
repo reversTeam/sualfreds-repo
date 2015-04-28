@@ -15,7 +15,6 @@ import xbmcgui
 
 __addon__     = xbmcaddon.Addon()
 __scriptname__ = __addon__.getAddonInfo('name')
-ADDON = xbmcaddon.Addon()
 
 def normalizeString(str):
   return unicodedata.normalize(
@@ -65,7 +64,7 @@ class Updater:
 		xbmc.log(u"### [%s] - %s" % (__scriptname__,msg),level=xbmc.LOGDEBUG )
 
 	def Language(self, language):
-		self.Language = ADDON.getLocalizedString
+		self.Language = language
 			
 	def SVNLookup(self, path):
 		self.log('SVNLookup')
@@ -312,7 +311,7 @@ class Updater:
 			return 0
 
 		if self.CurrentRevision == self.HeadRevision or self.CurrentRevision > self.HeadRevision:
-			self.log("Skin BelloFredo updated")
+			self.log("Skin Aeon MQ 5 updated")
 			return 0
 		
 		self.MakeDirectories()
