@@ -13,7 +13,7 @@ if ( __name__ == "__main__" ):
 		
 	updater = Updater()
 	
-	updater.SFAddress = "https://svn.code.sf.net/p/skinbellofredoextrapack/svn/"
+	updater.SFAddress = "https://subversion.assembla.com/svn/bellofredoextrapack/"
 	updater.SFViewVC = ""
 	updater.SVNPathAddress = updater.SFAddress + updater.SFViewVC
 		
@@ -50,7 +50,7 @@ if ( __name__ == "__main__" ):
 		xbmc.log("Force update of all files")
 		updater.CleanDirectory(updater.UpdateTargetPath)
 		xbmcvfs.delete(revisionPath)
-		updater.HeadRevision = int(re.findall("p/skinbellofredoextrapack/svn - Revision ([0-9]+):",urllib2.urlopen(updater.SVNPathAddress).read())[0])
+		updater.HeadRevision = int(re.findall("bellofredoextrapack - Revision ([0-9]+):",urllib2.urlopen(updater.SVNPathAddress).read())[0])
 		updater.MakeDirectories()
 		HasUpdate = 1
 	else:

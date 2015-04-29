@@ -304,7 +304,7 @@ class Updater:
 		self.log('HasUpdate')
 		
 		try:
-			self.HeadRevision = int(re.findall("p/skinbellofredoextrapack/svn - Revision ([0-9]+):",urllib2.urlopen(self.SVNPathAddress).read())[0])
+			self.HeadRevision = int(re.findall("bellofredoextrapack - Revision ([0-9]+):",urllib2.urlopen(self.SVNPathAddress).read())[0])
 			self.log("Remote Rev: "+str(self.HeadRevision))
 		except:
 			self.log("Failed to determine HEAD revision.")
