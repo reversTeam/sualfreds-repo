@@ -18,7 +18,7 @@
 		<include>BackgroundItems</include>
 		<control type="group">
 			<include>Window_OpenClose_Animation</include>
-			<visible>![Window.IsActive(PlayerControls) + ![Skin.HasSetting(DisableQuickNav) + !Player.HasMedia]] + !Window.IsActive(virtualkeyboard) + !Window.IsActive(ShutdownMenu) + !Window.IsActive(favourites) + !Window.IsActive(addonsettings) + !Window.IsActive(filebrowser) + !Window.IsActive(yesnodialog) + !Window.IsActive(selectdialog) + !Window.IsActive(DialogSelect.xml) + !Window.IsActive(script-skinshortcuts.xml) + !Window.IsActive(1117) + !Window.IsActive(1118) + !Window.IsActive(1119)</visible>
+			<visible>![Window.IsActive(PlayerControls) + ![Skin.HasSetting(DisableQuickNav) + !Player.HasMedia]] + !Window.IsActive(virtualkeyboard) + !Window.IsActive(ShutdownMenu) + !Window.IsActive(favourites) + !Window.IsActive(addonsettings) + !Window.IsActive(filebrowser) + !Window.IsActive(yesnodialog) + !Window.IsActive(selectdialog) + !Window.IsActive(DialogSelect.xml) + !Window.IsActive(script-skinshortcuts.xml) + !Window.IsActive(1117) + !Window.IsActive(1118) + !Window.IsActive(1119) + !Window.IsActive(1120)</visible>
 			<control type="group">
 				<include>Window_OpenClose_Animation</include>
 				<control type="image">
@@ -126,6 +126,11 @@
 						<item id="2">
 							<label>$LOCALIZE[31310]</label>
 							<onclick>noop</onclick>
+						</item>
+						<!--Music Visualisation-->
+						<item id="9">
+							<label>test</label>
+							<onclick>RunScript(script.favourites,property=CustomFavourite1)</onclick>
 						</item>
 					</content>
 				</control>
@@ -350,6 +355,7 @@
 						<onright>9000</onright>
 						<onup>8500</onup>
 						<ondown>8500</ondown>
+						<!-- RunScript(script.favourites,property=CustomFavourite1) -->
 						<!--custom widgets-->
 						<control type="button" id="8500">
 							<disabledcolor>55white</disabledcolor>
@@ -360,30 +366,30 @@
 						<control type="button" id="8501">
 							<include>SettingsButton</include>
 							<label>- $LOCALIZE[31380] #1</label>
-							<label2>[COLOR=selected]$INFO[Skin.String(widgetgroup1)][/COLOR]</label2>
-							<onclick>Skin.SetString(widgetgroup1)</onclick>
-							<onclick>RunScript(script.skinshortcuts,type=manage&amp;nolabels=True&amp;group=widgetgroup1)</onclick>
+							<label2>[COLOR=selected]$INFO[Skin.String(widgetgroup.1.Label)][/COLOR]</label2>
+							<onclick>SetProperty(EditCustomWidgets,widgetgroup1,SkinSettings)</onclick>
+							<onclick>ActivateWindow(1120)</onclick>
 						</control>
 						<control type="button" id="8502">
 							<include>SettingsButton</include>
 							<label>- $LOCALIZE[31380] #2</label>
-							<label2>[COLOR=selected]$INFO[Skin.String(widgetgroup2)][/COLOR]</label2>
-							<onclick>Skin.SetString(widgetgroup2)</onclick>
-							<onclick>RunScript(script.skinshortcuts,type=manage&amp;nolabels=True&amp;group=widgetgroup2)</onclick>
+							<label2>[COLOR=selected]$INFO[Skin.String(widgetgroup.2.Label)][/COLOR]</label2>
+							<onclick>SetProperty(EditCustomWidgets,widgetgroup2,SkinSettings)</onclick>
+							<onclick>ActivateWindow(1120)</onclick>
 						</control>
 						<control type="button" id="8503">
 							<include>SettingsButton</include>
 							<label>- $LOCALIZE[31380] #3</label>
-							<label2>[COLOR=selected]$INFO[Skin.String(widgetgroup3)][/COLOR]</label2>
-							<onclick>Skin.SetString(widgetgroup3)</onclick>
-							<onclick>RunScript(script.skinshortcuts,type=manage&amp;nolabels=True&amp;group=widgetgroup3)</onclick>
+							<label2>[COLOR=selected]$INFO[Skin.String(widgetgroup.3.Label)][/COLOR]</label2>
+							<onclick>SetProperty(EditCustomWidgets,widgetgroup3,SkinSettings)</onclick>
+							<onclick>ActivateWindow(1120)</onclick>
 						</control>
 						<control type="button" id="8504">
 							<include>SettingsButton</include>
 							<label>- $LOCALIZE[31380] #4</label>
-							<label2>[COLOR=selected]$INFO[Skin.String(widgetgroup4)][/COLOR]</label2>
-							<onclick>Skin.SetString(widgetgroup4)</onclick>
-							<onclick>RunScript(script.skinshortcuts,type=manage&amp;nolabels=True&amp;group=widgetgroup4)</onclick>
+							<label2>[COLOR=selected]$INFO[Skin.String(widgetgroup.4.Label)][/COLOR]</label2>
+							<onclick>SetProperty(EditCustomWidgets,widgetgroup4,SkinSettings)</onclick>
+							<onclick>ActivateWindow(1120)</onclick>
 						</control>
 						<!--common widgets-->
 						<control type="button" id="8505">
