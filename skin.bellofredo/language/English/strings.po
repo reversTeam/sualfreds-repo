@@ -77,8 +77,11 @@ msgctxt "#31014"
 msgid "Enable Startup Intro Video"
 msgstr ""
 
-#: empty string with 31015
+msgctxt "#31015"
+msgid "Show YouTube Channel Logo in Fullscreen Video"
+msgstr ""
 
+#: empty string with 31015
 msgctxt "#31016"
 msgid "File Manager"
 msgstr ""
@@ -1217,6 +1220,10 @@ msgctxt "#31297"
 msgid "Enable PVR Recording Info Box"
 msgstr ""
 
+msgctxt "#31298"
+msgid "Only if LiveTV is focused"
+msgstr ""
+
 #: empty strings from id 31298 to 31298
 msgctxt "#31299"
 msgid "Conditional Weather Fanarts"
@@ -1360,6 +1367,26 @@ msgstr ""
 
 msgctxt "#31334"
 msgid "Not required"
+msgstr ""
+
+msgctxt "#31335"
+msgid "REC SCHEDULED"
+msgstr ""
+
+msgctxt "#31336"
+msgid "Enable REC Information at the Home Screen Clock"
+msgstr ""
+
+msgctxt "#31337"
+msgid "TV Show Disc Art"
+msgstr ""
+
+msgctxt "#31338"
+msgid "Movie Disc Art"
+msgstr ""
+
+msgctxt "#31339"
+msgid "Back"
 msgstr ""
 
 #: empty strings from id 31335 to 31349 PVR
