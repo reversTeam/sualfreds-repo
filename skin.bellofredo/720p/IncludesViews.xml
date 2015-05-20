@@ -58,6 +58,7 @@
     <include>ThumbnailsView_Programs</include> <!-- id = 560 -->
     <include>ThumbListView_Programs</include> <!-- id = 582 -->
     <include>ClassicSlideView_Programs</include> <!-- id = 583 -->
+    <include>ViewShelf_Programs</include> <!-- id = 579 -->
   </include>
 
   <include name="AddonsViews">
@@ -710,7 +711,7 @@
 </variable>
 <variable name="DiscArtTypeShelf">
   <value condition="Container.Content(tvshows)">$INFO[ListItem.Art(fanart)]</value>
-  <value condition="Container.Content(seasons)">$INFO[ListItem.Art(poster)]</value>  
+  <value condition="Container.Content(seasons)">$INFO[ListItem.Art(fanart)]</value>
   <value condition="!IsEmpty(ListItem.Art(discart))">$INFO[ListItem.Art(discart)]</value>
   <value condition="IntegerGreaterThan(ListItem.VideoResolution,719)">views/shelf/disc_bluray.png</value>
   <value condition="!IntegerGreaterThan(ListItem.VideoResolution,719)">views/shelf/disc_dvd.png</value>
@@ -719,8 +720,9 @@
   <value condition="Container.Content(tvshows)">$INFO[ListItem.TVShowTitle]</value>
   <value condition="Container.Content(seasons)">$INFO[ListItem.Season,$LOCALIZE[20373] ]</value>
 </variable>
-<variable name="ShelfLabel">
-  <value condition="!stringcompare(ListItem.Label,..)">$INFO[ListItem.Label]</value>
+<variable name="DiscArtTvShowLogo">
+  <value condition="Container.Content(tvshows)">$INFO[ListItem.Art(clearlogo)]</value>
+  <value condition="Container.Content(seasons)">$INFO[ListItem.Art(tvshow.clearlogo)]</value>
 </variable>
 
 </includes>    

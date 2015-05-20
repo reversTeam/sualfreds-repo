@@ -424,7 +424,7 @@
         <email></email> 
     </extension> 
 </addon> 
-<addon id="skin.bellofredo" version="4.2.8a" name="Bello Fredo" provider-name="sualfred"> 
+<addon id="skin.bellofredo" version="4.2.9" name="Bello Fredo" provider-name="sualfred"> 
   <requires> 
 		<import addon="xbmc.gui" version="5.9.0" /> 
 		<import addon="service.skin.widgets" version="0.0.29"/> 
