@@ -1,0 +1,11 @@
+v.1.1.0
+- helix repo
+
+v.1.0.2
+- changed repo name to highlight BETA status of add-ons
+
+v.1.0.1:
+- fixed description
+
+v.1.0.0:
+- gotham repo

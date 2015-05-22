@@ -68,7 +68,7 @@ class Main:
             elif info == 'selectdialog':
                 CreateDialogSelect(self.header)
             elif info == 'exportskinsettings':
-                export_skinsettings()
+                export_skinsettings(self.text)
             elif info == 'importskinsettings':
                 import_skinsettings()
             elif info == 'okdialog':
@@ -226,6 +226,6 @@ class ToolBoxMonitor(xbmc.Monitor):
         # HOME.setProperty(self.prefix + "ImageColor", imagecolor)
 
 
-if (__name__ == "__main__"):
+if __name__ == "__main__":
     Main()
 log('finished')

@@ -2354,7 +2354,8 @@
 </variable>
 
 <variable name="backgroundMainmenu">
-	<!--home menu-->
+	<!--home menu-->	
+	<value condition="StringCompare(Container(20).ListItem.Property(background),playlistBackground)">$INFO[Container(30).ListItem.Art(fanart)]</value>
 	<value condition="StringCompare(Container(20).ListItem.Property(background),DefaultAddon)">$INFO[Container(20).ListItem.Property(defaultID),special://home/addons/,/fanart.jpg]</value>
 	<value condition="!StringCompare(Container(20).ListItem.Property(background),DefaultAddon)">$INFO[Container(20).ListItem.Property(Background)]</value>
 </variable>
@@ -2363,6 +2364,12 @@
 	<value condition="StringCompare(Skin.String(RecordingBox),global)">$LOCALIZE[34122]</value>
 	<value condition="StringCompare(Skin.String(RecordingBox),disabled)">$LOCALIZE[13113]</value>	
 	<value>$LOCALIZE[31298]</value>
+</variable>
+
+<variable name="ArtistLogoLabel">
+	<value condition="StringCompare(Skin.String(ArtistLogo),AlbumDir)">$LOCALIZE[31346]</value>
+	<value condition="StringCompare(Skin.String(ArtistLogo),disabled)">$LOCALIZE[13113]</value>	
+	<value>$LOCALIZE[31345]</value>
 </variable>
 
 <variable name="CustomDialogOKHeadLabel">

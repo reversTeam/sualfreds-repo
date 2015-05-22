@@ -289,7 +289,7 @@ def JumpToLetter(letter):
         xbmc.executebuiltin("SetFocus(24000)")
 
 
-def export_skinsettings():
+def export_skinsettings(filter_label=False):
     guisettings_path = xbmc.translatePath('special://profile/guisettings.xml').decode("utf-8")
     if xbmcvfs.exists(guisettings_path):
         log("guisettings.xml found")
@@ -301,8 +301,10 @@ def export_skinsettings():
                 value = skinsetting.childNodes[0].nodeValue
             else:
                 value = ""
-            if skinsetting.attributes['name'].nodeValue.startswith(xbmc.getSkinDir()):
-                newlist.append((skinsetting.attributes['type'].nodeValue, skinsetting.attributes['name'].nodeValue, value))
+            setting_name = skinsetting.attributes['name'].nodeValue
+            if setting_name.startswith(xbmc.getSkinDir()):
+                if not filter_label or filter_label in setting_name:
+                    newlist.append((skinsetting.attributes['type'].nodeValue, setting_name, value))
         if save_to_file(newlist, xbmc.getSkinDir() + ".backup"):
             xbmcgui.Dialog().ok(ADDON_LANGUAGE(32005), ADDON_LANGUAGE(32006))
     else:
@@ -316,10 +318,10 @@ def GetPlaylistStats(path):
     if (".xsp" in path) and ("special://" in path):
         startindex = path.find("special://")
         endindex = path.find(".xsp") + 4
-    elif ("library://" in path):
+    elif "library://" in path:
         startindex = path.find("library://")
         endindex = path.rfind("/") + 1
-    elif ("videodb://" in path):
+    elif "videodb://" in path:
         startindex = path.find("videodb://")
         endindex = path.rfind("/") + 1
     if (startindex > 0) and (endindex > 0):
@@ -361,6 +363,7 @@ def CreateDialogSelect(header):
             value = xbmc.getInfoLabel("Window.Property(Dialog.%i.Builtin)" % (indexlist[index]))
             for builtin in value.split("||"):
                 xbmc.executebuiltin(builtin)
+                xbmc.sleep(30)
     for i in range(1, 20):
         xbmc.executebuiltin("ClearProperty(Dialog.%i.Builtin)" % (i))
         xbmc.executebuiltin("ClearProperty(Dialog.%i.Label)" % (i))
@@ -387,11 +390,13 @@ def CreateDialogYesNo(header="", line1="", nolabel="", yeslabel="", noaction="",
     dialog = xbmcgui.Dialog()
     ret = dialog.yesno(heading=header, line1=line1, nolabel=nolabel, yeslabel=yeslabel)  # autoclose missing
     if ret:
-        for builtin in yesaction.split("|"):
+        for builtin in yesaction.split("||"):
             xbmc.executebuiltin(builtin)
+            xbmc.sleep(30)
     else:
-        for builtin in noaction.split("|"):
+        for builtin in noaction.split("||"):
             xbmc.executebuiltin(builtin)
+            xbmc.sleep(30)
     xbmc.executebuiltin("ClearProperty(Dialog.yes.Label")
     xbmc.executebuiltin("ClearProperty(Dialog.no.Label")
     xbmc.executebuiltin("ClearProperty(Dialog.yes.Builtin")
