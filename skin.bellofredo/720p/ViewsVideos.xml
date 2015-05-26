@@ -5358,7 +5358,7 @@
 		<!-- default group -->
 		<control type="group">
 			<include>DialogZoomInOutAnimation</include>
-			<visible>Control.IsVisible(579)</visible>
+			<visible>Control.IsVisible(579)</visible>			
 			<control type="image">
 				<heigth>720</heigth>
 				<width>1400</width>
@@ -5374,6 +5374,7 @@
 				</animation>
 			</control>
 			<control type="group">
+
 				<!--itemlayout-->
 				<control type="group">
 					<left>0</left>
@@ -5703,6 +5704,26 @@
 									<texture background="true">$VAR[RetailCaseType]</texture>
 									<aspectratio scalediffuse="false">stretch</aspectratio>
 									<visible>Skin.HasSetting(ShelfRetailBox)</visible>
+								</control>							
+								<control type="image">
+									<posx>-148</posx>
+									<posy>89</posy>
+									<width>253</width>
+									<height>359</height>
+									<texture background="true">$VAR[RetailCaseTypeNext]</texture>
+									<aspectratio scalediffuse="false">stretch</aspectratio>
+									<animation effect="fade" start="100" end="0" time="200" delay="150" condition="Control.IsVisible(8014)">Conditional</animation>
+									<visible>Skin.HasSetting(ShelfRetailBox) + Control.IsVisible(8014)</visible>
+								</control>						
+								<control type="image">
+									<posx>-148</posx>
+									<posy>89</posy>
+									<width>253</width>
+									<height>359</height>
+									<texture background="true">$VAR[RetailCaseTypePrevious]</texture>
+									<aspectratio scalediffuse="false">stretch</aspectratio>
+									<animation effect="fade" start="100" end="0" time="200" delay="150" condition="Control.IsVisible(8013)">Conditional</animation>
+									<visible>Skin.HasSetting(ShelfRetailBox) + Control.IsVisible(8013)</visible>
 								</control>
 							</control>
 						</control>
