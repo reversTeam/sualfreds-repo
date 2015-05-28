@@ -7,7 +7,8 @@ import re, util
 from BeautifulSoup import BeautifulSoup
 from util import l
 
-HIDE_TOP250 = util.settingBool("hideTop250")
+HIDE_TOP250  = util.settingBool("hideTop250")
+OPEN_MISSING = util.settingBool("openMissingFile")
 
 class Top250:
     def start(self, hidden=False):
@@ -22,6 +23,7 @@ class Top250:
             self.progress.update(0, l("Importing_current_IMDb_Top250"))
 
         self.top250 = self.getTop250()
+        self.notMissing = set()
 
         if self.top250 == {}:
             util.dialogOk(l("Top250"), l("There_was_a_problem_with_the_IMDb_site!"))
@@ -66,6 +68,8 @@ class Top250:
         else:
             util.writeDate("top250")
             self.createMissingCSV()
+            if OPEN_MISSING:
+                util.openFile("missingTop250.csv")
 
         stats["missing"] = len(self.top250)
         util.log("Movies IMDb Top250 summary: updated: %(updated)s, added: %(added)s, removed: %(removed)s, missing: %(missing)s" % stats)
@@ -85,7 +89,7 @@ class Top250:
 
         if imdbNumber in self.top250:
             newPosition = self.top250[imdbNumber]["position"]
-            del self.top250[imdbNumber]
+            self.notMissing.add(imdbNumber)
 
             if oldPosition == newPosition:
                 util.logDebug("%(label)s: up to date" % movie)
@@ -109,7 +113,7 @@ class Top250:
         util.executeJSON('VideoLibrary.SetMovieDetails', {'movieid': movie['movieid'], 'top250': position})
 
     def createMissingCSV(self):
-        missing = [[v["position"], k, v["label"], v["link"]] for k,v in self.top250.iteritems()]
+        missing = [[v["position"], k, v["label"], v["link"]] for k,v in self.top250.iteritems() if k not in self.notMissing]
         missing.sort(key=lambda x: x[0])
         missing.insert(0, ["Position", "IMDb ID", "Name", "Link"])
         util.writeCSV("missingTop250.csv", missing)

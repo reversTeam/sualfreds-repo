@@ -4,7 +4,7 @@
 ################
 
 import xbmc, xbmcaddon, xbmcgui, xbmcvfs, urllib2, socket, csv
-import os, datetime, json
+import os, datetime, json, subprocess
 
 addOn = xbmcaddon.Addon("script.imdbupdate")
 addOnName = addOn.getAddonInfo("name")
@@ -100,7 +100,8 @@ STRINGS = {
     "Movies": 30102,
     "Top250": 30101,
     "Show_Top250": 30202,
-    "MPAA_Update": 30203
+    "MPAA_Update": 30203,
+    "Choose_your_MPAA_system": 30204
 }
 
 '''Abort request'''
@@ -108,11 +109,17 @@ def abortRequested():
     return xbmc.abortRequested
 
 '''Settings'''
-def setting(name):
-    return addOn.getSetting(name)
+def setting(name, newValue = None):
+    if newValue is not None:
+        addOn.setSetting(name, newValue)
+    else:
+        return addOn.getSetting(name)
 
-def settingBool(name):
-    return setting(name) == "true"
+def settingBool(name, newValue = None):
+    if newValue is not None:
+        addOn.setSetting(name, str(newValue).lower())
+    else:
+        return setting(name) == "true"
 
 '''Log'''
 def log(msg):
@@ -184,6 +191,9 @@ def writeCSV(name, data):
             a.writerows(data)
     except IOError:
         log("Could not write file " + name)
+
+def openFile(name):
+    subprocess.Popen(os.path.join(addOnProfile, name), shell=True)
     
 def deleteF(name):
     delFile = os.path.join(addOnProfile, str(name))

@@ -256,6 +256,14 @@
 							<onclick>SetProperty(Dialog.4.BuiltIn,Skin.SetString(MainMenuStyle,5icons))</onclick>
 							<onclick>RunScript(script.toolbox,info=selectdialog,header=$LOCALIZE[31347])</onclick>
 						</control>
+						<control type="radiobutton" id="8308">
+							<description>Disable Icon Labels</description>
+							<include>SettingsRadioButton</include>
+							<label>- $LOCALIZE[31362]</label>
+							<onclick>Skin.ToggleSetting(HideIconMenuLabels)</onclick>
+							<selected>!Skin.HasSetting(HideIconMenuLabels)</selected>
+							<enable>SubString(Skin.String(MainMenuStyle),icons)</enable>
+						</control>
 						<control type="radiobutton" id="8304">
 							<description>Disable PurpleBar</description>
 							<include>SettingsRadioButton</include>
@@ -290,6 +298,14 @@
 							<include>SettingsButton</include>
 							<label>$LOCALIZE[31356]</label>
 							<enable>false</enable>
+						</control>
+						<control type="button" id="8317">
+							<description>Style of item</description>
+							<include>SettingsRadioButton</include>
+							<label>- $LOCALIZE[31361]</label>
+							<label2>[COLOR=blue]$VAR[TopMenuStyleLabel][/COLOR]</label2>
+							<onclick>Skin.ToggleSetting(IconTopMenuStyle)</onclick>
+							<selected>!Skin.HasSetting(ShowKodiSymbol)</selected>
 						</control>
 						<control type="radiobutton" id="8311">
 							<description>Enable Kodi Icon</description>
