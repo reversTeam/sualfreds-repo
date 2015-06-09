@@ -153,10 +153,36 @@
 		<!-- ============================= -->
 		<!-- == Video ListItem			 == -->
 		<!-- ============================= -->
+
+		<control type="image">
+			<include>FullscreenDimensions</include>
+			<texture background="true">views/other/menus_overlay.png</texture>
+			<visible>Window.IsActive(script-ExtendedInfo Script-T9Search.xml) + !Window.IsActive(ShutdownMenu) + !Window.IsActive(ContextMenu) + !Window.IsActive(Playercontrols) + !Window.IsActive(virtualkeyboard)</visible>
+			<animation effect="fade" time="300" start="0" end="80" tween="sine" easing="out">Visible</animation>
+			<animation effect="fade" time="300" start="80" end="0" tween="sine" easing="in">Hidden</animation>
+		</control>
+
+		<control type="image">
+			<include>FullscreenDimensions</include>
+			<texture background="true">windows/bg/bg_diffuse.png</texture>
+			<animation effect="fade" time="300" start="0" end="100" tween="sine" easing="out">WindowOpen</animation>
+			<animation effect="fade" time="300" start="100" end="0" tween="sine" easing="in">WindowClose</animation>
+			<animation effect="fade" time="300" start="0" end="100" tween="sine" easing="out">Visible</animation>
+			<animation effect="fade" time="300" start="100" end="0" tween="sine" easing="in">Hidden</animation>
+			<colordiffuse>ddFFFFFF</colordiffuse>
+			<visible>IsActive(virtualkeyboard)</visible>	
+		</control>
+
 		<control type="group">
 			<include>ThumbnailsAnimations</include>
-			<include>DialogZoomInOutAnimation</include>
-			<control type="panel" id="500">
+			<include>DialogZoomInOutAnimation</include>			
+			<control type="panel" id="500">				
+				<animation type="Conditional" condition="Window.IsActive(script-ExtendedInfo Script-T9Search.xml)" reversible="false">
+					<effect type="slide" start="0,0" end="260,0" tween="back" easing="out" time="900" />
+				</animation>
+				<animation type="Conditional" condition="!Window.IsActive(script-ExtendedInfo Script-T9Search.xml)" reversible="false">
+					<effect type="slide" start="260,0" end="0,0" tween="back" easing="out" time="900" />
+				</animation>
 				<left>40</left>
 				<top>95</top>
 				<height>495</height>
@@ -254,10 +280,12 @@
 					<font>FontSize_26B</font>
 					<scroll>false</scroll>
 					<align>left</align>
-					<label>$INFO[Container(500).ListItem.label] $INFO[Container(500).ListItem.Property(User_Rating),[COLOR=selected]  |  ,[/COLOR]]</label>										
+					<label>$INFO[Container(500).ListItem.label] $INFO[Container(500).ListItem.Property(User_Rating),[COLOR=selected]  |  ,[/COLOR]]</label>	
+					<visible>!Window.IsActive(script-ExtendedInfo Script-T9Search.xml) + !Window.IsActive(ShutdownMenu) + !Window.IsActive(ContextMenu) + !Window.IsActive(Playercontrols) + !Window.IsActive(virtualkeyboard)</visible>									
 				</control>				
 				<!-- filter rules -->
 				<control type="grouplist">
+					<visible>!Window.IsActive(ShutdownMenu) + !Window.IsActive(ContextMenu) + !Window.IsActive(Playercontrols) + !Window.IsActive(virtualkeyboard)</visible>
 					<right>47</right>
 					<top>7</top>
 					<width>900</width>
@@ -285,7 +313,7 @@
 						<scroll>false</scroll>
 						<align>right</align>
 						<aligny>center</aligny>
-						<label fallback="16018">$INFO[Window.Property(Filter_Label)]</label>
+						<label fallback="16018">$INFO[Window.Property(Filter_Label)]</label>						
 					</control>
 				</control>				
 			</control>			           
@@ -313,7 +341,7 @@
 			<left>45</left>
 			<top>25</top>
 			<include>TopOptionsSlideAnimations</include>
-			<visible allowhiddenfocus="true">ControlGroup(9000).HasFocus + [!Window.IsActive(ShutdownMenu) + !Window.IsActive(Playercontrols) + !Window.IsActive(virtualkeyboard) + !Window.IsActive(progressdialog) + !Window.IsActive(okdialog) + !Window.IsActive(yesnodialog) + !Window.IsActive(selectdialog)]</visible>
+			<visible allowhiddenfocus="true">ControlGroup(9000).HasFocus + [!Window.IsActive(ShutdownMenu) + !Window.IsActive(Playercontrols) + !Window.IsActive(virtualkeyboard) + !Window.IsActive(progressdialog) + !Window.IsActive(okdialog) + !Window.IsActive(yesnodialog) + !Window.IsActive(selectdialog) + !Window.IsActive(script-ExtendedInfo Script-T9Search.xml)]</visible>
 			<control type="grouplist" id="9000">
 				<top>25</top>
 				<left>0</left>
@@ -387,7 +415,7 @@
 					<description>Search</description>
 					<label>137</label>
 					<include>TopLeftMenusButton</include>
-				</control>	
+				</control>		
 				<control type="button" id="5005">
 					<description>Clear Filter</description>
 					<label>$ADDON[script.extendedinfo 32022]</label>
