@@ -445,6 +445,25 @@
 		<email>phil65@kodi.tv</email> 
 	</extension> 
 </addon> 
+<addon id="service.rytecepgdownloader"  
+    name="Rytec EPG Downloader" 
+    version="0.3.0" 
+    provider-name="Jin"> 
+    <requires> 
+        <import addon="xbmc.python" version="2.1.0"/> 
+        <import addon="script.module.requests" version="2.4.3"/> 
+    </requires> 
+    <extension point="xbmc.service" library="service.py" start="startup" /> 
+    <extension point="xbmc.addon.metadata"> 
+        <platform>all</platform> 
+        <summary lang="en">XMLTV EPG Downloader for IPTV Simple PVR Addon</summary> 
+        <summary lang="de">XMLTV EPG Downloader fuer IPTV Simple PVR Addon</summary> 
+        <language></language> 
+        <description lang="en">This service addon allows you to automatically download the xmltv.gz files provided by rytec</description> 
+        <description lang="de">Dieses service addon erlaubt es ihnen, die xmltv.gz dateien automatisch von rytec herunterzuladen</description> 
+        <forum>http://kodinerds.net</forum> 
+    </extension> 
+</addon> 
 <addon id="service.skin.widgets" name="Skin Widgets" version="0.0.29" provider-name="Martijn, phil65"> 
     <requires> 
         <import addon="xbmc.addon" version="12.0.0"/> 
