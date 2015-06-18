@@ -1,3 +1,8 @@
+[B][COLOR=FF56ADDA]v4.4.4[/COLOR][/B]
+• Fixed: Ugly startup animation behaviour in combination with intro/playlist
+• Fixed: Background duplicate
+• Replaced: Intro with the original one (by samfisher)
+
 [B][COLOR=FF56ADDA]v4.4.3[/COLOR][/B]
 • Fixed: Broken Shelf view in Advance Launcher
 • Changed: Some minor Extended Info dialog adjustments
