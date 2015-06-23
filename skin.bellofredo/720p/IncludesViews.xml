@@ -344,7 +344,19 @@
    <aspectratio align="right" aligny="top">keep</aspectratio>
    <texture>$INFO[Listitem.Icon]</texture>
    <bordertexture border="31">views/other/panel2.png</bordertexture>
-   <bordersize>10</bordersize>
+   <bordersize>10</bordersize>   
+   <visible>!Container.Content(genres)</visible>
+ </control>
+ <control type="image">
+   <left>735</left>
+   <top>161</top>
+   <width>500</width>
+   <height>256</height>
+   <aspectratio align="right" aligny="top">keep</aspectratio>
+   <texture fallback="DefaultFolder.png">$VAR[VarArtGenre]</texture>
+   <bordertexture border="31">views/other/panel2.png</bordertexture>
+   <bordersize>10</bordersize>   
+   <visible>Container.Content(genres)</visible>
  </control>
 </include>
 
@@ -550,8 +562,8 @@
   <value condition="stringcompare(ListItem.Label2,$LOCALIZE[24098]) | stringcompare(ListItem.Label2,$LOCALIZE[24049])">overlays/addons_status/status_broken.png</value>
   <value condition="stringcompare(ListItem.Label2,$LOCALIZE[24068])">overlays/addons_status/status_update.png</value>
 </variable>
-
-<variable name="VarArtPoster">
+ 
+<variable name="VarArtPoster">  
   <value condition="Container.Content(Sets)">$INFO[Window(home).Property(Set.Movie.1.Art(poster))]</value>
   <value condition="Skin.HasSetting(LocalArtworks) + Container.Content(Seasons) + !IsEmpty(ListItem.Season) + !IntegerGreaterThan(ListItem.Season,9)">$INFO[ListItem.Path]$INFO[ListItem.Season,season0,-poster.jpg]</value>
   <value condition="Skin.HasSetting(LocalArtworks) + Container.Content(Seasons) + !IsEmpty(ListItem.Season) + IntegerGreaterThan(ListItem.Season,9)">$INFO[ListItem.Path]$INFO[ListItem.Season,season,-poster.jpg]</value>
@@ -687,7 +699,7 @@
   <value condition="!IsEmpty(Container.FolderName)">$INFO[Container.FolderName]</value>
   <value>$LOCALIZE[19499]</value>
 </variable>
-
+ 
 <variable name="EpisodeThumb">
   <value condition="SubString(Container.FolderPath,plugin.program.advanced.launcher) +  !Skin.HasSetting(AddonViewThumb) + !IsEmpty(ListItem.Art(thumb))">$INFO[ListItem.Art(thumb)]</value>
   <value condition="SubString(Container.FolderPath,plugin.program.advanced.launcher) +  !Skin.HasSetting(AddonViewThumb) + IsEmpty(ListItem.Art(thumb))">$INFO[ListItem.Art(fanart)]</value>

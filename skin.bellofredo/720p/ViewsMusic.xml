@@ -1177,8 +1177,7 @@
 						<height>150</height>
 						<aspectratio align="center" aligny="center">stretch</aspectratio>
 						<texture>overlays/unwatched/thumbs/$VAR[WatchedStateOverlay]_Square.png</texture>
-						<bordersize>6</bordersize>
-						
+						<bordersize>6</bordersize>						
 					</control>
 					<control type="image">
 						<left>9</left>
@@ -1342,8 +1341,7 @@
 						<height>150</height>
 						<texture>overlays/unwatched/thumbs/$VAR[WatchedStateOverlay]_Square.png</texture>
 						<aspectratio align="center" aligny="center">stretch</aspectratio>
-						<bordersize>6</bordersize>
-						
+						<bordersize>6</bordersize>						
 					</control>
 					<control type="image">
 						<left>9</left>
@@ -1390,8 +1388,7 @@
 						<height>232</height>
 						<texture>overlays/unwatched/thumbs/$VAR[WatchedStateOverlay]_Square.png</texture>
 						<aspectratio align="center" aligny="center">stretch</aspectratio>
-						<bordersize>6</bordersize>
-						
+						<bordersize>6</bordersize>						
 					</control>
 					<control type="image">
 						<left>9</left>
@@ -1438,8 +1435,7 @@
 						<height>150</height>
 						<texture>overlays/unwatched/thumbs/$VAR[WatchedStateOverlay]_Square.png</texture>
 						<aspectratio align="center" aligny="center">stretch</aspectratio>
-						<bordersize>6</bordersize>
-						
+						<bordersize>6</bordersize>						
 					</control>
 					<control type="image">
 						<left>9</left>
@@ -1543,6 +1539,15 @@
 				<aspectratio align="center" aligny="center" scalediffuse="false">keep</aspectratio>
 				<texture background="true" diffuse="views/episode/episode_diffuse.png">$INFO[ListItem.Icon]</texture>
 				<visible>IsEmpty(ListItem.Art(fanart))</visible>
+				<visible>!Container.Content(genres) | StringCompare(ListItem.Label,..)</visible>
+			</control>
+			<control type="image">
+				<left>46</left>
+				<width>441</width>
+				<height>248</height>
+				<aspectratio align="center" aligny="center" scalediffuse="false">scale</aspectratio>
+				<texture background="true" diffuse="views/episode/episode_diffuse.png" fallback="DefaulFolder.png">$VAR[VarArtGenre]</texture>
+				<visible>Container.Content(genres) + !StringCompare(ListItem.Label,..)</visible>
 			</control>
 			<control type="image">
 				<left>46</left>
@@ -2142,6 +2147,7 @@
 							<effect type="fade" start="100" end="0" time="500" delay="0" tween="sine" easing="out"/>
 						</animation>
 					</control>
+					
 					<control type="group">
 						<width>366</width>
 						<height>366</height>
@@ -2168,7 +2174,18 @@
 							<height>366</height>
 							<aspectratio align="center" aligny="center" scalediffuse="false">scale</aspectratio>
 							<texture background="true" diffuse="views/ClassicSlide/square_diffuse.png" fallback="thumbs/fallback_square.png">$INFO[ListItem.Icon]</texture>
-							<animation effect="fade" start="90" end="100" time="200" delay="0" condition="![Control.IsVisible(8013) | Control.IsVisible(8014)]">Conditional</animation>						
+							<animation effect="fade" start="90" end="100" time="200" delay="0" condition="![Control.IsVisible(8013) | Control.IsVisible(8014)]">Conditional</animation>
+							<visible>!Container.Content(genres) | StringCompare(ListItem.Label,..)</visible>
+						</control>
+						<control type="image">
+							<left>185</left>
+							<top>156</top>
+							<width>366</width>
+							<height>366</height>
+							<aspectratio align="center" aligny="center" scalediffuse="false">scale</aspectratio>
+							<texture background="true" diffuse="views/ClassicSlide/square_diffuse.png" fallback="DefaultFolder.png">$VAR[VarArtGenre]</texture>
+							<animation effect="fade" start="90" end="100" time="200" delay="0" condition="![Control.IsVisible(8013) | Control.IsVisible(8014)]">Conditional</animation>
+							<visible>Container.Content(genres) + !StringCompare(ListItem.Label,..)</visible>
 						</control>
 						<control type="image">
 							<left>185</left>
@@ -2177,64 +2194,95 @@
 							<height>366</height>
 							<aspectratio aligny="center" align="center">stretch</aspectratio>
 							<texture background="true">views/ClassicSlide/square_overlay.png</texture>
+						</control>
+						<control type="image">
+							<left>185</left>
+							<top>156</top>
+							<width>366</width>
+							<height>366</height>
+							<aspectratio aligny="center" align="center">stretch</aspectratio>
+							<texture scalediffuse="true" diffuse="views/ClassicSlide/square_diffuse.png">overlays/unwatched/classicslide/$VAR[WatchedStateOverlay]_square.png</texture>
+							<animation effect="fade" start="90" end="100" time="200" delay="0" condition="![Control.IsVisible(8013) | Control.IsVisible(8014)]">Conditional</animation>
+						</control>
+						<control type="group">
+							<visible>Control.IsVisible(8013)</visible>
+							<animation effect="fade" start="100" end="0" time="200" delay="150" condition="!Container.Content(genres) + Control.IsVisible(8013) + !IsEmpty(ListItem(-1).Art(thumb))">Conditional</animation>
+							<animation effect="fade" start="100" end="0" time="200" delay="150" condition="Container.Content(genres) + Control.IsVisible(8013)">Conditional</animation>
+							<control type="image">
+								<left>185</left>
+								<top>156</top>
+								<width>366</width>
+								<height>366</height>
+								<aspectratio align="center" aligny="center" scalediffuse="false">scale</aspectratio>
+								<texture background="true" diffuse="views/ClassicSlide/square_diffuse.png">thumbs/thumb_back.png</texture>
+							</control>
+							<control type="image">
+								<left>185</left>
+								<top>156</top>
+								<width>366</width>
+								<height>366</height>
+								<aspectratio align="center" aligny="center" scalediffuse="false">scale</aspectratio>
+								<texture background="true" diffuse="views/ClassicSlide/square_diffuse.png" fallback="thumbs/fallback_square.png">$INFO[ListItem(-1).Icon]</texture>
+								<visible>!Container.Content(genres) |  + StringCompare(ListItem(-1).Label,..)</visible>
+							</control>
+							<control type="image">
+								<left>185</left>
+								<top>156</top>
+								<width>366</width>
+								<height>366</height>
+								<aspectratio align="center" aligny="center" scalediffuse="false">scale</aspectratio>
+								<texture background="true" diffuse="views/ClassicSlide/square_diffuse.png" fallback="DefaultFolder.png">$VAR[VarArtGenrePrevious]</texture>
+								<visible>Container.Content(genres) + !StringCompare(ListItem(-1).Label,..)</visible>
+							</control>
+							<control type="image">
+								<left>185</left>
+								<top>156</top>
+								<width>366</width>
+								<height>366</height>
+								<aspectratio aligny="center" align="center">stretch</aspectratio>
+								<texture background="true">views/ClassicSlide/square_overlay.png</texture>
+							</control>
+						</control>
+						<control type="group">
+							<animation effect="fade" start="100" end="0" time="200" delay="150" condition="!Container.Content(genres) + Control.IsVisible(8014) + !IsEmpty(ListItem(1).Art(thumb))">Conditional</animation>
+							<animation effect="fade" start="100" end="0" time="200" delay="150" condition="Container.Content(genres) + Control.IsVisible(8014)">Conditional</animation>
+							<visible>Control.IsVisible(8014)</visible>
+							<control type="image">
+								<left>185</left>
+								<top>156</top>
+								<width>366</width>
+								<height>366</height>
+								<aspectratio align="center" aligny="center" scalediffuse="false">scale</aspectratio>
+								<texture background="true" diffuse="views/ClassicSlide/square_diffuse.png">thumbs/thumb_back.png</texture>
+							</control>
+							<control type="image">
+								<left>185</left>
+								<top>156</top>
+								<width>366</width>
+								<height>366</height>
+								<aspectratio align="center" aligny="center" scalediffuse="false">scale</aspectratio>
+								<texture background="true" diffuse="views/ClassicSlide/square_diffuse.png" fallback="thumbs/fallback_square.png">$INFO[ListItem(1).Icon]</texture>
+								<visible>!Container.Content(genres) | StringCompare(ListItem(1).Label,..)</visible>
+							</control>							
+							<control type="image">
+								<left>185</left>
+								<top>156</top>
+								<width>366</width>
+								<height>366</height>
+								<aspectratio align="center" aligny="center" scalediffuse="false">scale</aspectratio>
+								<texture background="true" diffuse="views/ClassicSlide/square_diffuse.png" fallback="DefaultFolder.png">$VAR[VarArtGenreNext]</texture>
+								<visible>Container.Content(genres) + !StringCompare(ListItem(1).Label,..)</visible>
+							</control>
+							<control type="image">
+								<left>185</left>
+								<top>156</top>
+								<width>366</width>
+								<height>366</height>
+								<aspectratio aligny="center" align="center">stretch</aspectratio>
+								<texture background="true">views/ClassicSlide/square_overlay.png</texture>
+							</control>
 						</control>
 					</control>
-					<control type="group">
-						<visible>Control.IsVisible(8013)</visible>	
-						<animation effect="fade" start="100" end="0" time="200" delay="150" condition="Control.IsVisible(8013) + !IsEmpty(ListItem(-1).Art(thumb))">Conditional</animation>
-						<control type="image">									
-							<left>185</left>
-							<top>156</top>
-							<width>366</width>
-							<height>366</height>							
-							<aspectratio align="center" aligny="center" scalediffuse="false">scale</aspectratio>
-							<texture background="true" diffuse="views/ClassicSlide/square_diffuse.png">thumbs/thumb_back.png</texture>
-						</control>
-						<control type="image">
-							<left>185</left>
-							<top>156</top>
-							<width>366</width>
-							<height>366</height>
-							<aspectratio align="center" aligny="center" scalediffuse="false">scale</aspectratio>
-							<texture background="true" diffuse="views/ClassicSlide/square_diffuse.png" fallback="thumbs/fallback_square.png">$INFO[ListItem(-1).Icon]</texture>
-						</control>
-						<control type="image">
-							<left>185</left>
-							<top>156</top>
-							<width>366</width>
-							<height>366</height>
-							<aspectratio aligny="center" align="center">stretch</aspectratio>
-							<texture background="true">views/ClassicSlide/square_overlay.png</texture>
-						</control>
-					</control>
-					<control type="group">
-						<animation effect="fade" start="100" end="0" time="200" delay="150" condition="Control.IsVisible(8014) + !IsEmpty(ListItem(1).Art(thumb))">Conditional</animation>
-						<visible>Control.IsVisible(8014)</visible>
-						<control type="image">
-							<left>185</left>
-							<top>156</top>
-							<width>366</width>
-							<height>366</height>
-							<aspectratio align="center" aligny="center" scalediffuse="false">scale</aspectratio>
-							<texture background="true" diffuse="views/ClassicSlide/square_diffuse.png">thumbs/thumb_back.png</texture>
-						</control>
-						<control type="image">
-							<left>185</left>
-							<top>156</top>
-							<width>366</width>
-							<height>366</height>
-							<aspectratio align="center" aligny="center" scalediffuse="false">scale</aspectratio>
-							<texture background="true" diffuse="views/ClassicSlide/square_diffuse.png" fallback="thumbs/fallback_square.png">$INFO[ListItem(1).Icon]</texture>
-						</control>
-						<control type="image">
-							<left>185</left>
-							<top>156</top>
-							<width>366</width>
-							<height>366</height>
-							<aspectratio aligny="center" align="center">stretch</aspectratio>
-							<texture background="true">views/ClassicSlide/square_overlay.png</texture>
-						</control>
-					</control>	
 				</control>
 				<!--labels-->
 				<control type="grouplist">
