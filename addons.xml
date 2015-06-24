@@ -182,6 +182,18 @@
 		<platform>all</platform> 
 	</extension> 
 </addon> 
+<addon id="repository.whufclee.dev" version="1.0" name="whufclee development repo" provider-name="whufclee"> 
+	<extension point="xbmc.addon.repository" name="whufclee development repo"> 
+		<info compressed="false">https://github.com/whufclee/kodistuff/raw/master/zips/addons.xml</info> 
+		<checksum>https://github.com/whufclee/kodistuff/raw/master/zips/addons.xml.md5</checksum> 
+		<datadir zip="true">https://raw.github.com/whufclee/kodistuff/master/zips/</datadir> 
+	</extension> 
+	<extension point="xbmc.addon.metadata"> 
+		<summary>whufclee development stuff</summary> 
+		<description>Check out all my latest code here. Any downloads installed via kodi will be my latest releases, however if you manually download the code in the root directory of the repo on github it's experimental so use at your own risk</description> 
+		<platform>all</platform> 
+	</extension> 
+</addon> 
 <addon id="repository.xlordkx" name="XLordKX Repo" version="1.0.0" provider-name="XLordKX"> 
 	<extension point="xbmc.addon.repository" name="XLordKX Repo"> 
 		<info compressed="false">https://raw.githubusercontent.com/XLordKX/kodi/master/addons.xml</info> 
@@ -501,7 +513,7 @@
         <email></email> 
     </extension> 
 </addon> 
-<addon id="skin.bellofredo" version="4.4.5" name="Bello Fredo" provider-name="sualfred"> 
+<addon id="skin.bellofredo" version="4.4.6" name="Bello Fredo" provider-name="sualfred"> 
   <requires> 
 		<import addon="xbmc.gui" version="5.9.0" /> 
 		<import addon="service.skin.widgets" version="0.0.29"/> 
