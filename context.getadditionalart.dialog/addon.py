@@ -20,12 +20,12 @@ import time
 
 def main():
     if xbmc.getCondVisibility("Container.Content(movies)"):
-        xbmc.executebuiltin("RunScript(script.artwork.downloader, mode=custom, silent=true, mediatype=movie,clearart,banner,clearlogo,landscape,discart,thumb,dbid=%s)" % (xbmc.getInfoLabel("ListItem.DBID")))
-        time.sleep(2)
+        xbmc.executebuiltin("RunScript(script.artwork.downloader, silent=true, mediatype=movie,dbid=%s)" % (xbmc.getInfoLabel("ListItem.DBID")))
+        time.sleep(3)
         xbmc.executebuiltin("XBMC.ReloadSkin()")
     elif xbmc.getCondVisibility("Container.Content(tvshows)"):
-        xbmc.executebuiltin("RunScript(script.artwork.downloader, mode=custom, silent=true, mediatype=tvshow,clearart,banner,clearlogo,landscape,thumb,dbid=%s)" % (xbmc.getInfoLabel("ListItem.DBID")))
-        time.sleep(2)
+        xbmc.executebuiltin("RunScript(script.artwork.downloader, silent=true, mediatype=tvshow,dbid=%s)" % (xbmc.getInfoLabel("ListItem.DBID")))
+        time.sleep(3)
         xbmc.executebuiltin("XBMC.ReloadSkin()")
 
 if __name__ == '__main__':

@@ -20,7 +20,7 @@
     <source></source> 
   </extension> 
 </addon> 
-<addon id="context.getadditionalart.dialog" name="Download Extra Arts" version="0.1.0" provider-name="sualfred"> 
+<addon id="context.getadditionalart.dialog" name="Download Extra Arts" version="0.1.1" provider-name="sualfred"> 
   <requires> 
     <import addon="xbmc.python" version="2.20.0"/> 
   </requires> 
