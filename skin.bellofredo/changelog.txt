@@ -1,3 +1,9 @@
+[B][COLOR=FF56ADDA]v4.4.7[/COLOR][/B]
+• Fixed: Plot for sets (Shelf)
+• Fixed: Visible empty disc art if "group movies to sets" is activated (Shelf)
+• Fixed: Wrong labels if "group movies to sets" is activated (Thumb List & Video Wall)
+• Fixed: Removed rating icon for sets in some views
+
 [B][COLOR=FF56ADDA]v4.4.6[/COLOR][/B]
 • Added: Grunge/Alternative music genre icon
 • Added: Support to set an own genre icon folder (has to look the same as the Extrapack source)
