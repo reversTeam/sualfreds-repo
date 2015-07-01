@@ -205,12 +205,12 @@
 							<onclick>Skin.ToggleSetting(ShowVideoInfo)</onclick>
 							<selected>Skin.HasSetting(ShowVideoInfo)</selected>
 						</control>
-						<control type="radiobutton" id="8110">
+						<!--<control type="radiobutton" id="8110">
 							<include>SettingsRadioButton</include>
 							<label>31291</label>
 							<onclick>Skin.ToggleSetting(ShowSkinDebugTools)</onclick>
 							<selected>Skin.HasSetting(ShowSkinDebugTools)</selected>
-						</control>
+						</control>-->
 					</control>
 					<!--===========-->
 					<!--== home ==-->
@@ -411,6 +411,20 @@
 							<onclick>Skin.ToggleSetting(HideSmallRecInfo)</onclick>
 							<selected>!Skin.HasSetting(HideSmallRecInfo)</selected>
 						</control>
+						<!--shutdownmenu-->
+						<control type="button" id="8340">
+							<disabledcolor>55white</disabledcolor>
+							<include>SettingsButton</include>
+							<label>$LOCALIZE[31469]</label>
+							<enable>false</enable>
+						</control>
+						<control type="button" id="8341">
+							<description>edit shutdownmenu</description>
+							<include>SettingsButton</include>
+							<label>- $LOCALIZE[31468]</label>
+							<onclick>RunScript(script.skinshortcuts,type=manage&amp;nolabels=True&amp;group=shutdownmenu)</onclick>
+						</control>
+						
 					</control>
 					<!--==============================-->
 					<!--==== widget section  ====-->
@@ -1110,20 +1124,6 @@
 							<include>SettingsRadioButton</include>
 							<selected>Skin.HasSetting(AmbilightMode)</selected>
 							<onclick>Skin.ToggleSetting(AmbilightMode)</onclick>
-							<visible>!Skin.HasSetting(Vis-Visualization)</visible>
-						</control>
-						<control type="button" id="8753">
-							<description>Select Visualization Type Button</description>
-							<label>- $LOCALIZE[31308]</label>
-							<include>SettingsButton</include>
-							<onclick>SendClick(120,500)</onclick>
-							<visible>!Skin.HasSetting(Vis-Visualization)</visible>
-						</control>
-						<control type="button" id="8754">
-							<description>Visualization Presets Button</description>
-							<label>- $LOCALIZE[31309]</label>
-							<include>SettingsButton</include>
-							<onclick>ActivateWindow(visualisationpresetlist)</onclick>
 							<visible>!Skin.HasSetting(Vis-Visualization)</visible>
 						</control>
 						<control type="button" id="8755">
