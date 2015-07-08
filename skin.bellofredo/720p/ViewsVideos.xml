@@ -3050,8 +3050,13 @@
 		<control type="group">
 			<visible>Control.IsVisible(57)</visible>
 			<include>DialogZoomInOutAnimation</include>
+			<control type="image">
+				<top>-10</top>
+				<include>FullscreenDimensions</include>			
+				<texture background="true">views/list/shine.png</texture>					
+			</control>
 			<include>CommonSlideAnimations</include>
-			<control type="fixedlist" id="57">
+			<control type="wraplist" id="57">
 				<left>270</left>
 				<top>110</top>
 				<width>750</width>
@@ -3223,6 +3228,7 @@
 					</control>
 				</focusedlayout>
 				<focusedlayout condition="Container.Content(TVShows) | Container.Content(Seasons)" width="560" height="260">
+					
 					<control type="group">
 						<include>BannerListFocusAnimation</include>
 						<include>BannersView_Panel</include>
@@ -3234,7 +3240,7 @@
 							<aspectratio align="center" aligny="center">scale</aspectratio>
 							<texture background="true" fallback="thumbs/fallback_banner_tp.png">$VAR[VarArtBanner]</texture>
 							<bordertexture border="20">thumbs/thumb_border.png</bordertexture>
-							<bordersize>6</bordersize>
+							<bordersize>6</bordersize>							
 						</control>
 						<control type="image">
 							<left>18</left>
@@ -3243,8 +3249,7 @@
 							<height>123</height>
 							<aspectratio align="center" aligny="center">stretch</aspectratio>
 							<texture>overlays/unwatched/banners/$VAR[WatchedStateOverlay]_Banner.png</texture>
-							<bordersize>6</bordersize>
-							
+							<bordersize>6</bordersize>							
 						</control>
 						<control type="image">
 							<left>585</left>
@@ -3276,6 +3281,7 @@
 							<align>left</align>
 							<label>$INFO[ListItem.Genre]</label>
 						</control>
+
 						<!--Small Down Info-->
 						<control type="group">
 							<left>25</left>
@@ -4686,7 +4692,8 @@
 			<!--Plot Info-->
 			<control type="button" id="5901">
 				<description>Get Plot</description>
-				<onup>100</onup>
+				<onup condition="!Skin.HasSetting(EnableKioskMode)">9111</onup>
+				<onup condition="Skin.HasSetting(EnableKioskMode)">59</onup>
 				<ondown>59</ondown>
 				<onleft>59</onleft>
 				<onright>59</onright>
@@ -5066,8 +5073,8 @@
 			<height>800</height>
 			<onleft>59</onleft>
 			<onright>59</onright>
-			<onup condition="Skin.HasSetting(NetfilxAlwaysShowPlot)">100</onup>
-			<onup condition="!Skin.HasSetting(NetfilxAlwaysShowPlot)">5901</onup>
+			<onup condition="!Skin.HasSetting(EnableKioskMode) + [Skin.HasSetting(NetfilxAlwaysShowPlot) | IsEmpty(ListItem.Plot)]">9111</onup>
+			<onup condition="!Skin.HasSetting(NetfilxAlwaysShowPlot) + !IsEmpty(ListItem.Plot)">5901</onup>
 			<ondown>60</ondown>
 			<viewtype label="Netflix">List</viewtype>
 			<scrolltime tween="Quadratic" easing="out">300</scrolltime>
@@ -5483,7 +5490,8 @@
 				<!-- plot overlay -->
 				<control type="button" id="5791">
 					<description>Get Plot</description>
-					<onup>100</onup>
+					<onup condition="!Skin.HasSetting(EnableKioskMode)">9111</onup>
+					<onup condition="Skin.HasSetting(EnableKioskMode)">59</onup>
 					<ondown>59</ondown>
 					<onleft>59</onleft>
 					<onright>59</onright>
@@ -6408,7 +6416,7 @@
 					<width>1900</width>
 					<onleft>579</onleft>
 					<onright>579</onright>
-					<onup condition="IsEmpty(ListItem.Plot) + IsEmpty(Window(home).Property(Set.Movies.ExtendedPlot))">9000</onup>
+					<onup condition="!Skin.HasSetting(EnableKioskMode) + IsEmpty(ListItem.Plot) + IsEmpty(Window(home).Property(Set.Movies.ExtendedPlot))">9111</onup>
 					<onup condition="!IsEmpty(ListItem.Plot) | !IsEmpty(Window(home).Property(Set.Movies.ExtendedPlot))">SetFocus(5791)</onup>
 					<ondown>60</ondown>
 					<orientation>horizontal</orientation>
@@ -7248,11 +7256,29 @@
 				<animation effect="fade" time="550" delay="350" tween="sine" easing="out" reversible="false">Visible</animation>
 				<animation effect="fade" time="350" tween="sine" easing="in" reversible="false">Hidden</animation>	
 			</control>
-			<control type="wraplist" id="584">
+			<!-- arrows -->
+			<control type="image">
+				<left>237</left>
+				<top>131</top>
+				<width>24</width>
+				<height>21</height>
+				<texture>views/scrollbar/arrow.png</texture>
+				<!--<visible>Container.HasPrevious</visible>-->
+			</control>
+			<control type="image">
+				<left>237</left>
+				<top>612</top>
+				<width>24</width>
+				<height>21</height>
+				<texture flipy="true">views/scrollbar/arrow.png</texture>
+				<!--<visible>Container.HasNext</visible>-->
+			</control>
+			<!--container-->
+			<control type="list" id="584">
 				<left>39</left>
-				<top>125</top>
+				<top>160</top>
 				<width>750</width>
-				<height>520</height>
+				<height>445</height>
 				<onleft>60</onleft>
 				<onright>5841</onright>
 				<onup>584</onup>
@@ -7261,7 +7287,7 @@
 				<pagecontrol>60</pagecontrol>
 				<focusposition>3</focusposition>
 				<preloaditems>2</preloaditems>
-				<movement>3</movement>
+				<movement>5</movement>
 				<include condition="Container.Content(seasons)" name="BannerArtFocusPosition">
 					<param name="focuspostion">0</param>						
 					<param name="movement">0</param>						
@@ -7285,7 +7311,7 @@
 							<aspectratio align="center" scalediffuse="false" aligny="center">scale</aspectratio>
 							<texture background="true" diffuse="views/bannerlist/diffuse.png" fallback="thumbs/fallback_banner_tp.png">$VAR[VarArtBanner]</texture>
 							<bordersize>4</bordersize>
-							<colordiffuse>55white</colordiffuse>
+							<colordiffuse>44white</colordiffuse>
 						</control>						
 						<control type="image">
 							<left>19</left>
@@ -7299,6 +7325,14 @@
 					</control>
 				</itemlayout>
 				<focusedlayout th="410" height="74">
+					<control type="image">
+						<top>-65</top>
+						<left>-75</left>
+						<width>570</width>
+						<height>200</height>
+						<aspectratio align="center" aligny="center">stretch</aspectratio>
+						<texture background="true">views/list/shine.png</texture>
+					</control>
 					<control type="group">
 						<include>BannerListFocusAnimation</include>	
 						<width>410</width>
@@ -7344,7 +7378,7 @@
 			<!-- logo and sub labels -->
 			<control type="group">
 				<visible>Control.IsVisible(584)</visible>
-				<top>167</top>
+				<top>158</top>
 				<left>452</left>
 				<width>785</width>
 				<height>520</height>
@@ -7561,9 +7595,9 @@
 			<!--scrollbar-->
 			<control type="scrollbar" id="60">
 				<left>25</left>
-				<top>125</top>
+				<top>162</top>
 				<width>9</width>
-				<height>515</height>
+				<height>441</height>
 				<texturesliderbackground>-</texturesliderbackground>
 				<texturesliderbar border="0,14,0,14">views/scrollbar/scrollbar.png</texturesliderbar>
 				<texturesliderbarfocus border="0,14,0,14">views/scrollbar/scrollbar.png</texturesliderbarfocus>
