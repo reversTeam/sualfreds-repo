@@ -224,7 +224,7 @@ class DataFunctions():
             # Check that any version node matches current XBMC version
             version = node.find( "version" )
             if version is not None:
-                if __xbmcversion__ != version.text:
+                if __xbmcversion__ != version.text and self.checkVersionEquivalency( version.text, node.find( "action" ) ) == False:
                     tree.getroot().remove( node )
                     self._pop_labelID()
                     continue
@@ -397,7 +397,13 @@ class DataFunctions():
                 xbmcgui.Window( 10000 ).setProperty( "skinshortcuts-overrides-script-data", pickle.dumps( tree ) )
                 return tree
             except:
-                self._save_hash( overridepath, None )
+                if xbmcvfs.exists( overridepath ):
+                    # Unable to parse script overrides.xml
+                    log( "Unable to parse script overrides.xml. Invalid xml?" )
+                    self._save_hash( overridepath, xbmcvfs.File( overridePath ).read() )
+                else:
+                    # No script overrides.xml
+                    self._save_hash( overridepath, None )
                 xbmcgui.Window( 10000 ).setProperty( "skinshortcuts-overrides-script-data", "No overrides" )
                 return None
    
@@ -420,7 +426,13 @@ class DataFunctions():
                 xbmcgui.Window( 10000 ).setProperty( "skinshortcuts-overrides-skin-data", pickle.dumps( tree ) )
                 return tree
             except:
-                self._save_hash( overridepath, None )
+                if xbmcvfs.exists( overridepath ):
+                    # Unable to parse skin overrides.xml
+                    log( "Unable to parse skin overrides.xml. Invalid xml?" )
+                    self._save_hash( overridepath, xbmcvfs.File( overridePath ).read() )
+                else:
+                    # No skin overrides.xml
+                    self._save_hash( overridepath, None )
                 xbmcgui.Window( 10000 ).setProperty( "skinshortcuts-overrides-skin-data", "No overrides" )
                 return None
    
@@ -444,6 +456,13 @@ class DataFunctions():
                 xbmcgui.Window( 10000 ).setProperty( "skinshortcuts-overrides-user-data" + profileDir, pickle.dumps( tree ) )
                 return tree
             except:
+                if xbmcvfs.exists( overridepath ):
+                    # Unable to parse user overrides.xml
+                    log( "Unable to parse user overrides.xml. Invalid xml?" )
+                    self._save_hash( overridepath, xbmcvfs.File( overridePath ).read() )
+                else:
+                    # No user overrides.xml
+                    self._save_hash( overridepath, None )
                 self._save_hash( overridepath, None )
                 xbmcgui.Window( 10000 ).setProperty( "skinshortcuts-overrides-user-data" + profileDir, "No overrides" )
                 return None
@@ -652,9 +671,59 @@ class DataFunctions():
             if path[ 1 ].endswith( ")" ):
                 path[ 1 ] = path[ 1 ][:-1]
             return NODE.get_visibility( path[ 1 ] )
-            
-        return ""
+
+        # Audio node visibility
+        elif action.startswith( "activatewindow(musiclibrary,musicdb://" ) or action.startswith( "activatewindow(10502,musicdb://" ) or action.startswith( "activatewindow(MusicLibrary,library://music/" ) or action.startswith( "activatewindow(10502,library://music/" ):
+            path = action.split( "," )
+            if path[ 1 ].endswith( ")" ):
+                path[ 1 ] = path[ 1 ][:-1]
+            return NODE.get_visibility( path[ 1 ] )
         
+        return ""
+
+
+    def checkVersionEquivalency( self, version, action, type = "shortcuts" ):
+        # Check whether the version specified for a shortcut has an equivalency
+        # to the version of Kodi we're running
+        trees = [ self._get_overrides_skin(), self._get_overrides_script() ]
+
+        # Set up so we can handle both groupings and shortcuts in one
+        if type == "shortcuts":
+            if action is None:
+                action = ""
+            else:
+                action = action.text
+            findElem = "shortcutEquivalent"
+            findAttrib = "action"
+        if type == "groupings":
+            if action is None:
+                action = ""
+            findElem = "groupEquivalent"
+            findAttrib = "condition"
+
+        for tree in trees:
+            if tree is None or tree.find( "versionEquivalency" ) is None:
+                continue
+            for elem in tree.find( "versionEquivalency" ).findall( findElem ):
+                if elem.attrib.get( findAttrib ) is not None and elem.attrib.get( findAttrib ).lower() != action.lower():
+                    # Action's don't match
+                    continue
+                if int( elem.attrib.get( "version" ) ) > int( __xbmcversion__ ):
+                    # This version of Kodi is older than the shortcut is intended for
+                    continue
+
+                # The actions match, and the version isn't too old, so
+                # now check it's not too new
+                if elem.text == "All":
+                    # This shortcut matches all newer versions
+                    return True
+                elif int( elem.text ) >= int( __xbmcversion__ ):
+                    return True
+
+                # The version didn't match
+                break
+
+        return False
         
     def checkAdditionalProperties( self, group, labelID, defaultID, isUserShortcuts, profileDir ):
         # Return any additional properties, including widgets and backgrounds
@@ -870,6 +939,49 @@ class DataFunctions():
             text = text.replace('-', separator)
 
         return text
+
+    # ----------------------------------------------------------------
+    # --- Functions that should get their own module in the future ---
+    # --- (when xml building functions are revamped/simplified) ------
+    # ----------------------------------------------------------------
+
+    def getListProperty( self, onclick ):
+        # For ActivateWindow elements, extract the path property
+        if onclick.startswith( "ActivateWindow" ):
+            # An ActivateWindow - Let's start by removing the 'ActivateWindow(' and the ')'
+            listProperty = onclick
+            # Handle (the not uncommon) situation where the trailing ')' has been forgotten
+            if onclick.endswith( ")" ):
+                listProperty = onclick[ :-1 ]
+            listProperty = listProperty.split( "(", 1 )[ 1 ]
+
+            # Split what we've got left on commas
+            listProperty = listProperty.split( "," )
+
+            # Get the part of the onclick that we're actually interested in
+            if len( listProperty ) == 1:
+                # 'elementWeWant'
+                return listProperty[ 0 ]
+            elif len( listProperty ) == 2 and listProperty[ 1 ].lower().replace( " ", "" ) == "return":
+                # 'elementWeWant' 'return'
+                return listProperty[ 0 ]
+            elif len( listProperty ) == 2:
+                # 'windowToActivate' 'elementWeWant'
+                return listProperty[ 1 ]
+            elif len( listProperty ) == 3:
+                # 'windowToActivate' 'elementWeWant' 'return'
+                return listProperty[ 1 ]
+            else:
+                # Situation we haven't anticipated - log the issue and return original onclick
+                log( "Unable to get 'list' property for shortcut %s" %( onclick ) )
+                return onclick
+        else:
+            # Not an 'ActivateWindow' - return the onclick
+            return onclick
+
+# ------------------------------------------------
+# --- Functions to update old .shortcuts files ---
+# ------------------------------------------------
         
 class UpgradeFunctions():
     def __init__(self):
