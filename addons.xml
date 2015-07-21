@@ -58,6 +58,25 @@
     <source></source> 
   </extension> 
 </addon> 
+<addon id="context.simpleplaylists" name="SimplePlaylists Context Addon" version="0.1.1" provider-name="sualfred"> 
+  <requires> 
+    <import addon="xbmc.python" version="2.20.0"/> 
+  </requires> 
+  <extension point="kodi.context.item" library="addon.py"> 
+    <item> 
+      <label>30000</label> 
+      <visible>StringCompare(ListItem.dbtype,movie) | StringCompare(ListItem.dbtype,tvshow) | StringCompare(ListItem.dbtype,season) | StringCompare(ListItem.dbtype,episode) | Container.Content(songs) | Container.Content(episodes) | Container.Content(movies)</visible> 
+    </item> 
+  </extension> 
+  <extension point="kodi.addon.metadata"> 
+    <platform>all</platform> 
+    <summary lang="en">Adds the SimplePlaylists add-on to the context menu</summary> 
+    <description lang="en">Needs SimplePlaylists installed and activated.</description> 
+    <license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license> 
+    <forum></forum> 
+    <source></source> 
+  </extension> 
+</addon> 
 <addon id="plugin.audio.tuneinradio" name="TuneIn Radio" version="2.1.0" provider-name="brianhornsby"> 
 	<requires> 
 		<import addon="xbmc.python" version="2.1.0"/> 
@@ -561,7 +580,7 @@
         <email></email> 
     </extension> 
 </addon> 
-<addon id="skin.bellofredo" version="4.5.5" name="Bello Fredo" provider-name="sualfred"> 
+<addon id="skin.bellofredo" version="4.5.6" name="Bello Fredo" provider-name="sualfred"> 
   <requires> 
 		<import addon="xbmc.gui" version="5.9.0" /> 
 		<import addon="service.skin.widgets" version="0.0.29"/> 

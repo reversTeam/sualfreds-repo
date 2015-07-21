@@ -156,7 +156,7 @@
 	<include name="WidgetEmptyBoxes">
 		<top>250</top>
 		<centerleft>50%</centerleft>
-		<width>902</width>
+		<width>905</width>
 		<height>275</height>
 		<control type="image">
 			<left>20</left>
@@ -350,7 +350,7 @@
 	<include name="WidgetSquareLayout">
 		<top>250</top>		
 		<centerleft>50%</centerleft>
-		<width>902</width>
+		<width>905</width>
 		<height>360</height>
 		<preloaditems>3</preloaditems>
 		<focusposition>0</focusposition>
@@ -385,7 +385,7 @@
 				<top>-1</top>
 				<width>203</width>
 				<height>203</height>
-				<texture border="10,10,10,10" background="true">osd/widgets/square_overlay.png</texture>
+				<texture background="true">osd/widgets/square_overlay.png</texture>
 				<aspectratio align="center" aligny="center">stretch</aspectratio>
 			</control>
 		</itemlayout>
@@ -420,7 +420,7 @@
 					<top>-1</top>
 					<width>202.5</width>
 					<height>202.5</height>
-					<texture border="10,10,10,10" background="true">osd/widgets/square_overlay.png</texture>
+					<texture background="true">osd/widgets/square_overlay.png</texture>
 					<aspectratio align="center" aligny="center">stretch</aspectratio>
 				</control>
 				<control type="image">
@@ -520,7 +520,7 @@
 			<control type="button" id="25">
 				<description>invisible control button for category</description>
 				<visible allowhiddenfocus="false">!Skin.HasSetting(LockWidgetSwitch)</visible>
-				<onup>SetFocus(21)</onup>
+				<onup>SetFocus(21)</onup>								
 				<ondown condition="IntegerGreaterThan(Container(250).NumItems,0)">SetFocus(90501)</ondown>
 				<ondown condition="!IntegerGreaterThan(Container(250).NumItems,0)">SetFocus(20)</ondown>
 				<onback condition="IntegerGreaterThan(Container(250).NumItems,0)">SetFocus(90501)</onback>
@@ -542,6 +542,8 @@
 				<onleft condition="stringcompare(Skin.String(QuickNavWidgetMoviesType),4)">Skin.SetString(QuickNavWidgetMoviesType,3)</onleft>
 				<onleft condition="stringcompare(Skin.String(QuickNavWidgetMoviesType),3)">Skin.SetString(QuickNavWidgetMoviesType,2)</onleft>
 				<onleft condition="stringcompare(Skin.String(QuickNavWidgetMoviesType),2)">Skin.SetString(QuickNavWidgetMoviesType,1)</onleft>
+				<!-- on click command -->
+				<onclick>ActivateWindow(Videos,$VAR[QuickNav_WidgetListContentMovies])</onclick>	
 			</control>
 			<include name="WidgetBottomLabels">
 				<param name="Container">250</param>
@@ -632,6 +634,8 @@
 				<onleft condition="stringcompare(Skin.String(QuickNavWidgetTVShowsType),4)">Skin.SetString(QuickNavWidgetTVShowsType,3)</onleft>
 				<onleft condition="stringcompare(Skin.String(QuickNavWidgetTVShowsType),3)">Skin.SetString(QuickNavWidgetTVShowsType,2)</onleft>
 				<onleft condition="stringcompare(Skin.String(QuickNavWidgetTVShowsType),2)">Skin.SetString(QuickNavWidgetTVShowsType,1)</onleft>
+				<!-- on click command -->
+				<onclick>ActivateWindow(Videos,$VAR[QuickNav_WidgetListContentTVShows])</onclick>			
 			</control>
 			<include name="WidgetBottomLabels">
 				<param name="Container">350</param>
@@ -730,6 +734,8 @@
 				<onleft condition="stringcompare(Skin.String(QuickNavWidgetMusicType),4)">Skin.SetString(QuickNavWidgetMusicType,3)</onleft>
 				<onleft condition="stringcompare(Skin.String(QuickNavWidgetMusicType),3)">Skin.SetString(QuickNavWidgetMusicType,2)</onleft>
 				<onleft condition="stringcompare(Skin.String(QuickNavWidgetMusicType),2)">Skin.SetString(QuickNavWidgetMusicType,1)</onleft>
+				<!-- on click command -->
+				<onclick>ActivateWindow(Music,$VAR[QuickNav_WidgetListContentMusic])</onclick>						
 			</control>
 			<include name="WidgetBottomLabels">
 				<param name="Container">450</param>  
@@ -822,6 +828,8 @@
 				<onleft condition="stringcompare(Skin.String(QuickNavWidgetAmazonDBType),4)">Skin.SetString(QuickNavWidgetAmazonDBType,3)</onleft>
 				<onleft condition="stringcompare(Skin.String(QuickNavWidgetAmazonDBType),3)">Skin.SetString(QuickNavWidgetAmazonDBType,2)</onleft>
 				<onleft condition="stringcompare(Skin.String(QuickNavWidgetAmazonDBType),2)">Skin.SetString(QuickNavWidgetAmazonDBType,1)</onleft>
+				<!-- on click command -->
+				<onclick>ActivateWindow(Videos,$VAR[QuickNav_WidgetListContentAmazonDB])</onclick>	
 			</control>
 			<include name="WidgetBottomLabels">
 				<param name="Container">750</param>
@@ -911,6 +919,8 @@
 				<onleft condition="!Skin.HasSetting(LockWidgetSwitch) + stringcompare(Skin.String(QuickNavWidgetAmazonType),4)">Skin.SetString(QuickNavWidgetAmazonType,3)</onleft>
 				<onleft condition="!Skin.HasSetting(LockWidgetSwitch) + stringcompare(Skin.String(QuickNavWidgetAmazonType),3)">Skin.SetString(QuickNavWidgetAmazonType,2)</onleft>
 				<onleft condition="!Skin.HasSetting(LockWidgetSwitch) + stringcompare(Skin.String(QuickNavWidgetAmazonType),2)">Skin.SetString(QuickNavWidgetAmazonType,1)</onleft>
+				<!-- on click command -->
+				<onclick>ActivateWindow(Videos,$VAR[QuickNav_WidgetListContentAmazon])</onclick>	
 			</control>
 			<include name="WidgetBottomLabels">
 				<param name="Container">751</param>
@@ -999,6 +1009,8 @@
 				<onleft condition="stringcompare(Skin.String(QuickNavWidgetTuneInType),1)">Skin.SetString(QuickNavWidgetTuneInType,3)</onleft>
 				<onleft condition="stringcompare(Skin.String(QuickNavWidgetTuneInType),3">Skin.SetString(QuickNavWidgetTuneInType,2)</onleft>
 				<onleft condition="stringcompare(Skin.String(QuickNavWidgetTuneInType),2)">Skin.SetString(QuickNavWidgetTuneInType,1)</onleft>
+				<!-- on click command -->
+				<onclick>ActivateWindow(Music,$VAR[QuickNav_WidgetListContentTuneIn])</onclick>	
 			</control>
 			<include name="WidgetBottomLabels">
 				<param name="Container">550</param>  
@@ -1065,7 +1077,6 @@
 				<include>TopButton</include>
 			</control>
 			<control type="fixedlist" id="653">	
-				<visible>System.HasAddon(plugin.audio.tuneinradio)</visible>
 				<include>WidgetSquareLayout</include>
 				<content target="video">$VAR[QuickNav_WidgetListContentYouTube]</content>
 			</control>
@@ -1089,6 +1100,8 @@
 				<onleft condition="stringcompare(Skin.String(QuickNavWidgetYouTubeType),4">Skin.SetString(QuickNavWidgetYouTubeType,3)</onleft>
 				<onleft condition="stringcompare(Skin.String(QuickNavWidgetYouTubeType),3">Skin.SetString(QuickNavWidgetYouTubeType,2)</onleft>
 				<onleft condition="stringcompare(Skin.String(QuickNavWidgetYouTubeType),2)">Skin.SetString(QuickNavWidgetYouTubeType,1)</onleft>
+				<!-- on click command -->
+				<onclick>ActivateWindow(Videos,$VAR[QuickNav_WidgetListContentYouTube])</onclick>	
 			</control>
 			<include name="WidgetBottomLabels">
 				<param name="Container">653</param>  
@@ -1154,7 +1167,6 @@
 				<include>TopButton</include>
 			</control>
 			<control type="fixedlist" id="551">
-				<visible>ControlGroup(9090).HasFocus</visible>	
 				<include condition="!StringCompare(Skin.String(widgetgroup.1.Layout),Poster)">WidgetSquareLayout</include>
 				<include condition="StringCompare(Skin.String(widgetgroup.1.Layout),Poster)">WidgetPosterLayout</include>
 				<include condition="StringCompare(Skin.String(widgetgroup.1.Source),mixed)" name="widgetgroup-customgroup">
@@ -1230,7 +1242,6 @@
 				<include>TopButton</include>
 			</control>
 			<control type="fixedlist" id="552">					
-				<visible>ControlGroup(9091).HasFocus</visible>	
 				<include condition="!StringCompare(Skin.String(widgetgroup.2.Layout),Poster)">WidgetSquareLayout</include>
 				<include condition="StringCompare(Skin.String(widgetgroup.2.Layout),Poster)">WidgetPosterLayout</include>
 				<include condition="StringCompare(Skin.String(widgetgroup.2.Source),mixed)" name="widgetgroup-customgroup">
@@ -1306,7 +1317,6 @@
 				<include>TopButton</include>
 			</control>
 			<control type="fixedlist" id="553">					
-				<visible>ControlGroup(9093).HasFocus</visible>	
 				<include condition="!StringCompare(Skin.String(widgetgroup.3.Layout),Poster)">WidgetSquareLayout</include>
 				<include condition="StringCompare(Skin.String(widgetgroup.3.Layout),Poster)">WidgetPosterLayout</include>
 				<include condition="StringCompare(Skin.String(widgetgroup.3.Source),mixed)" name="widgetgroup-customgroup">
@@ -1382,7 +1392,6 @@
 				<include>TopButton</include>
 			</control>
 			<control type="fixedlist" id="554">	
-				<visible>ControlGroup(9094).HasFocus</visible>	
 				<include condition="!StringCompare(Skin.String(widgetgroup.4.Layout),Poster)">WidgetSquareLayout</include>
 				<include condition="StringCompare(Skin.String(widgetgroup.4.Layout),Poster)">WidgetPosterLayout</include>
 				<include condition="StringCompare(Skin.String(widgetgroup.4.Source),mixed)" name="widgetgroup-customgroup">
@@ -1502,6 +1511,8 @@
 				<onleft condition="stringcompare(Skin.String(RSSVideoFeedURL),GameTrailers)">Skin.SetString(RSSVideoFeedURL,Funny Or Die)</onleft>			
 				<onleft condition="stringcompare(Skin.String(RSSVideoFeedURL),NBA)">Skin.SetString(RSSVideoFeedURL,GameTrailers)</onleft>
 				<onleft condition="stringcompare(Skin.String(RSSVideoFeedURL),Custom)">Skin.SetString(RSSVideoFeedURL,NBA)</onleft>
+				<!-- on click command -->
+				<onclick>ActivateWindow(Videos,plugin://script.extendedinfo?info=youtubeusersearch&amp;&amp;id=$VAR[RSSVideoFeedURL])</onclick>	
 			</control>
 			<include name="WidgetBottomLabels">
 				<param name="Container">650</param>  
