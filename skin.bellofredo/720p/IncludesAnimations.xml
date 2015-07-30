@@ -1,5 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes> 
+	<include name="FakeFadeLabel1of3">
+		<param name="condition" default="true"/>
+		<definition>
+			<animation type="Conditional" reversible="false" condition="$PARAM[condition]" loop="true">
+				<effect type="fade" start="0" end="100" time="500" delay="0" />
+				<effect type="fade" start="100" end="0" time="500" delay="10000" />
+				<effect type="fade" start="100" end="0" time="500" delay="20000" />
+				<effect type="fade" start="100" end="0" time="500" delay="30000" />
+			</animation>			
+		</definition>
+	</include>
+	<include name="FakeFadeLabel2of3">
+		<param name="condition" default="true"/>
+		<definition>
+			<animation type="Conditional" reversible="false" condition="$PARAM[condition]" loop="true">
+				<effect type="fade" start="0" end="100" time="500" delay="10500" />
+				<effect type="fade" start="100" end="0" time="500" delay="20000" />
+				<effect type="fade" start="100" end="0" time="500" delay="30000" />
+			</animation>			
+		</definition>
+	</include>
+	<include name="FakeFadeLabel3of3">
+		<param name="condition" default="true"/>
+		<definition>
+			<animation type="Conditional" reversible="false" condition="$PARAM[condition]" loop="true">
+				<effect type="fade" start="0" end="100" time="500" delay="20500" />
+				<effect type="fade" start="100" end="0" time="500" delay="30000" />
+			</animation>			
+		</definition>
+	</include>
 
 	<include name="FakeFadeLabel">
 		<animation type="Conditional" reversible="false" condition="$PARAM[condition]" loop="true">
@@ -93,11 +123,11 @@
 	</include>
 
 	<include name="HomeNowPlayingSlideAnimations">
-		<animation type="WindowOpen" reversible="false" condition="Window.Previous(Visualisation) | Window.Previous(FullscreenVideo) | [Window.Previous(Home) + !Skin.HasSetting(HideHomeNPCovers)]">
+		<animation type="WindowOpen" reversible="false" condition="Window.Previous(Visualisation) | Window.Previous(FullscreenVideo) | [Window.Previous(Home) + !Skin.HasSetting(HideHomeNPCovers) + !StringCompare(Skin.String(MainMenuStyle),vertical)]">
 			<effect type="fade" start="0" end="100" time="400" tween="sine" easing="in"  />
 			<effect type="slide" start="0,55" end="0,0" time="450" tween="cubic" easing="out" />
 		</animation>
-		<animation type="WindowClose" reversible="false" condition="Window.Next(Visualisation) | Window.Previous(FullscreenVideo) | [Window.Next(Home) + !Skin.HasSetting(HideHomeNPCovers)]">
+		<animation type="WindowClose" reversible="false" condition="Window.Next(Visualisation) | Window.Previous(FullscreenVideo) | [Window.Next(Home) + !Skin.HasSetting(HideHomeNPCovers) + !StringCompare(Skin.String(MainMenuStyle),vertical)]">
 			<effect type="fade" start="100" end="0" time="300" delay="250" tween="sine" easing="out" />
 			<effect type="slide" start="0,0" end="0,55" time="350" delay="250" tween="sine" easing="out" />
 		</animation>
@@ -137,7 +167,7 @@
 		</animation>
 	</include>
 	<include name="HomeNowPlayingCoversSlideTextAnimations">
-		<animation type="Conditional" condition="![Control.HasFocus(20) | ControlGroup(21).HasFocus | Control.HasFocus(23)] | Window.IsActive(shutdownmenu) | Window.IsActive(favourites) | Window.IsActive(virtualkeyboard) | Window.IsActive(script-globalsearch-main.xml) | Window.IsActive(script-skinshortcuts.xml) | Window.IsActive(contextmenu) | Window.IsActive(playercontrols)" reversible="true">
+		<animation type="Conditional" condition="![Control.HasFocus(20) | ControlGroup(21).HasFocus | Control.HasFocus(23)] | Window.IsActive(shutdownmenu) | Window.IsActive(favourites) | Window.IsActive(virtualkeyboard) | Window.IsActive(script-globalsearch-main.xml) | Window.IsActive(script-skinshortcuts.xml) | Window.IsActive(contextmenu) | Window.IsActive(playercontrols) | StringCompare(Skin.String(MainMenuStyle),vertical)" reversible="true">
 			<effect type="slide" start="0,0" end="$PARAM[slide],0" time="250" tween="sine" easing="in" />
 		</animation>
 	</include>
@@ -182,15 +212,41 @@
 	</include>
 
 	<include name="WidgetMainMenuSlideAnimations">
-		<!--<animation type="Conditional" condition="[Control.HasFocus(250) | Control.HasFocus(350) | Control.HasFocus(450) | Control.HasFocus(45) | Control.HasFocus(550) | Control.HasFocus(551) | Control.HasFocus(552) | Control.HasFocus(553) | Control.HasFocus(554) | Control.HasFocus(650) | Control.HasFocus(651) | Control.HasFocus(652) | Control.HasFocus(750) | Control.HasFocus(751) | Control.HasFocus(25) | Control.HasFocus(35) | Control.HasFocus(65) | Control.HasFocus(46) | Control.HasFocus(55) | Control.HasFocus(75) | Control.HasFocus(76)]" reversible="false">-->     
-		<animation type="Conditional" condition="[ControlGroup(9050).HasFocus | ControlGroup(9060).HasFocus | ControlGroup(9070).HasFocus | ControlGroup(9073).HasFocus | ControlGroup(9074).HasFocus | ControlGroup(9080).HasFocus | ControlGroup(9090).HasFocus | ControlGroup(9091).HasFocus | ControlGroup(9093).HasFocus | ControlGroup(9094).HasFocus | ControlGroup(9099).HasFocus | ControlGroup(9071).HasFocus | ControlGroup(9072).HasFocus | ControlGroup(9098).HasFocus]" reversible="false">   
+		<!--<animation type="Conditional" condition="[ControlGroup(9050).HasFocus | ControlGroup(9060).HasFocus | ControlGroup(9070).HasFocus | ControlGroup(9073).HasFocus | ControlGroup(9074).HasFocus | ControlGroup(9080).HasFocus | ControlGroup(9090).HasFocus | ControlGroup(9091).HasFocus | ControlGroup(9093).HasFocus | ControlGroup(9094).HasFocus | ControlGroup(9099).HasFocus | ControlGroup(9071).HasFocus | ControlGroup(9072).HasFocus | ControlGroup(9098).HasFocus | ControlGroup(9064).HasFocus]" reversible="false">   
 			<effect type="fade" start="100" end="0" time="300" tween="sine" easing="inout" />
 			<effect type="slide" start="0,0" end="0,55" time="350" tween="sine" easing="inout" />
 		</animation>				
-		<!--<animation type="Conditional" condition="!Control.HasFocus(250) + !Control.HasFocus(350) + !Control.HasFocus(450) + !Control.HasFocus(45) + !Control.HasFocus(550) + !Control.HasFocus(551) + !Control.HasFocus(552) + !Control.HasFocus(553) + !Control.HasFocus(554) + !Control.HasFocus(650) + !Control.HasFocus(651) + !Control.HasFocus(652) + !Control.HasFocus(750) + !Control.HasFocus(751) + !Control.HasFocus(25) + !Control.HasFocus(35) + !Control.HasFocus(65) + !Control.HasFocus(46) + !Control.HasFocus(55) + !Control.HasFocus(75) + !Control.HasFocus(76)" reversible="false">-->
-		<animation type="Conditional" condition="![ControlGroup(9050).HasFocus | ControlGroup(9060).HasFocus | ControlGroup(9070).HasFocus | ControlGroup(9073).HasFocus | ControlGroup(9074).HasFocus | ControlGroup(9080).HasFocus | ControlGroup(9090).HasFocus | ControlGroup(9091).HasFocus | ControlGroup(9093).HasFocus | ControlGroup(9094).HasFocus | ControlGroup(9099).HasFocus | ControlGroup(9071).HasFocus | ControlGroup(9072).HasFocus | ControlGroup(9098).HasFocus]" reversible="false">
+		<animation type="Conditional" condition="![ControlGroup(9050).HasFocus | ControlGroup(9060).HasFocus | ControlGroup(9070).HasFocus | ControlGroup(9073).HasFocus | ControlGroup(9074).HasFocus | ControlGroup(9080).HasFocus | ControlGroup(9090).HasFocus | ControlGroup(9091).HasFocus | ControlGroup(9093).HasFocus | ControlGroup(9094).HasFocus | ControlGroup(9099).HasFocus | ControlGroup(9071).HasFocus | ControlGroup(9072).HasFocus | ControlGroup(9098).HasFocus | ControlGroup(9064).HasFocus]" reversible="false">
 			<effect type="fade" start="0" end="100" time="300" tween="sine" easing="in"  />
 			<effect type="slide" start="0,55" end="0,0" time="350" tween="cubic" easing="out" />
+		</animation>-->
+		<animation type="Conditional" condition="!IsEmpty(Window(Home).Property(WidgetHasFocus))" reversible="false">   
+			<effect type="fade" start="100" end="0" time="300" tween="sine" easing="inout" />
+			<effect type="slide" start="0,0" end="0,55" time="350" tween="sine" easing="inout" />
+		</animation>				
+		<animation type="Conditional" condition="IsEmpty(Window(Home).Property(WidgetHasFocus))" reversible="false">
+			<effect type="fade" start="0" end="100" time="300" tween="sine" easing="in"  />
+			<effect type="slide" start="0,55" end="0,0" time="350" tween="cubic" easing="out" />
+		</animation>		
+	</include>	
+
+	<include name="VerticalWidgetSlide">
+		<animation condition="!IsEmpty(Window(Home).Property(WidgetHasFocus))" reversible="false" type="Conditional">
+			<effect delay="380" end="-400,35" start="0,0" time="350" tween="sine" easing="inout" type="slide" />
+		</animation>
+		<animation condition="IsEmpty(Window(Home).Property(WidgetHasFocus))" reversible="false" type="Conditional">
+			<effect delay="180" end="0,0" start="-400,35" time="350" tween="sine" easing="inout" type="slide" />
+		</animation>
+	</include>
+
+	<include name="WidgetMainMenuSlideAnimations_Vertical">
+		<animation type="Conditional" condition="!IsEmpty(Window(Home).Property(WidgetHasFocus))" reversible="false">   
+			<effect type="fade" start="100" end="0" time="300" tween="sine" easing="inout" />
+			<effect type="slide" start="0,0" end="-55,0" time="350" tween="sine" easing="inout" />
+		</animation>	
+		<animation type="Conditional" condition="IsEmpty(Window(Home).Property(WidgetHasFocus))" reversible="false">
+			<effect type="fade" delay="480" start="0" end="100" time="300" tween="sine" easing="in"  />
+			<effect type="slide" delay="480" start="-55,0" end="0,0" time="350" tween="cubic" easing="out" />
 		</animation>		
 	</include>
 
@@ -821,6 +877,29 @@
 		</animation>
 	</include>	
 
+	<include name="VerticalMenuWidgetUpDown">
+		
+		<animation effect="fade" start="100" end="0" time="300" condition="IsEmpty(Container(20).ListItem.Property(widget)) + IsEmpty(Container(20).ListItem.Property(widgetPlaylist))">Hidden</animation>
+		<animation effect="fade" start="0" end="100" time="300">Visible</animation>
+
+		<animation type="Conditional" reversible="false" condition="Control.IsVisible(2013)">			
+			<effect type="slide" start="0,-55" end="0,0" time="350" tween="cubic" easing="out"/>
+		</animation>
+		<animation type="Conditional" reversible="false" condition="Control.IsVisible(2014)">			
+			<effect type="slide" start="0,55" end="0,0" time="350" tween="cubic" easing="out"/>			
+		</animation>
+
+		<animation type="WindowOpen" reversible="true">
+			<effect type="fade" start="0" end="100" time="300" tween="sine" easing="in"  />
+			<effect type="slide" start="0,-55" end="0,0" time="350" tween="cubic" easing="out" />
+		</animation>
+		<animation type="WindowClose" reversible="true">
+			<effect type="fade" start="100" end="0" time="300" delay="250" tween="sine" easing="inout" />
+			<effect type="slide" start="0,0" end="0,-55" time="350" delay="250" tween="sine" easing="inout" />
+		</animation>
+		
+	</include>
+
 	<include name="VisibleFadeEffectRecent">
 		<animation effect="fade" start="100" end="0" time="300" tween="sine" easing="inout">Hidden</animation>
 		<animation effect="fade" start="0" end="100" time="300" tween="sine" easing="inout">Visible</animation>
@@ -913,140 +992,19 @@
 		<animation effect="zoom" start="100" end="80" time="450" center="auto" tween="back" easing="out" condition="![Control.HasFocus(65) | Control.HasFocus(650)] + !IsEmpty(Window.Property(Movement))" reversible="false">Conditional</animation>
 		<animation effect="zoom" start="100" end="80" time="450" center="auto" tween="back" easing="out" condition="![Control.HasFocus(65) | Control.HasFocus(650)] + IsEmpty(Window.Property(Movement))" reversible="false">Conditional</animation>
 	</include>	
-	<include name="HomeMoviesWidgetAnimation">
-		<animation type="Conditional" condition="ControlGroup(9050).HasFocus" reversible="false">
+
+
+	<include name="DefaultMenuWidgetFocusAnimation">
+		<animation type="Conditional" condition="!IsEmpty(Window(Home).Property(WidgetHasFocus))" reversible="false">
 			<effect type="fade" start="0" end="100" time="300" tween="sine" easing="in"  />		
 		</animation>
-		<animation type="Conditional" condition="!ControlGroup(9050).HasFocus" reversible="false">
+		<animation type="Conditional" condition="IsEmpty(Window(Home).Property(WidgetHasFocus))" reversible="false">
 			<effect type="fade" start="100" end="0" time="300" tween="sine" easing="out" />
 		</animation>		
-		<animation effect="slide" start="0,55" end="0,0" time="350" tween="sine" easing="inout" condition="ControlGroup(9050).HasFocus" reversible="false">Conditional</animation>		
-		<animation effect="slide" start="0,0" end="0,55" time="350" tween="sine" easing="inout" condition="!ControlGroup(9050).HasFocus" reversible="false">Conditional</animation>			
-	</include>	
-	<include name="HomeTVShowsWidgetAnimation">
-		<animation type="Conditional" condition="ControlGroup(9060).HasFocus" reversible="false">
-			<effect type="fade" start="0" end="100" time="300" tween="sine" easing="in"  />		
-		</animation>
-		<animation type="Conditional" condition="!ControlGroup(9060).HasFocus" reversible="false">
-			<effect type="fade" start="100" end="0" time="300" tween="sine" easing="out" />
-		</animation>		
-		<animation effect="slide" start="0,55" end="0,0" time="350" tween="sine" easing="inout" condition="ControlGroup(9060).HasFocus" reversible="false">Conditional</animation>		
-		<animation effect="slide" start="0,0" end="0,55" time="350" tween="sine" easing="inout" condition="!ControlGroup(9060).HasFocus" reversible="false">Conditional</animation>						
-	</include>	
-	<include name="HomeYouTubeWidgetAnimation">
-		<animation type="Conditional" condition="ControlGroup(9098).HasFocus" reversible="false">
-			<effect type="fade" start="0" end="100" time="300" tween="sine" easing="in"  />		
-		</animation>
-		<animation type="Conditional" condition="!ControlGroup(9098).HasFocus" reversible="false">
-			<effect type="fade" start="100" end="0" time="300" tween="sine" easing="out" />
-		</animation>		
-		<animation effect="slide" start="0,55" end="0,0" time="350" tween="sine" easing="inout" condition="ControlGroup(9098).HasFocus" reversible="false">Conditional</animation>		
-		<animation effect="slide" start="0,0" end="0,55" time="350" tween="sine" easing="inout" condition="!ControlGroup(9098).HasFocus" reversible="false">Conditional</animation>						
+		<animation effect="slide" start="0,55" end="0,0" time="350" tween="sine" easing="inout" condition="!IsEmpty(Window(Home).Property(WidgetHasFocus))" reversible="false">Conditional</animation>		
+		<animation effect="slide" start="0,0" end="0,55" time="350" tween="sine" easing="inout" condition="IsEmpty(Window(Home).Property(WidgetHasFocus))" reversible="false">Conditional</animation>			
 	</include>	
 
-	<include name="HomeCustomWidgetAnimation">
-		<animation type="Conditional" condition="ControlGroup(9090).HasFocus" reversible="false">
-			<effect type="fade" start="0" end="100" time="300" tween="sine" easing="in"  />		
-		</animation>
-		<animation type="Conditional" condition="!ControlGroup(9090).HasFocus" reversible="false">
-			<effect type="fade" start="100" end="0" time="300" tween="sine" easing="out" />
-		</animation>		
-		<animation effect="slide" start="0,55" end="0,0" time="350" tween="sine" easing="inout" condition="ControlGroup(9090).HasFocus" reversible="false">Conditional</animation>		
-		<animation effect="slide" start="0,0" end="0,55" time="350" tween="sine" easing="inout" condition="!ControlGroup(9090).HasFocus" reversible="false">Conditional</animation>			
-	</include>
-	<include name="HomeCustomWidget2Animation">
-		<animation type="Conditional" condition="ControlGroup(9091).HasFocus" reversible="false">
-			<effect type="fade" start="0" end="100" time="300" tween="sine" easing="in"  />		
-		</animation>
-		<animation type="Conditional" condition="!ControlGroup(9091).HasFocus" reversible="false">
-			<effect type="fade" start="100" end="0" time="300" tween="sine" easing="out" />
-		</animation>		
-		<animation effect="slide" start="0,55" end="0,0" time="350" tween="sine" easing="inout" condition="ControlGroup(9091).HasFocus" reversible="false">Conditional</animation>		
-		<animation effect="slide" start="0,0" end="0,55" time="350" tween="sine" easing="inout" condition="!ControlGroup(9091).HasFocus" reversible="false">Conditional</animation>		
-	</include>
-	<include name="HomeCustomWidget3Animation">
-		<animation type="Conditional" condition="ControlGroup(9093).HasFocus" reversible="false">
-			<effect type="fade" start="0" end="100" time="300" tween="sine" easing="in"  />		
-		</animation>
-		<animation type="Conditional" condition="!ControlGroup(9093).HasFocus" reversible="false">
-			<effect type="fade" start="100" end="0" time="300" tween="sine" easing="out" />
-		</animation>		
-		<animation effect="slide" start="0,55" end="0,0" time="350" tween="sine" easing="inout" condition="ControlGroup(9093).HasFocus" reversible="false">Conditional</animation>		
-		<animation effect="slide" start="0,0" end="0,55" time="350" tween="sine" easing="inout" condition="!ControlGroup(9093).HasFocus" reversible="false">Conditional</animation>		
-	</include>
-	<include name="HomeCustomWidget4Animation">
-		<animation type="Conditional" condition="ControlGroup(9094).HasFocus" reversible="false">
-			<effect type="fade" start="0" end="100" time="300" tween="sine" easing="in"  />		
-		</animation>
-		<animation type="Conditional" condition="!ControlGroup(9094).HasFocus" reversible="false">
-			<effect type="fade" start="100" end="0" time="300" tween="sine" easing="out" />
-		</animation>		
-		<animation effect="slide" start="0,55" end="0,0" time="350" tween="sine" easing="inout" condition="ControlGroup(9094).HasFocus" reversible="false">Conditional</animation>		
-		<animation effect="slide" start="0,0" end="0,55" time="350" tween="sine" easing="inout" condition="!ControlGroup(9094).HasFocus" reversible="false">Conditional</animation>		
-	</include>
-	<include name="HomeRSSWidgetAnimation">
-		<animation type="Conditional" condition="ControlGroup(9099).HasFocus" reversible="false">
-			<effect type="fade" start="0" end="100" time="300" tween="sine" easing="in"  />		
-		</animation>
-		<animation type="Conditional" condition="!ControlGroup(9099).HasFocus" reversible="false">
-			<effect type="fade" start="100" end="0" time="300" tween="sine" easing="out" />
-		</animation>		
-		<animation effect="slide" start="0,55" end="0,0" time="350" tween="sine" easing="inout" condition="ControlGroup(9099).HasFocus" reversible="false">Conditional</animation>		
-		<animation effect="slide" start="0,0" end="0,55" time="350" tween="sine" easing="inout" condition="!ControlGroup(9099).HasFocus" reversible="false">Conditional</animation>		
-	</include>	
-	
-	<include name="HomeAmazonDBWidgetAnimation">
-		<animation type="Conditional" condition="ControlGroup(9073).HasFocus" reversible="false">
-			<effect type="fade" start="0" end="100" time="300" tween="sine" easing="in"  />		
-		</animation>
-		<animation type="Conditional" condition="!ControlGroup(9073).HasFocus" reversible="false">
-			<effect type="fade" start="100" end="0" time="300" tween="sine" easing="out" />
-		</animation>		
-		<animation effect="slide" start="0,55" end="0,0" time="350" tween="sine" easing="inout" condition="ControlGroup(9073).HasFocus" reversible="false">Conditional</animation>		
-		<animation effect="slide" start="0,0" end="0,55" time="350" tween="sine" easing="inout" condition="!ControlGroup(9073).HasFocus" reversible="false">Conditional</animation>		
-	</include>
-	
-	<include name="HomeAmazonWidgetAnimation">
-		<animation type="Conditional" condition="ControlGroup(9074).HasFocus" reversible="false">
-			<effect type="fade" start="0" end="100" time="300" tween="sine" easing="in"  />		
-		</animation>
-		<animation type="Conditional" condition="!ControlGroup(9074).HasFocus" reversible="false">
-			<effect type="fade" start="100" end="0" time="300" tween="sine" easing="out" />
-		</animation>		
-		<animation effect="slide" start="0,55" end="0,0" time="350" tween="sine" easing="inout" condition="ControlGroup(9074).HasFocus" reversible="false">Conditional</animation>		
-		<animation effect="slide" start="0,0" end="0,55" time="350" tween="sine" easing="inout" condition="!ControlGroup(9074).HasFocus" reversible="false">Conditional</animation>		
-	</include>
-
-	<include name="HomePlaylistWidgetAnimation">
-		<animation type="Conditional" condition="ControlGroup(9071).HasFocus | ControlGroup(9072).HasFocus" reversible="false">
-			<effect type="fade" start="0" end="100" time="300" tween="sine" easing="in"  />		
-		</animation>
-		<animation type="Conditional" condition="!ControlGroup(9071).HasFocus + !ControlGroup(9072).HasFocus" reversible="false">
-			<effect type="fade" start="100" end="0" time="300" tween="sine" easing="out" />
-		</animation>		
-		<animation effect="slide" start="0,55" end="0,0" time="350" tween="sine" easing="inout" condition="ControlGroup(9071).HasFocus | ControlGroup(9072).HasFocus" reversible="false">Conditional</animation>		
-		<animation effect="slide" start="0,0" end="0,55" time="350" tween="sine" easing="inout" condition="!ControlGroup(9071).HasFocus + !ControlGroup(9072).HasFocus" reversible="false">Conditional</animation>		
-	</include>
-	<include name="HomeTuneInWidgetAnimation">
-		<animation type="Conditional" condition="ControlGroup(9080).HasFocus" reversible="false">
-			<effect type="fade" start="0" end="100" time="300" tween="sine" easing="in"  />		
-		</animation>
-		<animation type="Conditional" condition="!ControlGroup(9080).HasFocus" reversible="false">
-			<effect type="fade" start="100" end="0" time="300" tween="sine" easing="out" />
-		</animation>		
-		<animation effect="slide" start="0,55" end="0,0" time="350" tween="sine" easing="inout" condition="ControlGroup(9080).HasFocus" reversible="false">Conditional</animation>		
-		<animation effect="slide" start="0,0" end="0,55" time="350" tween="sine" easing="inout" condition="!ControlGroup(9080).HasFocus" reversible="false">Conditional</animation>		
-	</include>
-	<include name="HomeMusicWidgetAnimation">	
-		<animation type="Conditional" condition="ControlGroup(9070).HasFocus" reversible="false">
-			<effect type="fade" start="0" end="100" time="300" tween="sine" easing="in"  />		
-		</animation>
-		<animation type="Conditional" condition="!ControlGroup(9070).HasFocus" reversible="false">
-			<effect type="fade" start="100" end="0" time="300" tween="sine" easing="out" />
-		</animation>		
-		<animation effect="slide" start="0,55" end="0,0" time="350" tween="sine" easing="inout" condition="ControlGroup(9070).HasFocus" reversible="false">Conditional</animation>		
-		<animation effect="slide" start="0,0" end="0,55" time="350" tween="sine" easing="inout" condition="!ControlGroup(9070).HasFocus" reversible="false">Conditional</animation>		
-	</include>
 	<include name="CloseAnimation">
 		<animation effect="fade" time="200" delay="100" reversible="false">Visible</animation>
 		<animation effect="fade" time="200" reversible="false">Hidden</animation>
