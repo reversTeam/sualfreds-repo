@@ -399,7 +399,7 @@
 			<texture background="true">$VAR[TVGuideFanart]</texture>
 			<visible>!Skin.HasSetting(HideTVGuideFanart)</visible>
 			<include>BackgroundAnimation</include>
-		</control>
+		</control>	
 	</include>
 
 	<include name="HomeWidgetsFanart">
