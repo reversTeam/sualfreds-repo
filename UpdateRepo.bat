@@ -57,7 +57,7 @@ echo ^<addons^> >> %~dp0addons.xml
 if exist plugin.video.amazon\resources\cache rd /s /q plugin.video.amazon\resources\cache >nul 2>&1
 
 for /f %%f in ('dir /b /a:d') do if exist %%f\addon.xml (
-    del /q /s %%f\*.pyo >nul 2>&1
+    del /q /s %%f\*.pyo >nul 2>&1>nul 2>&1
     del /q /s %%f\*.pyc >nul 2>&1
     set add=
     for /f "delims=" %%a in (%%f\addon.xml) do (

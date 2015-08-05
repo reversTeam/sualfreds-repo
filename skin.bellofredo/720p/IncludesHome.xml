@@ -4,7 +4,6 @@
 	<!--===========-->
 	<!--Pulse Bar -->
 	<!--===========-->
-
 	<include name="PulseBar">
 		<control type="group">
 			<control type="image">
@@ -39,10 +38,6 @@
 			</control>
 		</control>
 	</include>
-
-
-
-
 
 	<!--======================-->
 	<!-- Horizontal Main Home List Buttons-->
@@ -455,11 +450,13 @@
 		<control type="group">
 			<visible allowhiddenfocus="true">!SubString(Player.Filenameandpath,extras/intro/intro.mp4) + !SubString(Player.Filenameandpath,extras\intro\intro.mp4) + !Window.IsActive(1110) + !Window.IsActive(1113) + !Window.IsActive(1114) + !Window.IsActive(1115) + !Window.IsActive(selectdialog) + !Window.IsActive(virtualkeyboard) + !Window.IsActive(ShutdownMenu) + !Window.IsActive(Favourites) + !Window.IsActive(ProgressDialog) + !Window.IsActive(PlayerControls) + !Window.IsActive(script-globalsearch-main.xml) + !Window.IsActive(script-ExtendedInfo Script-DialogInfo.xml) + !Window.IsActive(script-ExtendedInfo Script-DialogVideoInfo.xml) + !Window.IsActive(script-skinshortcuts.xml)</visible>
 			<include>HomeSlideAnimations</include>
+		
 			<!--pulse bar -->
 			<include>PulseBar</include>
 
 			<!-- background diffuse -->
 			<control type="image">
+				<visible>Skin.HasSetting(HideVerticalMenuScrollDiffuse) | !IsEmpty(Window(Home).Property(WidgetHasFocus))</visible>			
 				<animation type="Conditional" condition="!IsEmpty(Window(Home).Property(WidgetHasFocus))" reversible="false">   
 					<effect type="fade" start="90" end="45" time="1000" tween="sine" easing="inout" />
 				</animation>	
@@ -469,6 +466,57 @@
 				<include>FullscreenDimensions</include>
 				<texture background="true">views/other/menus_overlay.png</texture>
 			</control>
+
+			<!-- menu scroll labels deffuse -->
+			<control type="group">
+				<visible>!Skin.HasSetting(HideVerticalMenuScrollDiffuse)</visible>
+				<animation type="Conditional" condition="!IsEmpty(Window(Home).Property(WidgetHasFocus))" reversible="false">   
+					<effect type="fade" start="100" end="45" time="1000" tween="sine" easing="inout" />
+				</animation>	
+				<animation type="Conditional" condition="IsEmpty(Window(Home).Property(WidgetHasFocus))" reversible="false">
+					<effect type="fade" delay="0" start="45" end="100" time="500" tween="sine" easing="in"  />
+				</animation>
+				<control type="image">
+					<left>-40</left>
+					<top>-410</top>
+					<width>1280</width>
+					<height>1240</height>
+					<aspectratio>stretch</aspectratio>
+					<texture border="2" diffuse="views/other/vertical_diffuse_inverted.png">views/other/menus_overlay.png</texture>
+					<animation condition="Container(20).Row(0)" effect="slide" end="0,-55" time="200">Conditional</animation>
+					<animation condition="Container(20).Row(1)" effect="slide" end="0,0" time="200">Conditional</animation>
+					<animation condition="Container(20).Row(2)" effect="slide" end="0,55" time="200">Conditional</animation>
+					<animation condition="Container(20).Row(3)" effect="slide" end="0,110" time="200">Conditional</animation>
+					<animation condition="Container(20).Row(4)" effect="slide" end="0,165" time="200">Conditional</animation>
+					<animation condition="Container(20).Row(5)" effect="slide" end="0,220" time="200">Conditional</animation>
+					<animation condition="Container(20).Row(6)" effect="slide" end="0,275" time="200">Conditional</animation>
+					<animation condition="Container(20).Row(7)" effect="slide" end="0,330" time="200">Conditional</animation>
+					<animation condition="Container(20).Row(8)" effect="slide" end="0,385" time="200">Conditional</animation>
+					<animation condition="Container(20).Row(9)" effect="slide" end="0,440" time="200">Conditional</animation>
+					<visible>!Control.HasFocus(23) + IsEmpty(Window(Home).Property(WidgetHasFocus))</visible>
+				</control>
+				<control type="image">
+					<left>-40</left>
+					<top>-360</top>
+					<width>1280</width>
+					<height>1190</height>
+					<aspectratio>stretch</aspectratio>
+					<texture border="2" diffuse="views/other/vertical_diffuse_inverted.png">views/other/menus_overlay.png</texture>
+					<animation condition="Container(23).Row(0)" effect="slide" end="0,-40" time="200">Conditional</animation>
+					<animation condition="Container(23).Row(1)" effect="slide" end="0,0" time="200">Conditional</animation>
+					<animation condition="Container(23).Row(2)" effect="slide" end="0,40" time="200">Conditional</animation>
+					<animation condition="Container(23).Row(3)" effect="slide" end="0,80" time="200">Conditional</animation>
+					<animation condition="Container(23).Row(4)" effect="slide" end="0,120" time="200">Conditional</animation>
+					<animation condition="Container(23).Row(5)" effect="slide" end="0,140" time="200">Conditional</animation>
+					<animation condition="Container(23).Row(6)" effect="slide" end="0,180" time="200">Conditional</animation>
+					<animation condition="Container(23).Row(7)" effect="slide" end="0,220" time="200">Conditional</animation>
+					<animation condition="Container(23).Row(8)" effect="slide" end="0,260" time="200">Conditional</animation>
+					<animation condition="Container(23).Row(9)" effect="slide" end="0,300" time="200">Conditional</animation>
+					<animation condition="Container(23).Row(10)" effect="slide" end="0,340" time="200">Conditional</animation>
+					<visible>Control.HasFocus(23) + IsEmpty(Window(Home).Property(WidgetHasFocus))</visible>
+				</control>
+			</control>
+
 			<!--seperator-->
 			<control type="image">
 				<left>405</left>
@@ -490,8 +538,9 @@
 				<visible>!Skin.HasSetting(HideVerticalMenuSeperator)</visible>
 			</control>
 			
-			<!-- main menu -->
+			
 			<control type="group">
+				<!-- main menu -->					
 				<control type="fixedlist" id="20">
 					<animation effect="slide" time="0" start="0,0" end="48,0" condition="Skin.HasSetting(HideVerticalMenuIcons)">Conditional</animation>
 					<include>WidgetMainMenuSlideAnimations_Vertical</include>
@@ -501,10 +550,9 @@
 					<left>45</left>
 					<top>140</top>
 					<width>1600</width>
-					<height>480</height>
+					<height>495</height>
 					<align>right</align>
 					<onright condition="[!IsEmpty(Container(20).ListItem.Property(widget)) | !IsEmpty(Container(20).ListItem.Property(widgetPlaylist))] + !StringCompare(Container(20).ListItem.Property(widget),weather)">SetProperty(WidgetHasFocus,1,Home)</onright>
-					<!--<onright condition="IsEmpty(Container(20).ListItem.Property(widget)) + IsEmpty(Container(20).ListItem.Property(widgetPlaylist))">Select</onright>-->
 					<onright condition="StringCompare(Container(20).ListItem.Property(widget),movies)">SetFocus(90501)</onright>
 					<onright condition="StringCompare(Container(20).ListItem.Property(widget),tvshows)">SetFocus(90601)</onright>
 					<onright condition="StringCompare(Container(20).ListItem.Property(widget),music)">SetFocus(45)</onright>
@@ -525,7 +573,7 @@
 					<itemgap>0</itemgap>
 					<orientation>vertical</orientation>
 					<focusposition>1</focusposition>
-					<movement>8</movement>						
+					<movement>8</movement>			-->			
 					<scrolltime tween="Quadratic" easing="out">400</scrolltime>
 					<itemlayout width="335" height="55">
 						<control type="label">
@@ -547,8 +595,7 @@
 							<visible>!Skin.HasSetting(HideVerticalMenuIcons)</visible>
 						</control>
 					</itemlayout>
-
-					<focusedlayout width="label" height="55">	
+					<focusedlayout width="355" height="55">	
 						<control type="group">
 
 							<animation type="Focus" reversible="false" condition="Container(20).OnPrevious">
@@ -606,6 +653,81 @@
 						<include>skinshortcuts-mainmenu</include>
 					</content>
 				</control>
+
+				<!-- sub menu -->
+				<include>VerticalHomeSubMenus</include>
+
+				<!-- menu scroll labels deffuse -->
+				<control type="group">
+					<visible>!Skin.HasSetting(HideVerticalMenuScrollDiffuse)</visible>	
+					<animation type="Conditional" condition="!IsEmpty(Window(Home).Property(WidgetHasFocus))" reversible="false">   
+						<effect type="fade" start="100" end="45" time="1000" tween="sine" easing="inout" />
+					</animation>	
+					<animation type="Conditional" condition="IsEmpty(Window(Home).Property(WidgetHasFocus))" reversible="false">
+						<effect type="fade" delay="0" start="45" end="100" time="500" tween="sine" easing="in"  />
+					</animation>
+					<include>WidgetMainMenuSlideAnimations_Vertical</include>				
+					<control type="image">
+						<left>-40</left>
+						<top>-410</top>
+						<width>1280</width>
+						<height>1240</height>
+						<aspectratio>stretch</aspectratio>
+						<!--<texture border="2" diffuse="views/other/vertical_diffuse_inverted.png">white.png</texture>-->
+						<texture border="2" diffuse="views/other/vertical_diffuse.png">views/other/menus_overlay.png</texture>
+						<animation condition="Container(20).Row(0)" effect="slide" end="0,-55" time="200">Conditional</animation>
+						<animation condition="Container(20).Row(1)" effect="slide" end="0,0" time="200">Conditional</animation>
+						<animation condition="Container(20).Row(2)" effect="slide" end="0,55" time="200">Conditional</animation>
+						<animation condition="Container(20).Row(3)" effect="slide" end="0,110" time="200">Conditional</animation>
+						<animation condition="Container(20).Row(4)" effect="slide" end="0,165" time="200">Conditional</animation>
+						<animation condition="Container(20).Row(5)" effect="slide" end="0,220" time="200">Conditional</animation>
+						<animation condition="Container(20).Row(6)" effect="slide" end="0,275" time="200">Conditional</animation>
+						<animation condition="Container(20).Row(7)" effect="slide" end="0,330" time="200">Conditional</animation>
+						<animation condition="Container(20).Row(8)" effect="slide" end="0,385" time="200">Conditional</animation>
+						<animation condition="Container(20).Row(9)" effect="slide" end="0,440" time="200">Conditional</animation>
+						<visible>!Control.HasFocus(23)</visible>
+					</control>
+					<control type="image">
+						<left>-40</left>
+						<top>-360</top>
+						<width>1280</width>
+						<height>1190</height>
+						<aspectratio>stretch</aspectratio>
+						<texture border="2" diffuse="views/other/vertical_diffuse.png">views/other/menus_overlay.png</texture>
+						<animation condition="Container(23).Row(0)" effect="slide" end="0,-40" time="200">Conditional</animation>
+						<animation condition="Container(23).Row(1)" effect="slide" end="0,0" time="200">Conditional</animation>
+						<animation condition="Container(23).Row(2)" effect="slide" end="0,40" time="200">Conditional</animation>
+						<animation condition="Container(23).Row(3)" effect="slide" end="0,80" time="200">Conditional</animation>
+						<animation condition="Container(23).Row(4)" effect="slide" end="0,120" time="200">Conditional</animation>
+						<animation condition="Container(23).Row(5)" effect="slide" end="0,140" time="200">Conditional</animation>
+						<animation condition="Container(23).Row(6)" effect="slide" end="0,180" time="200">Conditional</animation>
+						<animation condition="Container(23).Row(7)" effect="slide" end="0,220" time="200">Conditional</animation>
+						<animation condition="Container(23).Row(8)" effect="slide" end="0,260" time="200">Conditional</animation>
+						<animation condition="Container(23).Row(9)" effect="slide" end="0,300" time="200">Conditional</animation>
+						<animation condition="Container(23).Row(10)" effect="slide" end="0,340" time="200">Conditional</animation>
+						<visible>Control.HasFocus(23)</visible>
+					</control>
+				</control>
+
+				<!-- sub menu header -->
+				<control type="group">
+					<visible allowhiddenfocus="true">Control.HasFocus(23)</visible>
+					<include>HomeSlideAnimations</include>
+					<left>93</left>
+					<top>140</top>
+					<width>1600</width>
+					<height>480</height>
+					<align>right</align>
+					<control type="label">
+						<width>290</width>
+						<textcolor>white</textcolor>
+						<shadowcolor>55000000</shadowcolor>
+						<font>FontSize_40</font>
+						<align>right</align>
+						<label>$INFO[Control.GetLabel(20)]</label>
+					</control>
+				</control>
+
 				<!--widgets-->
 				<control type="group">
 					<left>-10</left>
@@ -619,9 +741,7 @@
 					</animation>						
 					<include condition="StringCompare(Skin.String(MainMenuStyle),vertical)">HomeWidgetsContainer_Vertical</include>			
 				</control>
-			</control>
-			<!-- sub menu -->
-			<include>VerticalHomeSubMenus</include>			
+			</control>			
 		</control>
 	</include>
 
