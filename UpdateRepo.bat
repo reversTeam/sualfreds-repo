@@ -59,6 +59,7 @@ if exist plugin.video.amazon\resources\cache rd /s /q plugin.video.amazon\resour
 for /f %%f in ('dir /b /a:d') do if exist %%f\addon.xml (
     del /q /s %%f\*.pyo >nul 2>&1>nul 2>&1
     del /q /s %%f\*.pyc >nul 2>&1
+	rd /S /Q %%f\.git >nul 2>&1
     set add=
     for /f "delims=" %%a in (%%f\addon.xml) do (
         set line=%%a
@@ -84,12 +85,11 @@ for /f %%f in ('dir /b /a:d') do if exist %%f\addon.xml (
 		move "%%f\%%f*.zip" temp\%%f\oldreleases >nul 2>&1
 		)
 		if exist %%f\media (
-			if "%%f"=="skin.bellofredo" (
-				echo Loesche nicht gebrauchte Dateien
-				del /q skin.bellofredo\media\Textures.xbt >nul 2>&1
-				del /q skin.bellofredo\UpdateRepo.bat >nul 2>&1
-				del /q skin.bellofredo\720p\script-skinshortcuts-includes.xml >nul 2>&1
-			)
+			echo Loesche nicht gebrauchte Dateien
+			del /q %%f\media\Textures.xbt >nul 2>&1
+			del /q %%f\UpdateRepo.bat >nul 2>&1
+			del /q %%f\720p\script-skinshortcuts-includes.xml >nul 2>&1
+			del /q %%f\16x9\script-skinshortcuts-includes.xml >nul 2>&1
 			echo Starte Textures.xbt Source-Kram
 			IF not exist temp mkdir temp	
 			IF not exist temp\%%f mkdir temp\%%f			
@@ -138,7 +138,7 @@ Pause
 			
 		)
 		echo Packe %%f-!version!.zip
-		%tools_dir%\7z a %%f\%%f-!version!.zip %%f -tzip -ax!%%f*.zip> nul
+		%tools_dir%\7za a %%f\%%f-!version!.zip %%f -tzip -ax!%%f*.zip> nul
 		if exist %%f\media (
 			echo Stelle original Media Ordner wieder her
 			rd /s /q %%f\media
@@ -163,13 +163,14 @@ goto input
 Rem *** 1 ***
 :Klone
 echo. 
-echo Klone BelloFredo WorkDir
+echo KloneWorkDir
 echo. 
-XCOPY ..\Bello-Kodi-15.x-Nightlies skin.bellofredo /E /C /Q /I /Y
+Rem XCOPY ..\Bello-Kodi-15.x-Nightlies skin.bellofredo /E /C /Q /I /Y
+XCOPY ..\skin.ftv skin.ftv /E /C /Q /I /Y
+XCOPY ..\script.screensaver.ftvscreensaver script.screensaver.ftvscreensaver /E /C /Q /I /Y
 echo Loesche nicht gebrauchte Dateien
-del /q skin.bellofredo\media\Textures.xbt
-del /q skin.bellofredo\UpdateRepo.bat
-del /q skin.bellofredo\720p\script-skinshortcuts-includes.xml
+Rem /q skin.bellofredo\media\Textures.xbt
+del /q skin.ftv\media\Textures.xbt
 pause
 goto input
 
