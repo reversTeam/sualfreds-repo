@@ -1,204 +1,198 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addons>
-<addon id="plugin.audio.tuneinradio" name="TuneIn Radio" version="2.1.0" provider-name="brianhornsby">
-	<requires>
-		<import addon="xbmc.python" version="2.1.0"/>
-		<import addon="script.module.simplejson" version="2.0.10"/>
-	</requires>
-	<extension point="xbmc.python.pluginsource" library="default.py">
-		<provides>audio</provides>
-	</extension>
-	<extension point="xbmc.addon.metadata">
-		<platform>all</platform>
-		<summary lang="bg">Радио TuneIn</summary>
-		<summary lang="en">TuneIn Radio</summary>
-		<summary lang="es">TuneIn Radio</summary>
-		<license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
-		<forum>http://forum.xbmc.org/showthread.php?tid=119315</forum>
-		<website>http://brianhornsby.com/xbmc_addons/tuneinradio</website>
-		<source>https://github.com/brianhornsby/plugin.audio.tuneinradio</source>
-	</extension>
-</addon>
-
-<addon id="plugin.program.advanced.launcher" name="Advanced Launcher" version="2.5.8" provider-name="Angelscry">
-    <requires>
-        <import addon="xbmc.python" version="2.1.0"/>
-        <import addon="script.module.simplejson" version="2.0.9"/>
-    </requires>
-    <extension point="xbmc.python.pluginsource" library="addon.py">
-        <provides>executable</provides>
-    </extension>
-    <extension point="xbmc.addon.metadata">
-        <platform>all</platform>
-        <disclaimer>For Kodi Helix/Gotham/Frodo/Eden/Dharma</disclaimer>
-        <summary lang="de">Beliebige Anwendungen aus Kodi starten.</summary>
-        <summary lang="en">Start any applications from Kodi.</summary>
-        <summary lang="fr">Lancer n'importer quelle application depuis Kodi.</summary>
-        <summary lang="fi">Käynnistää sovelluksia Kodi:stä</summary>
-        <description lang="de">Advanced Launcher erlaubt das Starten beliebiger Linux, Windows und OS X Anwendungen (mit oder ohne Kommandozeile) direkt aus der Kodi Oberfläche. Advanced Launcher erlaubt weiterhin das Editieren, Herunterladen und Verwalten der Metadaten (Informationen und Bilder) für diese Anwendungen aus dem Internet.</description>
-        <description lang="en">Advanced Launcher allows you to start any Linux, Windows and OS X applications (with command line support or not) directly from the Kodi GUI. Advanced Launcher also give you the possibility to edit, download (from Internet resources) and manage all the meta-data (informations and images) related to these applications.</description>
-        <description lang="fr">Advanced Launcher permet de lancer toutes les applications Linux, Windows and OS X (avec support des lignes de commandes ou non) directement depuis l'interface de Kodi. Advanced Launcher offre également la possibilité de modifier, télécharger (depuis les ressoures web) et de gérer toues les meta-donées (informations et images) relatives à ces applications.</description>
-        <description lang="fi">Advanced Launcherilla voit käynnistää Kodi:n käyttöliittymästä mitä tahansa sovelluksia. Käynnistettävistä sovelluksista voi hakea tietoja ja kuvia Internet-tietokannoista.</description>
-    </extension>
-</addon>
-
-<addon id="plugin.video.youtube" name="YouTube" version="5.1.20.3" provider-name="bromix">
-	<requires>
-		<import addon="xbmc.python" version="2.1.0"/>
-	</requires>
-	<extension point="xbmc.python.pluginsource" library="default.py">
-		<provides>video</provides>
-	</extension>
-	<extension point="xbmc.addon.metadata">
-        <summary lang="en">Plugin for YouTube</summary>
-        <description lang="en">YouTube is a one of the biggest video-sharing websites of the world.</description>
-		<summary lang="de">Plugin für YouTube</summary>
-        <description lang="de">YouTube ist ein eines der größten Video-Sharing-Websites der Welt.</description>
-        <summary lang="pl">Wtyczka YouTube</summary>
-        <description lang="pl">YouTube jest jednym z największych na świecie serwisów udostępniania wideo.</description>
-		<summary lang="hu">Kiegészítő  a YouTube-hoz</summary>
-        <description lang="hu">A YouTube a világ egyik legnagyobb videómegosztó weboldala.</description>
-        <summary lang="es">Plugin para YouTube</summary>
-        <description lang="es">YouTube es un uno de los mayores sitios web de intercambio de vídeos del mundo.</description>
-        <summary lang="ru">Видеодополнение YouTube</summary>
-        <description lang="ru">Данное дополнение позволяет находить и смотреть видео на всеми любимом сайте.</description>
-        <summary lang="fr">Plugin pour YouTube</summary>
-        <description lang="fr">YouTube est l'un des plus grands sites de partage vidéos du monde.</description>
-        <summary lang="zh">YouTube附加元件</summary>
-        <description lang="zh">「Youtube」是全世界最大的影片分享網站</description>
-        <summary lang="bg">Добавка за YouTube</summary>
-        <description lang="bg">YouTube е един от най-големите уеб сайтове за споделяне на видео в целия свят.</description>
-		<disclaimer lang="en"></disclaimer>
-		<language></language>
-		<platform>all</platform>
-		<license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
-		<forum>http://forum.kodi.tv/showthread.php?tid=200735</forum>
-		<website>http://www.youtube.com</website>
-		<email>bromix at gmx dot net</email>
-		<source>https://github.com/bromix/plugin.video.youtube</source>
-	</extension>
-</addon>
-
-<addon id="repository.fredsrepo" name="Sualfreds Repo" version="1.0.5" provider-name="sualfred">
-	<extension point="xbmc.addon.repository" name="Sualfreds Repository">
-		<info compressed="false">https://raw.githubusercontent.com/sualfred/sualfreds-repo/master/addons.xml</info>
-		<checksum>https://raw.githubusercontent.com/sualfred/sualfreds-repo/master/addons.xml.md5</checksum>
-		<datadir zip="true">https://raw.githubusercontent.com/sualfred/sualfreds-repo/master/</datadir>
-	</extension>
-	<extension point="xbmc.addon.metadata">
-		<summary>Sualfreds Repo for his noob Kodi things</summary>
-		<description></description>
-		<disclaimer></disclaimer>
-		<platform>all</platform>
-	</extension>
-</addon>
-
-<addon id="resource.uisounds.ftv" version="1.0.0" name="fTV Sounds" provider-name="Hitcher">
-  <requires>
-    <import addon="kodi.resource" version="1.0.0"/>
-  </requires>
-  <extension point="kodi.resource.uisounds"/>
-  <extension point="kodi.addon.metadata">
-    <summary lang="en">fTV Sounds</summary>
-    <description lang="en">fTV Sounds</description>
-    <platform>all</platform>
-  </extension>
-</addon>
-
-<addon id="script.bellofredo.extrapack" name="BelloFredo Extrapack" version="1.1.2" provider-name="sualfred">
-	<requires>
-		<import addon="xbmc.python" version="2.13.0"/>
-		<import addon="xbmc.addon" version="12.9.10"/>
-	</requires>
-	<extension point="xbmc.python.script" library="default.py">
-		<provides>executable</provides>
-	</extension>
-	<extension point="xbmc.addon.metadata">
-		<language/>
-		<summary lang="en">BelloFredo Extrapack</summary>
-		<description lang="en">Downloads extras for BelloFredo. Based on the original script of AeonMQ.</description>
-		<platform>all</platform>
-	</extension>
-</addon>
-
-<addon id="script.screensaver.fTVscreensaver" name="fTV Screensaver" version="0.1.2" provider-name="Sualfred">
-    <requires>
-        <import addon="xbmc.python" version="2.1.0"/>
-    </requires>
-    <extension point="xbmc.ui.screensaver" library="screensaver.py" />
-    <extension point="xbmc.addon.metadata">
-        <platform>all</platform>
-        <language/>
-        <website></website>
-        <source>https://github.com/sualfred/script.screensaver.ftvscreensaver</source>
-        <forum>http://forum.kodi.tv/showthread.php?tid=255659</forum>
-        <email>su4lfred@gmail.com</email>
-        <summary lang="de">fTV Mosaik Screensaver</summary>
-        <summary lang="en">fTV Mosaic Screensaver</summary>
-        <description lang="de">Slideshow von Fanarts/Postern im fTV Style</description>
-        <description lang="en">Poster and fanart slideshow based on the fTV style</description>
-    </extension>
-</addon>
-
-<addon id="skin.bellofredo" version="4.6.2" name="Bello Fredo" provider-name="sualfred">
-  <requires>
-		<import addon="xbmc.gui" version="5.9.0" />
-		<import addon="service.skin.widgets" version="0.0.29"/>
-		<import addon="service.library.data.provider" version="0.0.1" />
-		<import addon="script.artwork.downloader" version="12.0.24" />
-		<import addon="script.globalsearch" version="2.0.8" />
-		<import addon="script.artistslideshow" version="1.6.5" />
-		<import addon="script.playalbum" version="1.0.1" />
-		<import addon="script.extendedinfo" version="2.0.10" />
-		<import addon="script.skin.info.service" version="1.0.0" />
-		<import addon="script.grab.fanart" version="0.12.8" />
-		<import addon="script.skinshortcuts" version="0.5.0" />
-		<import addon="script.playalbum" version="2.0.1" />
-		<import addon="weather.openweathermap.extended" version="1.0.1" />
-		<import addon="plugin.audio.tuneinradio" version="2.1.0" />
-		<import addon="script.toolbox" version="1.0.0" />
-		<import addon="script.imdbupdate" version="0.7.4" />
-		<import addon="script.bellofredo.extrapack" version="1.1.1" />
-		<import addon="script.favourites" version="6.0.1" />
-	</requires>
-	<extension point="xbmc.gui.skin" defaultthemename="Textures.xbt" effectslowdown="0.75" debugging="false">
-	    <res width="1280" height="720" aspect="16:9" default="true" folder="720p"/>
-	</extension>
-  <extension point="xbmc.addon.metadata">
-    <summary lang="en">A GUI for Kodi Media Center</summary>
-    <description lang="en">This skin started as an unofficial Port of the Bello skin (by Nessus) for the Kodi 15.x Nightlies and ended up in an independent skin with a lot of modifications, such as 100% customizable widgets, new themes, modded elements, hundreds of improvements, and much more...</description>
-    <disclaimer lang="en">Mouse usage is not supported</disclaimer>
-    <platform>all</platform>
-    <license>Creative Commons Attribution-NonCommercial-Share Alike 3.0 Unported License</license>
-    <forum>http://forum.kodi.tv/showthread.php?tid=219378</forum>
-    <email></email>
-    <source>https://github.com/sualfred/Bello-Kodi-15.x-Nightlies</source>
-  </extension>
-</addon>
-
-<addon
-	id="skin.fTVfred"
-	version="2.1.5"
-	name="fTV (with Live TV + Mods)"
-	provider-name="Sualfred - Orignal Skin by Hitcher">
-	<requires>
-		<import addon="xbmc.gui" version="5.10.0"/>
-		<import addon="script.toolbox" version="1.0.0"/>
-		<import addon="script.favourites" version="5.0.2"/>
-		<import addon="script.extendedinfo" version="2.0.3"/>
-		<import addon="script.globalsearch" version="3.0.4"/>
-		<import addon="script.skinshortcuts" version="0.4.0"/>
-		<import addon="script.artwork.downloader" version="12.0.29"/>
-		<import addon="script.skin.helper.service" version="1.0.23"/>
-	</requires>
-	<extension point="xbmc.gui.skin" effectslowdown="1.00" debugging="false">
-		<res width="1920" height="1080" aspect="16:9" default="true" folder="16x9" />
-	</extension>
-	<extension point="xbmc.addon.metadata">
-		<platform>all</platform>
-		<summary lang="en">Skin based on the Fire TV UI</summary>
-		<disclaimer lang="en">Does not support:[CR]Mouse[CR]Touch[CR]Live TV</disclaimer>
-		<description lang="en">Mod description: Basic fTV skin (by Hitcher) with nearly full PVR functionality, plus changed the widget to behaviour to display them on main menu items of your choide and other new features.[CR]Skin description: Provides the look and feel of the Fire TV user interface.[CR]For the complete experience enable 'TV Show wide icons' and either use Artwork Downloader to grab logos or create your own artwork and add it to the database (see forum for more details).[CR][CR]Special thanks to the following people:[CR]Unfledged[CR]Mesoptier[CR]'Black[CR]marcelveldt</description>
-	</extension>
-</addon>
-</addons>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?> 
+<addons> 
+<addon id="plugin.audio.tuneinradio" name="TuneIn Radio" version="2.1.0" provider-name="brianhornsby"> 
+	<requires> 
+		<import addon="xbmc.python" version="2.1.0"/> 
+		<import addon="script.module.simplejson" version="2.0.10"/> 
+	</requires> 
+	<extension point="xbmc.python.pluginsource" library="default.py"> 
+		<provides>audio</provides> 
+	</extension> 
+	<extension point="xbmc.addon.metadata"> 
+		<platform>all</platform> 
+		<summary lang="bg">Радио TuneIn</summary> 
+		<summary lang="en">TuneIn Radio</summary> 
+		<summary lang="es">TuneIn Radio</summary> 
+		<license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license> 
+		<forum>http://forum.xbmc.org/showthread.php?tid=119315</forum> 
+		<website>http://brianhornsby.com/xbmc_addons/tuneinradio</website> 
+		<source>https://github.com/brianhornsby/plugin.audio.tuneinradio</source> 
+	</extension> 
+</addon> 
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?> 
+<addon id="plugin.program.advanced.launcher" name="Advanced Launcher" version="2.5.8" provider-name="Angelscry"> 
+    <requires> 
+        <import addon="xbmc.python" version="2.1.0"/> 
+        <import addon="script.module.simplejson" version="2.0.9"/> 
+    </requires> 
+    <extension point="xbmc.python.pluginsource" library="addon.py"> 
+        <provides>executable</provides> 
+    </extension> 
+    <extension point="xbmc.addon.metadata"> 
+        <platform>all</platform> 
+        <disclaimer>For Kodi Helix/Gotham/Frodo/Eden/Dharma</disclaimer> 
+        <summary lang="de">Beliebige Anwendungen aus Kodi starten.</summary> 
+        <summary lang="en">Start any applications from Kodi.</summary> 
+        <summary lang="fr">Lancer n'importer quelle application depuis Kodi.</summary> 
+        <summary lang="fi">Käynnistää sovelluksia Kodi:stä</summary> 
+        <description lang="de">Advanced Launcher erlaubt das Starten beliebiger Linux, Windows und OS X Anwendungen (mit oder ohne Kommandozeile) direkt aus der Kodi Oberfläche. Advanced Launcher erlaubt weiterhin das Editieren, Herunterladen und Verwalten der Metadaten (Informationen und Bilder) für diese Anwendungen aus dem Internet.</description> 
+        <description lang="en">Advanced Launcher allows you to start any Linux, Windows and OS X applications (with command line support or not) directly from the Kodi GUI. Advanced Launcher also give you the possibility to edit, download (from Internet resources) and manage all the meta-data (informations and images) related to these applications.</description> 
+        <description lang="fr">Advanced Launcher permet de lancer toutes les applications Linux, Windows and OS X (avec support des lignes de commandes ou non) directement depuis l'interface de Kodi. Advanced Launcher offre également la possibilité de modifier, télécharger (depuis les ressoures web) et de gérer toues les meta-donées (informations et images) relatives à ces applications.</description> 
+        <description lang="fi">Advanced Launcherilla voit käynnistää Kodi:n käyttöliittymästä mitä tahansa sovelluksia. Käynnistettävistä sovelluksista voi hakea tietoja ja kuvia Internet-tietokannoista.</description> 
+    </extension> 
+</addon> 
+<addon id="plugin.video.youtube" name="YouTube" version="5.1.20.3" provider-name="bromix"> 
+	<requires> 
+		<import addon="xbmc.python" version="2.1.0"/> 
+	</requires> 
+	<extension point="xbmc.python.pluginsource" library="default.py"> 
+		<provides>video</provides> 
+	</extension> 
+	<extension point="xbmc.addon.metadata"> 
+        <summary lang="en">Plugin for YouTube</summary> 
+        <description lang="en">YouTube is a one of the biggest video-sharing websites of the world.</description> 
+		<summary lang="de">Plugin für YouTube</summary> 
+        <description lang="de">YouTube ist ein eines der größten Video-Sharing-Websites der Welt.</description> 
+        <summary lang="pl">Wtyczka YouTube</summary> 
+        <description lang="pl">YouTube jest jednym z największych na świecie serwisów udostępniania wideo.</description> 
+		<summary lang="hu">Kiegészítő  a YouTube-hoz</summary> 
+        <description lang="hu">A YouTube a világ egyik legnagyobb videómegosztó weboldala.</description> 
+        <summary lang="es">Plugin para YouTube</summary> 
+        <description lang="es">YouTube es un uno de los mayores sitios web de intercambio de vídeos del mundo.</description> 
+        <summary lang="ru">Видеодополнение YouTube</summary> 
+        <description lang="ru">Данное дополнение позволяет находить и смотреть видео на всеми любимом сайте.</description> 
+        <summary lang="fr">Plugin pour YouTube</summary> 
+        <description lang="fr">YouTube est l'un des plus grands sites de partage vidéos du monde.</description> 
+        <summary lang="zh">YouTube附加元件</summary> 
+        <description lang="zh">「Youtube」是全世界最大的影片分享網站</description> 
+        <summary lang="bg">Добавка за YouTube</summary> 
+        <description lang="bg">YouTube е един от най-големите уеб сайтове за споделяне на видео в целия свят.</description> 
+		<disclaimer lang="en"></disclaimer> 
+		<language></language> 
+		<platform>all</platform> 
+		<license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license> 
+		<forum>http://forum.kodi.tv/showthread.php?tid=200735</forum> 
+		<website>http://www.youtube.com</website> 
+		<email>bromix at gmx dot net</email> 
+		<source>https://github.com/bromix/plugin.video.youtube</source> 
+	</extension> 
+</addon> 
+<addon id="repository.fredsrepo" name="Sualfreds Repo" version="1.0.5" provider-name="sualfred"> 
+	<extension point="xbmc.addon.repository" name="Sualfreds Repository"> 
+		<info compressed="false">https://raw.githubusercontent.com/sualfred/sualfreds-repo/master/addons.xml</info> 
+		<checksum>https://raw.githubusercontent.com/sualfred/sualfreds-repo/master/addons.xml.md5</checksum> 
+		<datadir zip="true">https://raw.githubusercontent.com/sualfred/sualfreds-repo/master/</datadir> 
+	</extension> 
+	<extension point="xbmc.addon.metadata"> 
+		<summary>Sualfreds Repo for his noob Kodi things</summary> 
+		<description></description> 
+		<disclaimer></disclaimer> 
+		<platform>all</platform> 
+	</extension> 
+</addon> 
+<addon id="resource.uisounds.ftv" version="1.0.0" name="fTV Sounds" provider-name="Hitcher"> 
+  <requires> 
+    <import addon="kodi.resource" version="1.0.0"/> 
+  </requires> 
+  <extension point="kodi.resource.uisounds"/> 
+  <extension point="kodi.addon.metadata"> 
+    <summary lang="en">fTV Sounds</summary> 
+    <description lang="en">fTV Sounds</description> 
+    <platform>all</platform> 
+  </extension> 
+</addon> 
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?> 
+<addon id="script.bellofredo.extrapack" name="BelloFredo Extrapack" version="1.1.2" provider-name="sualfred"> 
+	<requires> 
+		<import addon="xbmc.python" version="2.13.0"/> 
+		<import addon="xbmc.addon" version="12.9.10"/> 
+	</requires> 
+	<extension point="xbmc.python.script" library="default.py"> 
+		<provides>executable</provides> 
+	</extension> 
+	<extension point="xbmc.addon.metadata"> 
+		<language/> 
+		<summary lang="en">BelloFredo Extrapack</summary> 
+		<description lang="en">Downloads extras for BelloFredo. Based on the original script of AeonMQ.</description> 
+		<platform>all</platform> 
+	</extension> 
+</addon> 
+<addon id="script.screensaver.fTVscreensaver" name="fTV Screensaver" version="0.1.2" provider-name="Sualfred"> 
+    <requires> 
+        <import addon="xbmc.python" version="2.1.0"/> 
+    </requires>     
+    <extension point="xbmc.ui.screensaver" library="screensaver.py" /> 
+    <extension point="xbmc.addon.metadata"> 
+        <platform>all</platform> 
+        <language/> 
+        <website></website> 
+        <source>https://github.com/sualfred/script.screensaver.ftvscreensaver</source> 
+        <forum>http://forum.kodi.tv/showthread.php?tid=255659</forum> 
+        <email>su4lfred@gmail.com</email>    
+        <summary lang="de">fTV Mosaik Screensaver</summary> 
+        <summary lang="en">fTV Mosaic Screensaver</summary>         
+        <description lang="de">Slideshow von Fanarts/Postern im fTV Style</description> 
+        <description lang="en">Poster and fanart slideshow based on the fTV style</description> 
+    </extension> 
+</addon> 
+<addon id="skin.bellofredo" version="4.6.2" name="Bello Fredo" provider-name="sualfred"> 
+  <requires> 
+		<import addon="xbmc.gui" version="5.9.0" /> 
+		<import addon="service.skin.widgets" version="0.0.29"/> 
+		<import addon="service.library.data.provider" version="0.0.1" /> 
+		<import addon="script.artwork.downloader" version="12.0.24" /> 
+		<import addon="script.globalsearch" version="2.0.8" /> 
+		<import addon="script.artistslideshow" version="1.6.5" /> 
+		<import addon="script.playalbum" version="1.0.1" /> 
+		<import addon="script.extendedinfo" version="2.0.10" /> 
+		<import addon="script.skin.info.service" version="1.0.0" /> 
+		<import addon="script.grab.fanart" version="0.12.8" /> 
+		<import addon="script.skinshortcuts" version="0.5.0" /> 
+		<import addon="script.playalbum" version="2.0.1" /> 
+		<import addon="weather.openweathermap.extended" version="1.0.1" /> 
+		<import addon="plugin.audio.tuneinradio" version="2.1.0" /> 
+		<import addon="script.toolbox" version="1.0.0" />		 
+		<import addon="script.imdbupdate" version="0.7.4" />			 
+		<import addon="script.bellofredo.extrapack" version="1.1.1" />		 
+		<import addon="script.favourites" version="6.0.1" />		 
+	</requires> 
+	<extension point="xbmc.gui.skin" defaultthemename="Textures.xbt" effectslowdown="0.75" debugging="false"> 
+	    <res width="1280" height="720" aspect="16:9" default="true" folder="720p"/> 
+	</extension> 
+  <extension point="xbmc.addon.metadata"> 
+    <summary lang="en">A GUI for Kodi Media Center</summary> 
+    <description lang="en">This skin started as an unofficial Port of the Bello skin (by Nessus) for the Kodi 15.x Nightlies and ended up in an independent skin with a lot of modifications, such as 100% customizable widgets, new themes, modded elements, hundreds of improvements, and much more...</description> 
+    <disclaimer lang="en">Mouse usage is not supported</disclaimer> 
+    <platform>all</platform> 
+    <license>Creative Commons Attribution-NonCommercial-Share Alike 3.0 Unported License</license> 
+    <forum>http://forum.kodi.tv/showthread.php?tid=219378</forum> 
+    <email></email> 
+    <source>https://github.com/sualfred/Bello-Kodi-15.x-Nightlies</source> 
+  </extension> 
+</addon> 
+<addon 
+	id="skin.fTVfred" 
+	version="2.1.5" 
+	name="fTV (with Live TV + Mods)" 
+	provider-name="Sualfred - Orignal Skin by Hitcher"> 
+	<requires> 
+		<import addon="xbmc.gui" version="5.10.0"/> 
+		<import addon="script.toolbox" version="1.0.0"/> 
+		<import addon="script.favourites" version="5.0.2"/> 
+		<import addon="script.extendedinfo" version="2.0.3"/> 
+		<import addon="script.globalsearch" version="3.0.4"/> 
+		<import addon="script.skinshortcuts" version="0.4.0"/> 
+		<import addon="script.artwork.downloader" version="12.0.29"/> 
+		<import addon="script.skin.helper.service" version="1.0.23"/> 
+	</requires> 
+	<extension point="xbmc.gui.skin" effectslowdown="1.00" debugging="false"> 
+		<res width="1920" height="1080" aspect="16:9" default="true" folder="16x9" /> 
+	</extension> 
+	<extension point="xbmc.addon.metadata"> 
+		<platform>all</platform> 
+		<summary lang="en">Skin based on the Fire TV UI</summary> 
+		<disclaimer lang="en">Does not support:[CR]Mouse[CR]Touch[CR]Live TV</disclaimer> 
+		<description lang="en">Mod description: Basic fTV skin (by Hitcher) with nearly full PVR functionality, plus changed the widget to behaviour to display them on main menu items of your choide and other new features.[CR]Skin description: Provides the look and feel of the Fire TV user interface.[CR]For the complete experience enable 'TV Show wide icons' and either use Artwork Downloader to grab logos or create your own artwork and add it to the database (see forum for more details).[CR][CR]Special thanks to the following people:[CR]Unfledged[CR]Mesoptier[CR]'Black[CR]marcelveldt</description> 
+	</extension> 
+</addon> 
+</addons> 

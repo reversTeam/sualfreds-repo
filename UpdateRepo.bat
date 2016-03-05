@@ -84,68 +84,8 @@ for /f %%f in ('dir /b /a:d') do if exist %%f\addon.xml (
 		IF not exist temp\%%f\oldreleases mkdir temp\%%f\oldreleases
 		move "%%f\%%f*.zip" temp\%%f\oldreleases >nul 2>&1
 		)
-		if exist %%f\media (
-			echo Loesche nicht gebrauchte Dateien
-			del /q %%f\media\Textures.xbt >nul 2>&1
-			del /q %%f\UpdateRepo.bat >nul 2>&1
-			del /q %%f\720p\script-skinshortcuts-includes.xml >nul 2>&1
-			del /q %%f\16x9\script-skinshortcuts-includes.xml >nul 2>&1
-			echo Starte Textures.xbt Source-Kram
-			IF not exist temp mkdir temp	
-			IF not exist temp\%%f mkdir temp\%%f			
-			XCOPY %%f\media temp\%%f\media /E /C /Q /I /Y
-			rd /S /Q %%f\media
-			mkdir %%f\media
-			ECHO -------------------------------------------------------------------------
-ECHO ^> ** Creating excludes... **
-
-ECHO .svn>exclude.txt
-ECHO .git>>exclude.txt
-ECHO Thumbs.db>>exclude.txt
-ECHO Desktop.ini>>exclude.txt
-ECHO dsstdfx.bin>>exclude.txt
-ECHO exclude.txt>>exclude.txt
-ECHO temp\%%f\media\Original-Bello.xbt>>exclude.txt
-ECHO temp\%%f\media\ElegantDark.xbt>>exclude.txt
-ECHO temp\%%f\media\Light-by-Incubus.xbt>>exclude.txt
-
-ECHO -------------------------------------------------------------------------
-ECHO.
-
-ECHO -------------------------------------------------------------------------
-ECHO                   ** Creating Textures XBT File... **
-ECHO -------------------------------------------------------------------------
-
-ECHO.
-PING -n 2 -w 1000 127.0.0.1 > NUL
-START /B /WAIT %tools_dir%\TexturePacker -input temp\%%f\media -output %%f\media\Textures.xbt
-PING -n 2 -w 20000 127.0.0.1 > NUL
-ECHO.
-ECHO.
-ECHO -------------------------------------------------------------------------
-ECHO ^> Deleting excludes...
-DEL exclude.txt
-ECHO ^> Done
-ECHO -------------------------------------------------------------------------
-ECHO.
-ECHO.
-XCOPY temp\%%f\media\*.xbt %%f\media
-ECHO -------------------------------------------------------------------------
-ECHO        ** XBT build complete - scroll up to check for errors. **
-ECHO -------------------------------------------------------------------------
-
-Pause
-			
-		)
 		echo Packe %%f-!version!.zip
 		%tools_dir%\7za a %%f\%%f-!version!.zip %%f -tzip -ax!%%f*.zip> nul
-		if exist %%f\media (
-			echo Stelle original Media Ordner wieder her
-			rd /s /q %%f\media
-			mkdir %%f\media
-			XCOPY temp\%%f\media %%f\media /E /C /Q /I /Y
-			rd /s /q temp\%%f\media
-		)
 		echo %%f-!version!.zip Prozess fertig.
 		echo. 
     ) else (
