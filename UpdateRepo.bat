@@ -108,9 +108,6 @@ echo.
 Rem XCOPY ..\Bello-Kodi-15.x-Nightlies skin.bellofredo /E /C /Q /I /Y
 XCOPY ..\skin.ftv skin.ftv /E /C /Q /I /Y
 XCOPY ..\script.screensaver.ftvscreensaver script.screensaver.ftvscreensaver /E /C /Q /I /Y
-echo Loesche nicht gebrauchte Dateien
-Rem /q skin.bellofredo\media\Textures.xbt
-del /q skin.ftv\media\Textures.xbt
 pause
 goto input
 
