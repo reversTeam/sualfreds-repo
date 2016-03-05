@@ -172,7 +172,7 @@
 </addon> 
 <addon 
 	id="skin.fTVfred" 
-	version="2.1.6" 
+	version="2.1.7" 
 	name="fTV (with Live TV + Mods)" 
 	provider-name="Sualfred - Orignal Skin by Hitcher"> 
 	<requires> 
