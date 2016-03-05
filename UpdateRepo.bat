@@ -6,11 +6,11 @@ TITEL Container
 cls
 ECHO.
 ECHO ************************************************
-ECHO * 1 = Klone Nightlies *
-ECHO * 2 = Update Repo Files *
-ECHO * 3 = Repo Commit *
+ECHO * 1 = Clone directories *
+ECHO * 2 = Update repo files *
+ECHO * 3 = Repo commit *
 echo * *
-Echo * 4 = Beenden *
+Echo * 4 = Close *
 ECHO ************************************************
 ECHO.
 
@@ -18,26 +18,25 @@ color 0d
 choice /C:1234 
 
 
-if errorlevel 4 goto Abbruch
+if errorlevel 4 goto Close
 if errorlevel 3 goto Commit
 if errorlevel 2 goto Update
-if errorlevel 1 goto Klone
+if errorlevel 1 goto Clone
  
 
 Rem *** 4 ***
-:Abbruch
+:Close
 goto ende
 
 
 Rem *** 3 ***
 :Commit
 echo.
-echo. [ SVN Committer ]
-:: The two lines below should be changed to suit your system.
+echo. [ Committer ]
 set SOURCE=%~dp0
 set SVN=C:\Program Files\TortoiseGit\bin
 echo.
-echo. Committing %SOURCE% to SVN...
+echo. Committing %SOURCE% ...
 "%SVN%\TortoiseGitProc.exe" /command:commit /path:"%SOURCE%" /closeonend:3
 echo. done.
 echo.
@@ -101,13 +100,13 @@ goto input
 
 
 Rem *** 1 ***
-:Klone
+:Clone
 echo. 
-echo KloneWorkDir
+echo Copying files
 echo. 
 Rem XCOPY ..\Bello-Kodi-15.x-Nightlies skin.bellofredo /E /C /Q /I /Y
-XCOPY ..\skin.ftv skin.ftv /E /C /Q /I /Y
-XCOPY ..\script.screensaver.ftvscreensaver script.screensaver.ftvscreensaver /E /C /Q /I /Y
+XCOPY ..\skin.ftv skin.fTVfred /E /C /Q /I /Y
+XCOPY ..\script.screensaver.fTVscreensaver script.screensaver.fTVscreensaver /E /C /Q /I /Y
 pause
 goto input
 
