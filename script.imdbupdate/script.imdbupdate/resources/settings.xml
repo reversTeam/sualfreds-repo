@@ -11,7 +11,7 @@
 		<setting id="deamonTop250"		type="bool"			default="false"			label="run periodically (weekly)" />
 
 		<setting type="lsep" label="MPAA"/>
-		<setting id="mpaaLang"			type="labelenum"	default="US"			label="MPAA system" values="US|DE" />
+		<setting id="mpaaLang"			type="labelenum"	default="us"			label="MPAA system" values="us|de|au|nl" />
 		<setting id="hideMpaa"			type="bool"			default="false"			label="hide progress" />
 		<setting id="deamonMpaa"		type="bool"			default="false"			label="run periodically (weekly)" />
 		<setting id="firstMpaaRun"		type="bool"			default="true"			visible="false" />
@@ -24,6 +24,7 @@
 
 		<setting type="lsep" label="Top250"/>
 		<setting id="openMissingFile"	type="bool"			default="false"			label="show missing Top250 movies after each run" />
+		<setting id="imdbLang" 			type="text" 								label="IMDb language" />
 
 		<setting type="lsep" label="MPAA"/>
 		<setting id="enableMpaaPrefix"	type="bool"			default="false"			label="change prefix" />
