@@ -61,7 +61,7 @@
         <description lang="fi">Advanced Launcherilla voit käynnistää Kodi:n käyttöliittymästä mitä tahansa sovelluksia. Käynnistettävistä sovelluksista voi hakea tietoja ja kuvia Internet-tietokannoista.</description> 
     </extension> 
 </addon> 
-<addon id="plugin.video.youtube" name="YouTube" version="5.1.20.3" provider-name="bromix"> 
+<addon id="plugin.video.youtube" name="YouTube" version="5.1.20.4" provider-name="bromix"> 
 	<requires> 
 		<import addon="xbmc.python" version="2.1.0"/> 
 	</requires> 
@@ -192,7 +192,7 @@
 </addon> 
 <addon 
 	id="skin.fTVfred" 
-	version="2.1.7" 
+	version="2.1.8" 
 	name="fTV (with Live TV + Mods)" 
 	provider-name="Sualfred - Orignal Skin by Hitcher"> 
 	<requires> 
