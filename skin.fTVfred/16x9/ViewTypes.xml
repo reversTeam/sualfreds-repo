@@ -9,6 +9,10 @@
 				<top>242</top>
 				<width>2036</width>
 				<height>576</height>
+				<onback condition="!StringCompare(Container(60).CurrentItem,0)">Control.Move(60,$INFO[Container(60).CurrentItem,-])</onback>
+				<onback condition="!StringCompare(Container(60).CurrentItem,0)">Control.Move(60,1)</onback>
+				<onup condition="!StringCompare(Container(60).CurrentItem,0)">Control.Move(60,$INFO[Container(60).CurrentItem,-])</onup>
+				<onup condition="!StringCompare(Container(60).CurrentItem,0)">Control.Move(60,1)</onup>
 				<onup>Back</onup>
 				<ondown>1001</ondown>
 				<onleft>Back</onleft>
@@ -47,6 +51,10 @@
 				<top>242</top>
 				<width>2344</width>
 				<height>576</height>
+				<onback condition="!StringCompare(Container(61).CurrentItem,0)">Control.Move(61,$INFO[Container(61).CurrentItem,-])</onback>
+				<onback condition="!StringCompare(Container(61).CurrentItem,0)">Control.Move(61,1)</onback>
+				<onup condition="!StringCompare(Container(61).CurrentItem,0)">Control.Move(61,$INFO[Container(61).CurrentItem,-])</onup>
+				<onup condition="!StringCompare(Container(61).CurrentItem,0)">Control.Move(61,1)</onup>
 				<onup>Back</onup>
 				<ondown>1001</ondown>
 				<onleft>Back</onleft>
@@ -100,7 +108,7 @@
 				<orientation>horizontal</orientation>
 				<defaultcontrol always="true">0</defaultcontrol>
 				<scrolltime easing="inout" tween="sine">300</scrolltime>
-				<visible>IsEmpty(Container.PluginName) + !Window.IsActive(tvrecordings) + !Container.Content(movies) + !Container.Content(sets) + !Container.Content(tvshows) + !Container.Content(seasons) + !Container.Content(episodes) + !Container.Content(songs) + ![Container.Content(files) + SubString(Container.FolderPath,.m3u)]</visible>
+				<visible>[IsEmpty(Container.PluginName) | SubString(Container.FolderPath,plugin://script.skin.helper.service/?action=browsegenres)] + !Window.IsActive(tvrecordings) + !Container.Content(movies) + !Container.Content(sets) + !Container.Content(tvshows) + !Container.Content(seasons) + !Container.Content(episodes) + !Container.Content(songs) + ![Container.Content(files) + SubString(Container.FolderPath,.m3u)]</visible>
 				<include name="ViewOpenAnimation">
 					<param name="pos1">193,10</param>
 					<param name="pos2">497,-174</param>
@@ -126,6 +134,10 @@
 				<top>242</top>
 				<width>2344</width>
 				<height>576</height>
+				<onback condition="!StringCompare(Container(51).CurrentItem,0)">Control.Move(51,$INFO[Container(51).CurrentItem,-])</onback>
+				<onback condition="!StringCompare(Container(51).CurrentItem,0)">Control.Move(51,1)</onback>
+				<onup condition="!StringCompare(Container(51).CurrentItem,0)">Control.Move(51,$INFO[Container(51).CurrentItem,-])</onup>
+				<onup condition="!StringCompare(Container(51).CurrentItem,0)">Control.Move(51,1)</onup>
 				<onup>Back</onup>
 				<ondown>1001</ondown>
 				<onleft>Back</onleft>
@@ -164,6 +176,10 @@
 				<top>242</top>
 				<width>2344</width>
 				<height>576</height>
+				<onback condition="!StringCompare(Container(52).CurrentItem,0)">Control.Move(52,$INFO[Container(52).CurrentItem,-])</onback>
+				<onback condition="!StringCompare(Container(52).CurrentItem,0)">Control.Move(52,1)</onback>
+				<onup condition="!StringCompare(Container(52).CurrentItem,0)">Control.Move(52,$INFO[Container(52).CurrentItem,-])</onup>
+				<onup condition="!StringCompare(Container(52).CurrentItem,0)">Control.Move(52,1)</onup>
 				<onup>Back</onup>
 				<ondown>1001</ondown>
 				<onleft>Back</onleft>
@@ -202,6 +218,10 @@
 				<top>242</top>
 				<width>2036</width>
 				<height>576</height>
+				<onback condition="!StringCompare(Container(53).CurrentItem,0)">Control.Move(53,$INFO[Container(53).CurrentItem,-])</onback>
+				<onback condition="!StringCompare(Container(53).CurrentItem,0)">Control.Move(53,1)</onback>
+				<onup condition="!StringCompare(Container(53).CurrentItem,0)">Control.Move(53,$INFO[Container(53).CurrentItem,-])</onup>
+				<onup condition="!StringCompare(Container(53).CurrentItem,0)">Control.Move(53,1)</onup>
 				<onup>Back</onup>
 				<ondown>1001</ondown>
 				<onleft>Back</onleft>
@@ -240,6 +260,10 @@
 				<top>242</top>
 				<width>2344</width>
 				<height>576</height>
+				<onback condition="!StringCompare(Container(55).CurrentItem,0)">Control.Move(55,$INFO[Container(55).CurrentItem,-])</onback>
+				<onback condition="!StringCompare(Container(55).CurrentItem,0)">Control.Move(55,1)</onback>
+				<onup condition="!StringCompare(Container(55).CurrentItem,0)">Control.Move(55,$INFO[Container(55).CurrentItem,-])</onup>
+				<onup condition="!StringCompare(Container(55).CurrentItem,0)">Control.Move(55,1)</onup>
 				<onup>Back</onup>
 				<ondown>1001</ondown>
 				<onleft>Back</onleft>
@@ -252,7 +276,7 @@
 				<viewtype label="31159">list</viewtype>
 				<orientation>horizontal</orientation>
 				<scrolltime easing="inout" tween="sine">300</scrolltime>
-				<visible>!IsEmpty(Container.PluginName) | [!Container.Content(movies) + !Container.Content(sets) + !Container.Content(tvshows) + !Container.Content(seasons) + !Container.Content(episodes) + !Container.Content(songs)]</visible>
+				<visible>[!SubString(Container.FolderPath,plugin://script.skin.helper.service/?action=browsegenres) + !IsEmpty(Container.PluginName)] | [!Container.Content(movies) + !Container.Content(sets) + !Container.Content(tvshows) + !Container.Content(seasons) + !Container.Content(episodes) + !Container.Content(songs)]</visible>
 				<include name="ViewOpenAnimation">
 					<param name="pos1">186,10</param>
 					<param name="pos2">490,-174</param>
@@ -278,6 +302,10 @@
 				<top>242</top>
 				<width>2200</width>
 				<height>576</height>
+				<onback condition="!StringCompare(Container(56).CurrentItem,0)">Control.Move(56,$INFO[Container(56).CurrentItem,-])</onback>
+				<onback condition="!StringCompare(Container(56).CurrentItem,0)">Control.Move(56,1)</onback>
+				<onup condition="!StringCompare(Container(56).CurrentItem,0)">Control.Move(56,$INFO[Container(56).CurrentItem,-])</onup>
+				<onup condition="!StringCompare(Container(56).CurrentItem,0)">Control.Move(56,1)</onup>
 				<onup>Back</onup>
 				<ondown>1001</ondown>
 				<onleft>Back</onleft>
@@ -290,7 +318,7 @@
 				<orientation>horizontal</orientation>
 				<defaultcontrol always="true">0</defaultcontrol>
 				<scrolltime easing="inout" tween="sine">300</scrolltime>
-				<visible>!IsEmpty(Container.PluginName) | [!Container.Content(movies) + !Container.Content(sets) + !Container.Content(tvshows) + !Container.Content(seasons) + !Container.Content(episodes) + !Container.Content(songs)]</visible>
+				<visible>[!SubString(Container.FolderPath,plugin://script.skin.helper.service/?action=browsegenres) + !IsEmpty(Container.PluginName)] | [!Container.Content(movies) + !Container.Content(sets) + !Container.Content(tvshows) + !Container.Content(seasons) + !Container.Content(episodes) + !Container.Content(songs)]</visible>
 				<include name="ViewOpenAnimation">
 					<param name="pos1">193,10</param>
 					<param name="pos2">497,-174</param>
@@ -316,6 +344,10 @@
 				<top>242</top>
 				<width>2036</width>
 				<height>576</height>
+				<onback condition="!StringCompare(Container(57).CurrentItem,0)">Control.Move(57,$INFO[Container(57).CurrentItem,-])</onback>
+				<onback condition="!StringCompare(Container(57).CurrentItem,0)">Control.Move(57,1)</onback>
+				<onup condition="!StringCompare(Container(57).CurrentItem,0)">Control.Move(57,$INFO[Container(57).CurrentItem,-])</onup>
+				<onup condition="!StringCompare(Container(57).CurrentItem,0)">Control.Move(57,1)</onup>
 				<onup>Back</onup>
 				<ondown>1001</ondown>
 				<onleft>Back</onleft>
@@ -328,7 +360,7 @@
 				<viewtype label="31160">list</viewtype>
 				<orientation>horizontal</orientation>
 				<scrolltime easing="inout" tween="sine">300</scrolltime>
-				<visible>!IsEmpty(Container.PluginName) | [!Container.Content(movies) + !Container.Content(sets) + !Container.Content(tvshows) + !Container.Content(seasons) + !Container.Content(episodes) + !Container.Content(songs)]</visible>
+				<visible>[!SubString(Container.FolderPath,plugin://script.skin.helper.service/?action=browsegenres) + !IsEmpty(Container.PluginName)] | [!Container.Content(movies) + !Container.Content(sets) + !Container.Content(tvshows) + !Container.Content(seasons) + !Container.Content(episodes) + !Container.Content(songs)]</visible>
 				<include name="ViewOpenAnimation">
 					<param name="pos1">208,10</param>
 					<param name="pos2">512,-174</param>
