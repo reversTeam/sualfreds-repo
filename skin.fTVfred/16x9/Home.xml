@@ -6,6 +6,7 @@
 	<onload>ClearProperty(BounceRight,Home)</onload>
 	<onload condition="Window.Previous(startup)">SetProperty(Preload,1,Home)</onload>
 	<onload condition="Window.Previous(startup)">SetProperty(PreloadTimout,1,Home)</onload>
+	<onload condition="Skin.HasSetting(SkipSearchItem) + StringCompare(Container(99).ListItem.Property(defaultID),script.globalsearch)">Control.Move(99,1)</onload>
 	<onload>RunScript(script.skinshortcuts,type=buildxml&amp;mainmenuID=99&amp;levels=0&amp;group=mainmenu|shutdown)</onload>
 	<controls>
 		<control type="group">
@@ -342,7 +343,7 @@
 		<!-- Preload widgets -->
 		<control type="button" id="91">
 			<include>HiddenControl</include>
-			<visible>!Skin.HasSetting(PreloadDeactivated) + [!IsEmpty(Window(home).Property(PreloadTimout)) | !Window.Previous(startup)]
+			<visible>!Skin.HasSetting(PreloadDeactivated) + !IsEmpty(Window(home).Property(Preload)) + [!IsEmpty(Window(home).Property(PreloadTimout)) | !Window.Previous(startup)]
 				+ [[Container(1001).IsUpdating + Control.IsVisible(1001)]
 				| [Container(1002).IsUpdating + Control.IsVisible(1002)]
 				| [Container(1003).IsUpdating + Control.IsVisible(1003)]
@@ -455,7 +456,7 @@
 			</control>
 			<!-- Splash -->
 			<control type="group">
-				<visible>[Control.IsVisible(91) | !IsEmpty(Window(home).Property(Preload))] + !Control.HasFocus(99) + !Skin.HasSetting(PreloadDeactivated)</visible>
+				<visible>Control.IsVisible(91) + !IsEmpty(Window(home).Property(Preload)) + !Control.HasFocus(99) + !Skin.HasSetting(PreloadDeactivated)</visible>
 				<animation type="Hidden" condition="!Skin.HasSetting(PreloadDeactivated)">
 					<effect center="auto" tween="circle" easing="out" end="90" start="100" time="400" type="zoom" delay="1800" />
 					<effect easing="inout" end="0" start="1000" time="400" tween="sine" type="fade" delay="1800" />
@@ -471,13 +472,13 @@
 					<top>765</top>
 					<width>1920</width>
 					<align>center</align>
-					<left>-10</left>
 					<height>200</height>
 					<orientation>horizontal</orientation>
+					<itemgap>10</itemgap>
 					<control type="image">
-						<width>47</width>
+						<width>40</width>
 						<height>46</height>
-						<aspectratio>keep</aspectratio>
+						<aspectratio aligny="center">keep</aspectratio>
 						<texture>home/loading_icon.png</texture>
 						<colordiffuse>ffb0b4b7</colordiffuse>
 						<visible>Control.IsVisible(91)</visible>
@@ -618,8 +619,8 @@
 				<onfocus condition="StringCompare(Container(12000).CurrentItem,7)">Control.Move(12000,-6)</onfocus>
 				<onfocus condition="StringCompare(Container(12000).CurrentItem,8)">Control.Move(12000,-7)</onfocus>
 				<onfocus condition="StringCompare(Container(12000).CurrentItem,9)">Control.Move(12000,-8)</onfocus>
-				<onfocus condition="Skin.HasSetting(SkipSearchItem) + StringCompare(Container(99).ListItem.Property(defaultID),script.globalsearch)">Control.SetFocus(99,1)</onfocus>
-				<onfocus condition="!Skin.HasSetting(SkipSearchItem) | !StringCompare(Container(99).ListItem.Property(defaultID),script.globalsearch)">Control.SetFocus(99,0)</onfocus>
+				<onfocus>SetFocus(99)</onfocus>
+				<onfocus>SetProperty(PreloadDone,1,Home)</onfocus>
 				<onfocus>ClearProperty(Preload,Home)</onfocus>
 			</control>
 		</controls>

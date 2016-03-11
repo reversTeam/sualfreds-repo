@@ -111,7 +111,7 @@
 			<control id="$PARAM[ID]0" type="fixedlist">
 				<include>HomeWidgetsAnimation</include>
 				<include>HomeWidgetBounceAnimation</include>
-				<visible>[!IsEmpty(Window(home).Property(Preload)) + !Skin.HasSetting(PreloadDeactivated)] | StringCompare(Container(99).ListItem.Property(ftvWidget),$PARAM[widget])</visible>
+				<visible>[!IsEmpty(Window(home).Property(Preload)) + IsEmpty(Window(home).Property(PreloadDone)) + !Skin.HasSetting(PreloadDeactivated)] | StringCompare(Container(99).ListItem.Property(ftvWidget),$PARAM[widget])</visible>
 				<left>419</left>
 				<top>-253</top>
 				<width>2100</width>
@@ -309,6 +309,11 @@
 					<control type="group">
 						<visible>IsEmpty(ListItem.Property(bannerArt))</visible>
 						<animation center="142,167" condition="true" effect="zoom" end="132" start="100" time="0">Conditional</animation>
+						<control type="button">
+							<include>HiddenControl</include>
+							<onfocus>SetFocus(99)</onfocus>
+							<visible>IsEmpty(ListItem.Property(InfoLabel1))</visible>
+						</control>
 						<include>HomePosterFocusedlayout</include>
 						<include>HomeWideFocusedlayout</include>
 						<include>HomeWideEpisodeFocusedlayout</include>
