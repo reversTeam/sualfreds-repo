@@ -191,7 +191,10 @@
   </extension> 
 </addon> 
 <addon 
-	id="skin.fTVfred" version="2.1.17" name="fTV (with Live TV + Mods)" provider-name="Sualfred - Orignal Skin by Hitcher"> 
+	id="skin.fTVfred" 
+	version="2.1.17" 
+	name="fTV (with Live TV + Mods)" 
+	provider-name="Sualfred - Orignal Skin by Hitcher"> 
 	<requires> 
 		<import addon="xbmc.gui" version="5.10.0"/> 
 		<import addon="script.toolbox" version="1.0.0"/> 
