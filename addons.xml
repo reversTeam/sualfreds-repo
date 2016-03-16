@@ -192,7 +192,7 @@
 </addon> 
 <addon 
 	id="skin.fTVfred" 
-	version="2.2.00" 
+	version="2.2.1" 
 	name="fTV (with Live TV + Mods)" 
 	provider-name="Sualfred (Orignal skin by Hitcher)"> 
 	<requires> 
