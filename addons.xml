@@ -247,7 +247,7 @@
 </addon> 
 <addon 
 	id="skin.fTVfred-krypton" 
-	version="3.0.1" 
+	version="3.0.2" 
 	name="fTV Fred Edition" 
 	provider-name="Sualfred (Orignal skin by Hitcher)"> 
 	<requires> 
