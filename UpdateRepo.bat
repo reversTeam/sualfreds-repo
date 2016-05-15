@@ -102,11 +102,13 @@ goto input
 Rem *** 1 ***
 :Clone
 set ftvjarvis=E:\github\skin.fTVfred-jarvis
+set ftvkrypton=E:\github\skin.fTVfred-krypton
 echo. 
 echo Copying files
 echo. 
 Rem XCOPY ..\Bello-Kodi-15.x-Nightlies skin.bellofredo /E /C /Q /I /Y
 XCOPY %ftvjarvis% skin.fTVfred /E /C /Q /I /Y
+XCOPY %ftvkrypton% skin.fTVfred-krypton /E /C /Q /I /Y
 XCOPY ..\script.screensaver.fTVscreensaver script.screensaver.fTVscreensaver /E /C /Q /I /Y
 pause
 goto input
