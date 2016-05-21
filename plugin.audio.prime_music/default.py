@@ -46,7 +46,7 @@ cacheFolder = os.path.join(addonUserDataFolder, "cache")
 cacheFolderCoversTMDB = os.path.join(cacheFolder, "covers")
 cacheFolderFanartTMDB = os.path.join(cacheFolder, "fanart")
 addonFolderResources = os.path.join(addonFolder, "resources")
-defaultFanart = os.path.join(addonFolderResources, "fanart.png")
+defaultFanart = os.path.join(addonFolderResources, "fanart.jpg")
 libraryFolder = os.path.join(addonUserDataFolder, "library")
 libraryFolderMovies = os.path.join(libraryFolder, "Movies")
 libraryFolderTV = os.path.join(libraryFolder, "TV")
@@ -63,6 +63,7 @@ addon.setSetting('email', '')
 addon.setSetting('password', '')
 quality = addon.getSetting("quality")
 audioQuality = ["HIGH", "MEDIUM", "LOW"][int(quality)]
+forceDVDPlayer = addon.getSetting("forceDVDPlayer") == "true"
 
 cookieFile = os.path.join(addonUserDataFolder, siteVersion + ".cookies")
 
@@ -218,6 +219,20 @@ def listSongs(url):
     album_title_match = re.compile('<h1 class="a-size-large a-spacing-micro">(.+?)</h1>', re.DOTALL).findall(content)
     if album_title_match:
         album_title = album_title_match[0]
+    album_songs = getSongList(content, run_per_song_check)
+    if run_per_song_check == True:
+        for song in album_songs:
+            addLink(song["title"], "playTrack", song["trackID"], album_thumb_url, "", song["track_nr"], song["artist"], song["album_title"], song["year"])
+    else:
+        for song in album_songs:
+            addLink(song["title"], "playTrack", song["trackID"], album_thumb_url, "", song["track_nr"], artist, album_title, song["year"])
+    xbmcplugin.endOfDirectory(pluginhandle)
+    xbmc.sleep(100)
+
+
+def getSongList(content, with_album_and_artist=False):
+    songs = []
+    spl = content.split('id="dmusic_tracklist_player_row_')
     for i in range(1, len(spl), 1):
         entry = spl[i]
         if not 'CheckPrime"></i>' in entry:
@@ -231,25 +246,22 @@ def listSongs(url):
                 title = match1[0]
             title = cleanInput(title)
             year = ""
-            thumbUrl = album_thumb_url
-            customer_match = re.compile('data-customerid="(.+?)"', re.DOTALL).findall(entry)
-            customer_id = ""
-            if customer_match:
-                customer_id = customer_match[0]
-            album_track_nr = ""
-            album_track_nr_match = re.compile('TrackNumber">(.+?)<', re.DOTALL).findall(entry)
-            if run_per_song_check == True:
+            artist=""
+            album_title=""
+            if with_album_and_artist == True:
                 artist_match = re.compile('ArtistLink" href.+?">(.+?)<', re.DOTALL).findall(entry)
                 if artist_match:
                     artist = artist_match[0]
                 album_title_match = re.compile('a-size-mini" href=.+?">(.+?)<', re.DOTALL).findall(entry)
                 if album_title_match:
                     album_title = album_title_match[0]
+            album_track_nr = ""
+            album_track_nr_match = re.compile('TrackNumber">(.+?)<', re.DOTALL).findall(entry)
             if album_track_nr_match:
                 album_track_nr = album_track_nr_match[0]
-            addLink(title, "playTrack", trackID, thumbUrl, "", album_track_nr, artist, album_title, year)
-    xbmcplugin.endOfDirectory(pluginhandle)
-    xbmc.sleep(100)
+            song = { 'trackID' : trackID , 'title' : title, 'year' : year, 'track_nr' : album_track_nr , 'artist' : artist, 'album_title' : album_title }
+            songs.append(song)
+    return songs
 
 
 def listSearchedSongs(url):
@@ -303,9 +315,11 @@ def playTrack(asin):
     if matchTrack:
         trackUrl = matchTrack[0]
     play_item = xbmcgui.ListItem(path=trackUrl)
-    play_item.setInfo(type="music", infoLabels={"title": name , "artist": g_artist, "album": g_album  })
+    if forceDVDPlayer:
+        play_item.setInfo(type="music", infoLabels={"title": name , "artist": g_artist, "album": g_album  })
     xbmcplugin.setResolvedUrl(pluginhandle, True, listitem=play_item)
-    xbmc.Player(xbmc.PLAYER_CORE_DVDPLAYER).play(trackUrl, play_item)
+    if forceDVDPlayer:
+        xbmc.Player(xbmc.PLAYER_CORE_DVDPLAYER).play(trackUrl, play_item)
 
 
 def listGenres():
@@ -356,7 +370,7 @@ def getUnicodePage(url):
     return content
 
 
-def postUnicodePage(url, asin):
+def postUnicodePage(url, asin, isRetry = False):
     print url
     post_opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
     headers = { 'User-agent': userAgent,
@@ -379,6 +393,11 @@ def postUnicodePage(url, asin):
             content = unicode(req.read(), "utf-8")
     except urllib2.HTTPError as e:
         log(unicode(e.read(), "utf-8"))
+        deleteCookies()
+        login("dummy")
+        if not isRetry:
+            return postUnicodePage(url, asin, True)
+
     return content
 
 def getAsciiPage(url):
@@ -421,7 +440,7 @@ def login(content = None, statusOnly = False):
     signoutmatch = re.compile("declare\('config.signOutText',(.+?)\);", re.DOTALL).findall(content)
     if '","isPrime":1' in content: #
         return "prime"
-    elif signoutmatch[0].strip() != "null":
+    elif signoutmatch and signoutmatch[0].strip() != "null":
         return "noprime"
     else:
         if statusOnly:
@@ -439,12 +458,14 @@ def login(content = None, statusOnly = False):
                 password = unicode(keyboard.getText(), "utf-8")
                 br = mechanize.Browser()
                 br.set_cookiejar(cj)
+                br.set_handle_gzip(True)
                 br.set_handle_robots(False)
                 br.addheaders = [('User-agent', userAgent)]
                 content = br.open(urlMainS+"/gp/dmusic/marketing/CloudPlayerLaunchPage/ref=dm_dp_mcn_cp")
                 br.select_form(name="signIn")
                 br["email"] = email 
                 br["password"] = password
+                br.addheaders = [('Accept-Encoding', 'gzip, deflate')]
                 br.submit()
                 resp = br.response().read()
                 content = unicode(resp, "utf-8")
@@ -525,12 +546,14 @@ def parameters_string_to_dict(parameters):
     return paramDict
 
 
-def addDir(name, url, mode, iconimage):
+def addDir(name, url, mode, iconimage, context_entries=[]):
     u = sys.argv[0]+"?url="+urllib.quote_plus(url.encode("utf8"))+"&mode="+str(mode)+"&thumb="+urllib.quote_plus(iconimage.encode("utf8"))
     ok = True
-    liz = xbmcgui.ListItem(name, iconImage="DefaultTVShows.png", thumbnailImage=iconimage)
+    liz = xbmcgui.ListItem(name, iconImage=icon, thumbnailImage=iconimage)
     liz.setInfo(type="music", infoLabels={"title": name})
     liz.setProperty("fanart_image", defaultFanart)
+    if len(context_entries) > 0:
+        liz.addContextMenuItems(context_entries)
     ok = xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]), url=u, listitem=liz, isFolder=True)
     return ok
 
