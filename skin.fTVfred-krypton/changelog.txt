@@ -1,3 +1,6 @@
+3.0.4:
+- fixed addon info labels
+
 3.0.3:
 - repo push
 
