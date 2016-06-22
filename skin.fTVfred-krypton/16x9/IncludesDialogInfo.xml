@@ -191,18 +191,20 @@
 						<label>$VAR[Duration] </label>
 						<visible>!String.IsEmpty(ListItem.Duration)</visible>
 					</control>
+					<include>Rating_TV</include>
+					<include condition="String.IsEmpty(Skin.String(RatingCountry)) | String.IsEqual(Skin.String(RatingCountry),US)">Rating_MPAA</include>
+					<include condition="String.IsEqual(Skin.String(RatingCountry),UK)">Rating_BBFC</include>
+					<include condition="String.IsEqual(Skin.String(RatingCountry),Germany)">Rating_FSK</include>
 					<control type="image">
 						<top>3</top>
 						<width>35</width>
 						<height>23</height>
 						<colordiffuse>ffdadada</colordiffuse>
-						<texture>rating/cc.png</texture>
+						<aspectratio>keep</aspectratio>
+						<texture align="left">flags/cc.png</texture>
 						<visible>!String.IsEmpty(ListItem.SubtitleLanguage)</visible>
 					</control>
-					<include>Rating_TV</include>
-					<include condition="String.IsEmpty(Skin.String(RatingCountry)) | String.IsEqual(Skin.String(RatingCountry),US)">Rating_MPAA</include>
-					<include condition="String.IsEqual(Skin.String(RatingCountry),UK)">Rating_BBFC</include>
-					<include condition="String.IsEqual(Skin.String(RatingCountry),Germany)">Rating_FSK</include>
+					<include>AudioCodec</include>
 				</control>
 				<!-- Star rating / Rating -->
 				<control type="grouplist">
@@ -234,14 +236,14 @@
 						<top>4</top>
 						<width>48</width>
 						<height>23</height>
-						<texture>views/imdb.png</texture>
+						<texture>$VAR[MovieRatingProvider]</texture>
 						<visible>!String.IsEmpty(ListItem.Rating) + String.IsEqual(ListItem.DBType,movie)</visible>
 					</control>
 					<control type="image">
 						<top>3</top>
-						<width>47</width>
+						<width>48</width>
 						<height>23</height>
-						<texture>views/tvdb.png</texture>
+						<texture>$VAR[TVShowRatingProvider]</texture>
 						<visible>!String.IsEmpty(ListItem.Rating) + !String.IsEqual(ListItem.DBType,movie)</visible>
 					</control>
 					<control type="label">
@@ -1077,7 +1079,7 @@
 					<pagecontrol>8</pagecontrol>
 					<autoscroll>false</autoscroll>
 					<textcolor>ffdadada</textcolor>
-					<label>$INFO[ListItem.Label,[B],[/B][CR]]$VAR[Plot,[LIGHT],[/LIGHT]]</label>
+					<label>$INFO[ListItem.Label,[B],[/B][CR]]$VAR[DialogPlot,[LIGHT],[/LIGHT]]</label>
 				</control>	
 				<!-- Arrow up -->
 				<control type="image">
