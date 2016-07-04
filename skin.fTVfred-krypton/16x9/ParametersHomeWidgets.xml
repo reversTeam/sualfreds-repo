@@ -12,6 +12,16 @@
 		<param name="Action" default="noop" />
 		<param name="Action2" default="noop" />
 		<definition>
+			<control type="image">
+				<left>418</left>				
+				<top>-50</top>
+				<width>1600</width>
+				<height>1200</height>
+				<texture>special://skin/extras/backgrounds/default.png</texture>
+				<colordiffuse>ccffffff</colordiffuse>
+				<visible>$PARAM[Visible] + !String.IsEqual(Container(99).ListItem.Property(defaultID),settings)</visible>
+				<include>HomeMessageAnimation</include>
+			</control>
 			<control type="group" id="999">
 				<visible>$PARAM[Visible] + !String.IsEqual(Container(99).ListItem.Property(defaultID),settings)</visible>
 				<include>HomeMessageAnimation</include>

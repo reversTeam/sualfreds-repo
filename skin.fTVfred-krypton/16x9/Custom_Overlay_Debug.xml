@@ -11,7 +11,6 @@
 			<colordiffuse>88ffffff</colordiffuse>
 			<visible>Skin.HasSetting(DebugGrid)</visible>
 		</control>
-		<!-- Window/Dialog debug -->
 		<control type="grouplist">
 			<left>15</left>
 			<top>15</top>
@@ -27,7 +26,7 @@
 				<shadowcolor>FF000000</shadowcolor>
 				<font>font13</font>
 				<align>left</align>
-				<label>$INFO[ListItem.Mpaa]</label>
+				<label>$INFO[player_process.videofps]</label>
 				<visible>false</visible>
 			</control>
 			<!-- FTV labels -->
@@ -864,7 +863,7 @@
 				<visible>Window.IsVisible(script-nextup-notification-StillWatchingInfo.xml)</visible>
 			</control>
 		</control>
-		<!-- Controls debug -->
+		<!-- Controls & codec debug -->
 		<control type="grouplist">
 			<right>15</right>
 			<top>15</top>
