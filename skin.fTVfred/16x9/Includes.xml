@@ -10,6 +10,19 @@
 	<include file="IncludesViewTypeLayout.xml" />
 	<include file="script-skinshortcuts-includes.xml" />
 	<include file="Variables.xml" />
+	<include file="IncludesDialogSettings.xml" />
+	<include file="IncludesDialogSelect.xml" />
+	<include file="IncludesDialogInfo.xml" />
+	<include file="IncludesPVRChannelsOSD.xml" />
+	<!-- Expressions -->
+	<expression name="NoContentMessage">[String.IsEqual(Container(99).ListItem.Property(ftvWidget),widget1) + String.IsEmpty(Skin.String(1000-WidgetList-1)) + String.IsEmpty(Skin.String(1000-WidgetList-2)) + String.IsEmpty(Skin.String(1000-WidgetList-3)) + String.IsEmpty(Skin.String(1000-WidgetList-4)) + String.IsEmpty(Skin.String(1000-WidgetList-5)) + String.IsEmpty(Skin.String(1000-WidgetList-6)) + String.IsEmpty(Skin.String(1000-WidgetList-7)) + String.IsEmpty(Skin.String(1000-WidgetList-8))] | [String.IsEqual(Container(99).ListItem.Property(ftvWidget),widget2) + String.IsEmpty(Skin.String(2000-WidgetList-1)) + String.IsEmpty(Skin.String(2000-WidgetList-2)) + String.IsEmpty(Skin.String(2000-WidgetList-3)) + String.IsEmpty(Skin.String(2000-WidgetList-4)) + String.IsEmpty(Skin.String(2000-WidgetList-5)) + String.IsEmpty(Skin.String(2000-WidgetList-6)) + String.IsEmpty(Skin.String(2000-WidgetList-7)) + String.IsEmpty(Skin.String(2000-WidgetList-8))] | [String.IsEqual(Container(99).ListItem.Property(ftvWidget),widget3) + String.IsEmpty(Skin.String(3000-WidgetList-1)) + String.IsEmpty(Skin.String(3000-WidgetList-2)) + String.IsEmpty(Skin.String(3000-WidgetList-3)) + String.IsEmpty(Skin.String(3000-WidgetList-4)) + String.IsEmpty(Skin.String(3000-WidgetList-5)) + String.IsEmpty(Skin.String(3000-WidgetList-6)) + String.IsEmpty(Skin.String(3000-WidgetList-7)) + String.IsEmpty(Skin.String(3000-WidgetList-8))] | [String.IsEqual(Container(99).ListItem.Property(ftvWidget),widget4) + String.IsEmpty(Skin.String(4000-WidgetList-1)) + String.IsEmpty(Skin.String(4000-WidgetList-2)) + String.IsEmpty(Skin.String(4000-WidgetList-3)) + String.IsEmpty(Skin.String(4000-WidgetList-4)) + String.IsEmpty(Skin.String(4000-WidgetList-5)) + String.IsEmpty(Skin.String(4000-WidgetList-6)) + String.IsEmpty(Skin.String(4000-WidgetList-7)) + String.IsEmpty(Skin.String(4000-WidgetList-8))] | [String.IsEqual(Container(99).ListItem.Property(ftvWidget),widget5) + String.IsEmpty(Skin.String(5000-WidgetList-1)) + String.IsEmpty(Skin.String(5000-WidgetList-2)) + String.IsEmpty(Skin.String(5000-WidgetList-3)) + String.IsEmpty(Skin.String(5000-WidgetList-4)) + String.IsEmpty(Skin.String(5000-WidgetList-5)) + String.IsEmpty(Skin.String(5000-WidgetList-6)) + String.IsEmpty(Skin.String(5000-WidgetList-7)) + String.IsEmpty(Skin.String(5000-WidgetList-8))] | [String.IsEqual(Container(99).ListItem.Property(ftvWidget),widget6) + String.IsEmpty(Skin.String(6000-WidgetList-1)) + String.IsEmpty(Skin.String(6000-WidgetList-2)) + String.IsEmpty(Skin.String(6000-WidgetList-3)) + String.IsEmpty(Skin.String(6000-WidgetList-4)) + String.IsEmpty(Skin.String(6000-WidgetList-5)) + String.IsEmpty(Skin.String(6000-WidgetList-6)) + String.IsEmpty(Skin.String(6000-WidgetList-7)) + String.IsEmpty(Skin.String(6000-WidgetList-8))] | [String.IsEqual(Container(99).ListItem.Property(ftvWidget),widget7) + String.IsEmpty(Skin.String(7000-WidgetList-1)) + String.IsEmpty(Skin.String(7000-WidgetList-2)) + String.IsEmpty(Skin.String(7000-WidgetList-3)) + String.IsEmpty(Skin.String(7000-WidgetList-4)) + String.IsEmpty(Skin.String(7000-WidgetList-5)) + String.IsEmpty(Skin.String(7000-WidgetList-6)) + String.IsEmpty(Skin.String(7000-WidgetList-7)) + String.IsEmpty(Skin.String(7000-WidgetList-8))] | [String.IsEqual(Container(99).ListItem.Property(ftvWidget),widget8) + String.IsEmpty(Skin.String(8000-WidgetList-1)) + String.IsEmpty(Skin.String(8000-WidgetList-2)) + String.IsEmpty(Skin.String(8000-WidgetList-3)) + String.IsEmpty(Skin.String(8000-WidgetList-4)) + String.IsEmpty(Skin.String(8000-WidgetList-5)) + String.IsEmpty(Skin.String(8000-WidgetList-6)) + String.IsEmpty(Skin.String(8000-WidgetList-7)) + String.IsEmpty(Skin.String(8000-WidgetList-8))] | [String.IsEqual(Container(99).ListItem.Property(ftvWidget),widget9) + String.IsEmpty(Skin.String(9000-WidgetList-1)) + String.IsEmpty(Skin.String(9000-WidgetList-2)) + String.IsEmpty(Skin.String(9000-WidgetList-3)) + String.IsEmpty(Skin.String(9000-WidgetList-4)) + String.IsEmpty(Skin.String(9000-WidgetList-5)) + String.IsEmpty(Skin.String(9000-WidgetList-6)) + String.IsEmpty(Skin.String(9000-WidgetList-7)) + String.IsEmpty(Skin.String(9000-WidgetList-8))] | [String.IsEqual(Container(99).ListItem.Property(ftvWidget),widget10) + String.IsEmpty(Skin.String(10000-WidgetList-1)) + String.IsEmpty(Skin.String(10000-WidgetList-2)) + String.IsEmpty(Skin.String(10000-WidgetList-3)) + String.IsEmpty(Skin.String(10000-WidgetList-4)) + String.IsEmpty(Skin.String(10000-WidgetList-5)) + String.IsEmpty(Skin.String(10000-WidgetList-6)) + String.IsEmpty(Skin.String(10000-WidgetList-7)) + String.IsEmpty(Skin.String(10000-WidgetList-8))] | [String.IsEqual(Container(99).ListItem.Property(ftvWidget),widget11) + String.IsEmpty(Skin.String(11000-WidgetList-1)) + String.IsEmpty(Skin.String(11000-WidgetList-2)) + String.IsEmpty(Skin.String(11000-WidgetList-3)) + String.IsEmpty(Skin.String(11000-WidgetList-4)) + String.IsEmpty(Skin.String(11000-WidgetList-5)) + String.IsEmpty(Skin.String(11000-WidgetList-6)) + String.IsEmpty(Skin.String(11000-WidgetList-7)) + String.IsEmpty(Skin.String(11000-WidgetList-8))] | [String.IsEqual(Container(99).ListItem.Property(ftvWidget),widget12) + String.IsEmpty(Skin.String(12000-WidgetList-1)) + String.IsEmpty(Skin.String(12000-WidgetList-2)) + String.IsEmpty(Skin.String(12000-WidgetList-3)) + String.IsEmpty(Skin.String(12000-WidgetList-4)) + String.IsEmpty(Skin.String(12000-WidgetList-5)) + String.IsEmpty(Skin.String(12000-WidgetList-6)) + String.IsEmpty(Skin.String(12000-WidgetList-7)) + String.IsEmpty(Skin.String(12000-WidgetList-8))]</expression>
+	<!-- Widths -->
+	<include name="Width242">
+		<width>242</width>
+	</include>
+	<include name="Width358">
+		<width>358</width>
+	</include>
 	<!-- Fullscreen dimensions -->
 	<include name="FullscreenDimensions">
 		<left>0</left>
@@ -124,7 +137,7 @@
 			<height>23</height>
 			<colordiffuse>ffdadada</colordiffuse>
 			<texture>rating/bbfc/pg.png</texture>
-			<visible>Container.Content(movies) + !IsEmpty(ListItem.Mpaa) + SubString(ListItem.Mpaa,pg,right)</visible>
+			<visible>Container.Content(movies) + !String.IsEmpty(ListItem.Mpaa) + String.EndsWith(ListItem.Mpaa,pg)</visible>
 		</control>
 		<control type="image">
 			<top>3</top>
@@ -132,7 +145,7 @@
 			<height>23</height>
 			<colordiffuse>ffdadada</colordiffuse>
 			<texture>rating/bbfc/12.png</texture>
-			<visible>Container.Content(movies) + !IsEmpty(ListItem.Mpaa) + SubString(ListItem.Mpaa,12,right)</visible>
+			<visible>Container.Content(movies) + !String.IsEmpty(ListItem.Mpaa) + String.EndsWith(ListItem.Mpaa,12)</visible>
 		</control>
 		<control type="image">
 			<top>3</top>
@@ -140,7 +153,7 @@
 			<height>23</height>
 			<colordiffuse>ffdadada</colordiffuse>
 			<texture>rating/bbfc/12A.png</texture>
-			<visible>Container.Content(movies) + !IsEmpty(ListItem.Mpaa) + SubString(ListItem.Mpaa,12a,right)</visible>
+			<visible>Container.Content(movies) + !String.IsEmpty(ListItem.Mpaa) + String.EndsWith(ListItem.Mpaa,12a)</visible>
 		</control>
 		<control type="image">
 			<top>3</top>
@@ -148,7 +161,7 @@
 			<height>23</height>
 			<colordiffuse>ffdadada</colordiffuse>
 			<texture>rating/bbfc/15.png</texture>
-			<visible>Container.Content(movies) + !IsEmpty(ListItem.Mpaa) + SubString(ListItem.Mpaa,15,right)</visible>
+			<visible>Container.Content(movies) + !String.IsEmpty(ListItem.Mpaa) + String.EndsWith(ListItem.Mpaa,15)</visible>
 		</control>
 		<control type="image">
 			<top>3</top>
@@ -156,7 +169,7 @@
 			<height>23</height>
 			<colordiffuse>ffdadada</colordiffuse>
 			<texture>rating/bbfc/18.png</texture>
-			<visible>Container.Content(movies) + !IsEmpty(ListItem.Mpaa) + SubString(ListItem.Mpaa,18,right)</visible>
+			<visible>Container.Content(movies) + !String.IsEmpty(ListItem.Mpaa) + String.EndsWith(ListItem.Mpaa,18)</visible>
 		</control>
 		<control type="image">
 			<top>3</top>
@@ -164,7 +177,7 @@
 			<height>23</height>
 			<colordiffuse>ffdadada</colordiffuse>
 			<texture>rating/bbfc/u.png</texture>
-			<visible>Container.Content(movies) + !IsEmpty(ListItem.Mpaa) + SubString(ListItem.Mpaa,u,right)</visible>
+			<visible>Container.Content(movies) + !String.IsEmpty(ListItem.Mpaa) + String.EndsWith(ListItem.Mpaa,u)</visible>
 		</control>
 	</include>
 	<!-- FSK Ratings -->
@@ -175,7 +188,7 @@
 			<height>23</height>
 			<colordiffuse>ffdadada</colordiffuse>
 			<texture>rating/fsk/0.png</texture>
-			<visible>Container.Content(movies) + !IsEmpty(ListItem.Mpaa) + SubString(ListItem.Mpaa,0,right)</visible>
+			<visible>Container.Content(movies) + !String.IsEmpty(ListItem.Mpaa) + String.EndsWith(ListItem.Mpaa,0)</visible>
 		</control>
 		<control type="image">
 			<top>3</top>
@@ -183,7 +196,7 @@
 			<height>23</height>
 			<colordiffuse>ffdadada</colordiffuse>
 			<texture>rating/fsk/6.png</texture>
-			<visible>Container.Content(movies) + !IsEmpty(ListItem.Mpaa) + SubString(ListItem.Mpaa,6,right) + !SubString(ListItem.Mpaa,16,right)</visible>
+			<visible>Container.Content(movies) + !String.IsEmpty(ListItem.Mpaa) + String.EndsWith(ListItem.Mpaa,6) + !String.EndsWith(ListItem.Mpaa,16)</visible>
 		</control>
 		<control type="image">
 			<top>3</top>
@@ -191,7 +204,7 @@
 			<height>23</height>
 			<colordiffuse>ffdadada</colordiffuse>
 			<texture>rating/fsk/12.png</texture>
-			<visible>Container.Content(movies) + !IsEmpty(ListItem.Mpaa) + SubString(ListItem.Mpaa,12,right)</visible>
+			<visible>Container.Content(movies) + !String.IsEmpty(ListItem.Mpaa) + String.EndsWith(ListItem.Mpaa,12)</visible>
 		</control>
 		<control type="image">
 			<top>3</top>
@@ -199,7 +212,7 @@
 			<height>23</height>
 			<colordiffuse>ffdadada</colordiffuse>
 			<texture>rating/fsk/16.png</texture>
-			<visible>Container.Content(movies) + !IsEmpty(ListItem.Mpaa) + SubString(ListItem.Mpaa,16,right)</visible>
+			<visible>Container.Content(movies) + !String.IsEmpty(ListItem.Mpaa) + String.EndsWith(ListItem.Mpaa,16)</visible>
 		</control>
 		<control type="image">
 			<top>3</top>
@@ -207,7 +220,7 @@
 			<height>23</height>
 			<colordiffuse>ffdadada</colordiffuse>
 			<texture>rating/fsk/18.png</texture>
-			<visible>Container.Content(movies) + !IsEmpty(ListItem.Mpaa) + SubString(ListItem.Mpaa,18,right)</visible>
+			<visible>Container.Content(movies) + !String.IsEmpty(ListItem.Mpaa) + String.EndsWith(ListItem.Mpaa,18)</visible>
 		</control>
 	</include>
 	<!-- MPAA Ratings -->
@@ -218,7 +231,7 @@
 			<height>23</height>
 			<colordiffuse>ffdadada</colordiffuse>
 			<texture>rating/mpaa/nc17.png</texture>
-			<visible>Container.Content(movies) + !IsEmpty(ListItem.Mpaa) + SubString(ListItem.Mpaa,nc,right)</visible>
+			<visible>Container.Content(movies) + !String.IsEmpty(ListItem.Mpaa) + String.EndsWith(ListItem.Mpaa,nc)</visible>
 		</control>
 		<control type="image">
 			<top>3</top>
@@ -226,7 +239,7 @@
 			<height>23</height>
 			<colordiffuse>ffdadada</colordiffuse>
 			<texture>rating/mpaa/pg13.png</texture>
-			<visible>Container.Content(movies) + !IsEmpty(ListItem.Mpaa) + SubString(ListItem.Mpaa,13,right)</visible>
+			<visible>Container.Content(movies) + !String.IsEmpty(ListItem.Mpaa) + String.EndsWith(ListItem.Mpaa,13)</visible>
 		</control>
 		<control type="image">
 			<top>3</top>
@@ -234,7 +247,7 @@
 			<height>23</height>
 			<colordiffuse>ffdadada</colordiffuse>
 			<texture>rating/mpaa/nr.png</texture>
-			<visible>Container.Content(movies) + !IsEmpty(ListItem.Mpaa) + SubString(ListItem.Mpaa,nr,right)</visible>
+			<visible>Container.Content(movies) + !String.IsEmpty(ListItem.Mpaa) + String.EndsWith(ListItem.Mpaa,nr)</visible>
 		</control>
 		<control type="image">
 			<top>3</top>
@@ -242,7 +255,7 @@
 			<height>23</height>
 			<colordiffuse>ffdadada</colordiffuse>
 			<texture>rating/mpaa/r.png</texture>
-			<visible>Container.Content(movies) + !IsEmpty(ListItem.Mpaa) + SubString(ListItem.Mpaa,r,right) + !SubString(ListItem.Mpaa,nr,right)</visible>
+			<visible>Container.Content(movies) + !String.IsEmpty(ListItem.Mpaa) + String.EndsWith(ListItem.Mpaa,r) + !String.EndsWith(ListItem.Mpaa,nr)</visible>
 		</control>
 		<control type="image">
 			<top>3</top>
@@ -250,7 +263,7 @@
 			<height>23</height>
 			<colordiffuse>ffdadada</colordiffuse>
 			<texture>rating/mpaa/pg.png</texture>
-			<visible>Container.Content(movies) + !IsEmpty(ListItem.Mpaa) + SubString(ListItem.Mpaa,pg,right)</visible>
+			<visible>Container.Content(movies) + !String.IsEmpty(ListItem.Mpaa) + String.EndsWith(ListItem.Mpaa,pg)</visible>
 		</control>
 		<control type="image">
 			<top>3</top>
@@ -258,66 +271,148 @@
 			<height>23</height>
 			<colordiffuse>ffdadada</colordiffuse>
 			<texture>rating/mpaa/g.png</texture>
-			<visible>Container.Content(movies) + !IsEmpty(ListItem.Mpaa) + SubString(ListItem.Mpaa,g) + !SubString(ListItem.Mpaa,pg)</visible>
+			<visible>Container.Content(movies) + !String.IsEmpty(ListItem.Mpaa) + String.Contains(ListItem.Mpaa,g) + !String.Contains(ListItem.Mpaa,pg)</visible>
+		</control>
+	</include>
+	<!-- AudioCodec -->
+	<include name="AudioCodec">
+		<control type="image">
+			<top>3</top>
+			<width>59</width>
+			<height>23</height>
+			<colordiffuse>ffdadada</colordiffuse>
+			<aspectratio align="left">keep</aspectratio>
+			<texture>flags/mono.png</texture>
+			<visible>Integer.IsEqual(ListItem.AudioChannels,1)</visible>
+		</control>
+		<control type="image">
+			<top>3</top>
+			<width>74</width>
+			<height>23</height>
+			<colordiffuse>ffdadada</colordiffuse>
+			<aspectratio align="left">keep</aspectratio>
+			<texture>flags/stereo.png</texture>
+			<visible>Integer.IsEqual(ListItem.AudioChannels,2)</visible>
+		</control>
+		<control type="image">
+			<top>3</top>
+			<width>43</width>
+			<height>23</height>
+			<colordiffuse>ffdadada</colordiffuse>
+			<aspectratio align="left">keep</aspectratio>
+			<texture>flags/dts.png</texture>
+			<visible>Integer.IsGreater(ListItem.AudioChannels,2) + !String.Contains(ListItem.AudioCodec,dtshd) + [String.Contains(ListItem.AudioCodec,dca) | String.Contains(ListItem.AudioCodec,dts)]</visible>
+		</control>
+		<control type="image">
+			<top>3</top>
+			<width>68</width>
+			<height>23</height>
+			<colordiffuse>ffdadada</colordiffuse>
+			<aspectratio align="left">keep</aspectratio>
+			<texture>flags/dtshd.png</texture>
+			<visible>Integer.IsGreater(ListItem.AudioChannels,2) + String.Contains(ListItem.AudioCodec,dtshd)</visible>
+		</control>
+		<control type="image">
+			<top>3</top>
+			<width>65</width>
+			<height>23</height>
+			<colordiffuse>ffdadada</colordiffuse>
+			<aspectratio align="left">keep</aspectratio>
+			<texture>flags/dolby.png</texture>
+			<visible>Integer.IsGreater(ListItem.AudioChannels,2) + String.Contains(ListItem.AudioCodec,ac3) + !String.Contains(ListItem.AudioCodec,eac3)</visible>
+		</control>
+		<control type="image">
+			<top>3</top>
+			<width>74</width>
+			<height>23</height>
+			<colordiffuse>ffdadada</colordiffuse>
+			<aspectratio align="left">keep</aspectratio>
+			<texture>flags/dolbyplus.png</texture>
+			<visible>Integer.IsGreater(ListItem.AudioChannels,2) + String.Contains(ListItem.AudioCodec,eac3)</visible>
+		</control>
+		<control type="image">
+			<top>3</top>
+			<width>79</width>
+			<height>23</height>
+			<colordiffuse>ffdadada</colordiffuse>
+			<aspectratio align="left">keep</aspectratio>
+			<texture>flags/truehd.png</texture>
+			<visible>Integer.IsGreater(ListItem.AudioChannels,2) + String.Contains(ListItem.AudioCodec,truehd)</visible>
+		</control>
+		<control type="image">
+			<top>3</top>
+			<width>80</width>
+			<height>23</height>
+			<colordiffuse>ffdadada</colordiffuse>
+			<aspectratio align="left">keep</aspectratio>
+			<texture>flags/multich.png</texture>
+			<visible>Integer.IsGreater(ListItem.AudioChannels,2) + !String.Contains(ListItem.AudioCodec,ac3) + !String.Contains(ListItem.AudioCodec,truehd) + !String.Contains(ListItem.AudioCodec,dts) + !String.Contains(ListItem.AudioCodec,dca)</visible>
 		</control>
 	</include>
 	<!-- TV Ratings -->
 	<include name="Rating_TV">
 		<control type="image">
 			<top>3</top>
-			<width>59</width>
+			<width>69</width>
 			<height>23</height>
 			<colordiffuse>ffdadada</colordiffuse>
+			<aspectratio align="left">keep</aspectratio>
 			<texture>rating/tv/14.png</texture>
-			<visible>Container.Content(tvshows) + !IsEmpty(ListItem.Mpaa) + SubString(ListItem.Mpaa,14)</visible>
+			<visible>Container.Content(tvshows) + !String.IsEmpty(ListItem.Mpaa) + String.Contains(ListItem.Mpaa,14)</visible>
 		</control>
 		<control type="image">
 			<top>3</top>
-			<width>59</width>
+			<width>69</width>
 			<height>23</height>
 			<colordiffuse>ffdadada</colordiffuse>
+			<aspectratio align="left">keep</aspectratio>
 			<texture>rating/tv/g.png</texture>
-			<visible>Container.Content(tvshows) + !IsEmpty(ListItem.Mpaa) + SubString(ListItem.Mpaa,g) + !SubString(ListItem.Mpaa,pg)</visible>
+			<visible>Container.Content(tvshows) + !String.IsEmpty(ListItem.Mpaa) + String.Contains(ListItem.Mpaa,g) + !String.Contains(ListItem.Mpaa,pg)</visible>
 		</control>
 		<control type="image">
 			<top>3</top>
-			<width>59</width>
+			<width>69</width>
 			<height>23</height>
 			<colordiffuse>ffdadada</colordiffuse>
+			<aspectratio align="left">keep</aspectratio>
 			<texture>rating/tv/pg.png</texture>
-			<visible>Container.Content(tvshows) + !IsEmpty(ListItem.Mpaa) + SubString(ListItem.Mpaa,pg)</visible>
+			<visible>Container.Content(tvshows) + !String.IsEmpty(ListItem.Mpaa) + String.Contains(ListItem.Mpaa,pg)</visible>
 		</control>
 		<control type="image">
 			<top>3</top>
-			<width>59</width>
+			<width>69</width>
 			<height>23</height>
 			<colordiffuse>ffdadada</colordiffuse>
+			<aspectratio align="left">keep</aspectratio>
 			<texture>rating/tv/ma.png</texture>
-			<visible>Container.Content(tvshows) + !IsEmpty(ListItem.Mpaa) + SubString(ListItem.Mpaa,ma)</visible>
+			<visible>Container.Content(tvshows) + !String.IsEmpty(ListItem.Mpaa) + String.Contains(ListItem.Mpaa,ma)</visible>
 		</control>
 		<control type="image">
 			<top>3</top>
-			<width>59</width>
+			<width>69</width>
 			<height>23</height>
 			<colordiffuse>ffdadada</colordiffuse>
+			<aspectratio align="left">keep</aspectratio>
 			<texture>rating/tv/nr.png</texture>
-			<visible>Container.Content(tvshows) + !IsEmpty(ListItem.Mpaa) + SubString(ListItem.Mpaa,nr)</visible>
+			<visible>Container.Content(tvshows) + !String.IsEmpty(ListItem.Mpaa) + String.Contains(ListItem.Mpaa,nr)</visible>
 		</control>
 		<control type="image">
 			<top>3</top>
-			<width>59</width>
+			<width>69</width>
 			<height>23</height>
 			<colordiffuse>ffdadada</colordiffuse>
+			<aspectratio align="left">keep</aspectratio>
 			<texture>rating/tv/y.png</texture>
-			<visible>Container.Content(tvshows) + !IsEmpty(ListItem.Mpaa) + SubString(ListItem.Mpaa,y) + !SubString(ListItem.Mpaa,y7)</visible>
+			<visible>Container.Content(tvshows) + !String.IsEmpty(ListItem.Mpaa) + String.Contains(ListItem.Mpaa,y) + !String.Contains(ListItem.Mpaa,y7)</visible>
 		</control>
 		<control type="image">
 			<top>3</top>
-			<width>59</width>
+			<width>69</width>
 			<height>23</height>
 			<colordiffuse>ffdadada</colordiffuse>
+			<aspectratio align="left">keep</aspectratio>
 			<texture>rating/tv/y7.png</texture>
-			<visible>Container.Content(tvshows) + !IsEmpty(ListItem.Mpaa) + SubString(ListItem.Mpaa,y7)</visible>
+			<visible>Container.Content(tvshows) + !String.IsEmpty(ListItem.Mpaa) + String.Contains(ListItem.Mpaa,y7)</visible>
 		</control>
 	</include>
 	<!-- TV Episode Ratings -->
@@ -328,7 +423,7 @@
 			<height>23</height>
 			<colordiffuse>ffdadada</colordiffuse>
 			<texture>rating/tv/14.png</texture>
-			<visible>!IsEmpty(ListItem.Mpaa) + SubString(ListItem.Mpaa,14)</visible>
+			<visible>!String.IsEmpty(ListItem.Mpaa) + String.Contains(ListItem.Mpaa,14)</visible>
 		</control>
 		<control type="image">
 			<top>3</top>
@@ -336,7 +431,7 @@
 			<height>23</height>
 			<colordiffuse>ffdadada</colordiffuse>
 			<texture>rating/tv/g.png</texture>
-			<visible>!IsEmpty(ListItem.Mpaa) + SubString(ListItem.Mpaa,g) + !SubString(ListItem.Mpaa,pg)</visible>
+			<visible>!String.IsEmpty(ListItem.Mpaa) + String.Contains(ListItem.Mpaa,g) + !String.Contains(ListItem.Mpaa,pg)</visible>
 		</control>
 		<control type="image">
 			<top>3</top>
@@ -344,7 +439,7 @@
 			<height>23</height>
 			<colordiffuse>ffdadada</colordiffuse>
 			<texture>rating/tv/pg.png</texture>
-			<visible>!IsEmpty(ListItem.Mpaa) + SubString(ListItem.Mpaa,pg)</visible>
+			<visible>!String.IsEmpty(ListItem.Mpaa) + String.Contains(ListItem.Mpaa,pg)</visible>
 		</control>
 		<control type="image">
 			<top>3</top>
@@ -352,7 +447,7 @@
 			<height>23</height>
 			<colordiffuse>ffdadada</colordiffuse>
 			<texture>rating/tv/ma.png</texture>
-			<visible>!IsEmpty(ListItem.Mpaa) + SubString(ListItem.Mpaa,ma)</visible>
+			<visible>!String.IsEmpty(ListItem.Mpaa) + String.Contains(ListItem.Mpaa,ma)</visible>
 		</control>
 		<control type="image">
 			<top>3</top>
@@ -360,7 +455,7 @@
 			<height>23</height>
 			<colordiffuse>ffdadada</colordiffuse>
 			<texture>rating/tv/nr.png</texture>
-			<visible>!IsEmpty(ListItem.Mpaa) + SubString(ListItem.Mpaa,nr)</visible>
+			<visible>!String.IsEmpty(ListItem.Mpaa) + String.Contains(ListItem.Mpaa,nr)</visible>
 		</control>
 		<control type="image">
 			<top>3</top>
@@ -368,7 +463,7 @@
 			<height>23</height>
 			<colordiffuse>ffdadada</colordiffuse>
 			<texture>rating/tv/y.png</texture>
-			<visible>!IsEmpty(ListItem.Mpaa) + SubString(ListItem.Mpaa,y) + !SubString(ListItem.Mpaa,y7)</visible>
+			<visible>!String.IsEmpty(ListItem.Mpaa) + String.Contains(ListItem.Mpaa,y) + !String.Contains(ListItem.Mpaa,y7)</visible>
 		</control>
 		<control type="image">
 			<top>3</top>
@@ -376,7 +471,7 @@
 			<height>23</height>
 			<colordiffuse>ffdadada</colordiffuse>
 			<texture>rating/tv/y7.png</texture>
-			<visible>!IsEmpty(ListItem.Mpaa) + SubString(ListItem.Mpaa,y7)</visible>
+			<visible>!String.IsEmpty(ListItem.Mpaa) + String.Contains(ListItem.Mpaa,y7)</visible>
 		</control>
 	</include>
 	<!-- Small Keyboard buttons -->
@@ -459,7 +554,14 @@
 			<width>90</width>
 			<height>90</height>
 			<texture>views/OverlayHD.png</texture>
-			<visible>IntegerGreaterThan(ListItem.VideoResolution,719) + !ListItem.IsStereoscopic</visible>
+			<visible>Integer.IsGreater(ListItem.VideoResolution,719) + !Integer.IsEqual(ListItem.VideoResolution,4K) + !ListItem.IsStereoscopic</visible>
+		</control>
+		<control type="image">
+			<top>48</top>
+			<width>90</width>
+			<height>90</height>
+			<texture>views/Overlay4K.png</texture>
+			<visible>Integer.IsEqual(ListItem.VideoResolution,4K) + !ListItem.IsStereoscopic</visible>
 		</control>
 		<control type="image">
 			<top>48</top>
@@ -475,7 +577,7 @@
 			<width>90</width>
 			<height>90</height>
 			<texture>views/OverlayWatched.png</texture>
-			<visible>StringCompare(ListItem.Overlay,OverlayWatched.png)</visible>
+			<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png)</visible>
 		</control>
 	</include>
 	<!-- Player Titles -->
@@ -514,7 +616,7 @@
 			<width>1880</width>
 			<height>40</height>
 			<align>center</align>
-			<font>Light26</font>
+			<font>Light36</font>
 			<textcolor>fffe8e8e8</textcolor>
 			<shadowcolor>ff000000</shadowcolor>
 			<label>$VAR[PlayerSmallLabel]</label>

@@ -3,6 +3,7 @@
 	<!-- favourites -->
 	<backgroundcolor>0xff12161b</backgroundcolor>
 	<defaultcontrol always="true">450</defaultcontrol>
+	<!--onload>SetProperty(MainMenuFocus,1,home)</onload>-->
 	<onload>Control.Move(450,$INFO[Container(450).CurrentItem,-])</onload>
 	<onload>Control.Move(450,1)</onload>
 	<!-- workaround animation to fix the rare broken WindowOpen animations -->
@@ -19,7 +20,7 @@
 				<itemgap>10</itemgap>
 				<orientation>horizontal</orientation>
 				<usecontrolcoords>true</usecontrolcoords>
-				<visible>!IsEmpty(Container(450).NumItems)</visible>
+				<visible>!String.IsEmpty(Container(450).NumItems)</visible>
 				<control type="label">
 					<width>auto</width>
 					<height>60</height>
@@ -36,7 +37,7 @@
 					<aligny>bottom</aligny>
 					<textcolor>ffdadada</textcolor>
 					<label>$INFO[Container(450).CurrentItem]</label>
-					<visible>IntegerGreaterThan(Container(450).NumItems,0)</visible>
+					<visible>Integer.IsGreater(Container(450).NumItems,0)</visible>
 				</control>
 				<control type="label">
 					<top>14</top>
@@ -46,7 +47,7 @@
 					<aligny>bottom</aligny>
 					<textcolor>ff505050</textcolor>
 					<label>|</label>
-					<visible>IntegerGreaterThan(Container(450).NumItems,0)</visible>
+					<visible>Integer.IsGreater(Container(450).NumItems,0)</visible>
 				</control>
 				<control type="label">
 					<top>15</top>
@@ -56,7 +57,7 @@
 					<aligny>bottom</aligny>
 					<textcolor>ff505050</textcolor>
 					<label>$INFO[Container(450).NumItems]</label>
-					<visible>IntegerGreaterThan(Container(450).NumItems,0)</visible>
+					<visible>Integer.IsGreater(Container(450).NumItems,0)</visible>
 				</control>			
 			</control>
 			<!-- Label -->
@@ -71,12 +72,12 @@
 				<autoscroll>false</autoscroll>
 				<textcolor>ffbebebe</textcolor>
 				<label>$INFO[ListItem.Label]</label>
-				<visible>[!IsEmpty(Window(Home).Property(WidgetHasFocus)) + StringCompare(Window(Home).Property(ForceViewType),poster) + !StringCompare(Window(Home).Property(ForceViewType),wide)] | [IsEmpty(Window(Home).Property(WidgetHasFocus)) + StringCompare(Skin.String(FavouritesLayout),$LOCALIZE[31160])]</visible>
+				<visible>[!String.IsEmpty(Window(Home).Property(WidgetHasFocus)) + String.IsEqual(Window(Home).Property(ForceViewType),poster) + !String.IsEqual(Window(Home).Property(ForceViewType),wide)] | [String.IsEmpty(Window(Home).Property(WidgetHasFocus)) + String.IsEqual(Skin.String(FavouritesLayout),$LOCALIZE[31160])]</visible>
 			</control>
 		</control>
 		<!-- Square -->
 		<control type="group">
-			<include condition="[!IsEmpty(Window(Home).Property(WidgetHasFocus)) + !StringCompare(Window(Home).Property(ForceViewType),poster) + !StringCompare(Window(Home).Property(ForceViewType),wide)] | [IsEmpty(Window(Home).Property(WidgetHasFocus)) + [StringCompare(Skin.String(FavouritesLayout),$LOCALIZE[31203]) | IsEmpty(Skin.String(FavouritesLayout))]]" name="ViewFavourites">
+			<include condition="[!String.IsEmpty(Window(Home).Property(WidgetHasFocus)) + !String.IsEqual(Window(Home).Property(ForceViewType),poster) + !String.IsEqual(Window(Home).Property(ForceViewType),wide)] | [String.IsEmpty(Window(Home).Property(WidgetHasFocus)) + [String.IsEqual(Skin.String(FavouritesLayout),$LOCALIZE[31203]) | String.IsEmpty(Skin.String(FavouritesLayout))]]" content="ViewFavourites">
 				<param name="left">-238</param>
 				<param name="width">2200</param>
 				<param name="layout">ViewSquareInfoLayout</param>
@@ -84,7 +85,7 @@
 		</control>
 		<!-- Poster -->
 		<control type="group">
-			<include condition="[!IsEmpty(Window(Home).Property(WidgetHasFocus)) + StringCompare(Window(Home).Property(ForceViewType),poster) + !StringCompare(Window(Home).Property(ForceViewType),wide)] | [IsEmpty(Window(Home).Property(WidgetHasFocus)) + StringCompare(Skin.String(FavouritesLayout),$LOCALIZE[31160])]" name="ViewFavourites">
+			<include condition="[!String.IsEmpty(Window(Home).Property(WidgetHasFocus)) + String.IsEqual(Window(Home).Property(ForceViewType),poster) + !String.IsEqual(Window(Home).Property(ForceViewType),wide)] | [String.IsEmpty(Window(Home).Property(WidgetHasFocus)) + String.IsEqual(Skin.String(FavouritesLayout),$LOCALIZE[31160])]" content="ViewFavourites">
 				<param name="left">-102</param>
 				<param name="width">2036</param>
 				<param name="layout">ViewPosterLayout</param>
@@ -92,7 +93,7 @@
 		</control>
 		<!--Wide-->
 		<control type="group">
-			<include condition="[!IsEmpty(Window(Home).Property(WidgetHasFocus)) + !StringCompare(Window(Home).Property(ForceViewType),poster) + StringCompare(Window(Home).Property(ForceViewType),wide)] | [IsEmpty(Window(Home).Property(WidgetHasFocus)) + StringCompare(Skin.String(FavouritesLayout),$LOCALIZE[31159])]" name="ViewFavourites">
+			<include condition="[!String.IsEmpty(Window(Home).Property(WidgetHasFocus)) + !String.IsEqual(Window(Home).Property(ForceViewType),poster) + String.IsEqual(Window(Home).Property(ForceViewType),wide)] | [String.IsEmpty(Window(Home).Property(WidgetHasFocus)) + String.IsEqual(Skin.String(FavouritesLayout),$LOCALIZE[31159])]" content="ViewFavourites">
 				<param name="left">-374</param>
 				<param name="width">2344</param>
 				<param name="layout">ViewDefaultWideLayout</param>

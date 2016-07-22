@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
-	<!-- musiclibrary -->
 	<menucontrol>5000</menucontrol>
 	<backgroundcolor>0xff12161b</backgroundcolor>
 	<defaultcontrol always="true">50</defaultcontrol>
@@ -9,7 +8,8 @@
 	<onunload condition="Window.Next(home)">Control.Move($VAR[ContainerID],$INFO[Container.CurrentItem,-])</onunload>
 	<onunload condition="Window.Next(home) + !system.getbool(filelists.showparentdiritems)">Control.Move($VAR[ContainerID],1)</onunload>	
 	<onunload>ClearProperty(ForceViewType,home)</onunload>
-	<views>61,54,50,56,55,57</views>
+	<views>61,54,50,56,55,57,58</views>
+	<animation effect="fade" start="0" end="0" time="0">WindowClose</animation>
 	<controls>
 		<control id="2" type="button">
 			<include>HiddenControl</include>
@@ -27,9 +27,10 @@
 		<include>Viewtype55</include>
 		<include>Viewtype56</include>
 		<include>Viewtype57</include>
+		<include>Viewtype58</include>
 		<control type="group">
 			<include>LabelsDelayFadeAnimation</include>
-			<visible>IsEmpty(Window(Home).Property(LabelsDelayFadeAnimation))</visible>
+			<visible>String.IsEmpty(Window(Home).Property(LabelsDelayFadeAnimation)) + !Control.IsVisible(58)</visible>
 			<!-- Heading / Current item / Total items -->
 			<control type="grouplist">
 				<left>198</left>
@@ -39,7 +40,7 @@
 				<orientation>horizontal</orientation>
 				<usecontrolcoords>true</usecontrolcoords>
 				<include>VisibleDelayFadeAnimation</include>
-				<visible>!Control.IsVisible(54) + !IsEmpty(Container.NumItems)</visible>
+				<visible>!Control.IsVisible(54) + !String.IsEmpty(Container.NumItems)</visible>
 				<control type="label">
 					<width>auto</width>
 					<height>60</height>
@@ -56,7 +57,7 @@
 					<aligny>bottom</aligny>
 					<textcolor>ffdadada</textcolor>
 					<label>$INFO[Container.CurrentItem]</label>
-					<visible>IntegerGreaterThan(Container.NumItems,0)</visible>
+					<visible>Integer.IsGreater(Container.NumItems,0)</visible>
 				</control>
 				<control type="label">
 					<top>14</top>
@@ -66,7 +67,7 @@
 					<aligny>bottom</aligny>
 					<textcolor>ff505050</textcolor>
 					<label>|</label>
-					<visible>IntegerGreaterThan(Container.NumItems,0)</visible>
+					<visible>Integer.IsGreater(Container.NumItems,0)</visible>
 				</control>
 				<control type="label">
 					<top>15</top>
@@ -76,7 +77,7 @@
 					<aligny>bottom</aligny>
 					<textcolor>ff505050</textcolor>
 					<label>$INFO[Container.NumItems]</label>
-					<visible>IntegerGreaterThan(Container.NumItems,0)</visible>
+					<visible>Integer.IsGreater(Container.NumItems,0)</visible>
 				</control>
 			</control>
 			<!-- Sort method -->
@@ -152,7 +153,7 @@
 						<focusedcolor>ff222222</focusedcolor>
 						<texturefocus border="13,5,6,8">views/button_fo.png</texturefocus>
 						<texturenofocus border="13,3,6,6">views/button_nf.png</texturenofocus>
-						<visible>!StringCompare(ListItem.Label,..) + !Control.IsVisible(54) + [Container.Content(artists) | Container.Content(albums)]</visible>
+						<visible>!String.IsEqual(ListItem.Label,..) + !Control.IsVisible(54) + [Container.Content(artists) | Container.Content(albums)]</visible>
 					</control>
 					<control id="1005" type="button">
 						<width min="104" max="224">auto</width>
@@ -160,13 +161,13 @@
 						<height>100</height>
 						<onup>50</onup>
 						<ondown>3000</ondown>
-						<onclick condition="!StringCompare(Playlist.Length(music),0)">ActivateWindow(musicplaylist)</onclick>
+						<onclick condition="!String.IsEqual(Playlist.Length(music),0)">ActivateWindow(musicplaylist)</onclick>
 						<font>Med24</font>
 						<label>$LOCALIZE[31088]</label>
 						<textoffsetx>28</textoffsetx>
 						<textcolor>ffdadada</textcolor>
 						<focusedcolor>ff222222</focusedcolor>
-						<visible>!StringCompare(Playlist.Length(music),0)</visible>
+						<visible>!String.IsEqual(Playlist.Length(music),0)</visible>
 						<texturefocus border="13,5,6,8">views/button_fo.png</texturefocus>
 						<texturenofocus border="13,3,6,6">views/button_nf.png</texturenofocus>
 					</control>
@@ -249,7 +250,7 @@
 						<pagecontrol>98</pagecontrol>
 						<autoscroll>false</autoscroll>
 						<textcolor>ffbcbcbc</textcolor>
-						<label>[B]$INFO[ListItem.Label][/B] [LIGHT]$INFO[ListItem.Label2][/LIGHT]</label>
+						<label>[B]$INFO[ListItem.Label][/B] [LIGHT]$VAR[MusicNavLabel2][/LIGHT]</label>
 					</control>
 					<control id="98" type="scrollbar">
 						<top>105</top>
@@ -291,7 +292,7 @@
 			</control>
 		</control>
 		<control type="group">
-			<visible>IsEmpty(Window(Home).Property(LabelsDelayFadeAnimation))</visible>
+			<visible>String.IsEmpty(Window(Home).Property(LabelsDelayFadeAnimation))</visible>
 			<!-- Background -->
 			<control type="image">
 				<include>FullscreenDimensions</include>
@@ -329,11 +330,11 @@
 						<width>-8</width>
 						<height>0</height>
 						<label>-</label>
-						<onfocus condition="!IsEmpty(Container.PluginName)">SetFocus(5022)</onfocus>
-						<onfocus condition="IsEmpty(Container.PluginName) + Control.IsEnabled(3)">SetFocus(5004)</onfocus>
-						<onfocus condition="IsEmpty(Container.PluginName) + !Control.IsEnabled(3) + Control.IsEnabled(4)">SetFocus(4)</onfocus>
-						<onfocus condition="IsEmpty(Container.PluginName) + !Control.IsEnabled(3) + !Control.IsEnabled(4) + Container.CanFilter + !Container.CanFilterAdvanced">SetFocus(19)</onfocus>
-						<onfocus condition="IsEmpty(Container.PluginName) + !Control.IsEnabled(3) + !Control.IsEnabled(4) + Container.CanFilterAdvanced">SetFocus(5011)</onfocus>
+						<onfocus condition="!String.IsEmpty(Container.PluginName)">SetFocus(5022)</onfocus>
+						<onfocus condition="String.IsEmpty(Container.PluginName) + Control.IsEnabled(3)">SetFocus(5004)</onfocus>
+						<onfocus condition="String.IsEmpty(Container.PluginName) + !Control.IsEnabled(3) + Control.IsEnabled(4)">SetFocus(4)</onfocus>
+						<onfocus condition="String.IsEmpty(Container.PluginName) + !Control.IsEnabled(3) + !Control.IsEnabled(4) + Container.CanFilter + !Container.CanFilterAdvanced">SetFocus(19)</onfocus>
+						<onfocus condition="String.IsEmpty(Container.PluginName) + !Control.IsEnabled(3) + !Control.IsEnabled(4) + Container.CanFilterAdvanced">SetFocus(5011)</onfocus>
 						<include>NoTextures</include>
 						<visible>!Control.HasFocus(5022) + !Control.HasFocus(5004) + !Control.HasFocus(4) + !Control.HasFocus(19) + !Control.HasFocus(5011) + !Control.HasFocus(5013)</visible>
 					</control>
@@ -341,7 +342,7 @@
 						<width>640</width>
 						<height>60</height>
 						<texture border="2">dialogs/OptionsBackgroundHeading.png</texture>
-						<visible>!IsEmpty(Container.PluginName)</visible>
+						<visible>!String.IsEmpty(Container.PluginName)</visible>
 					</control>
 					<control type="label" id="5021">
 						<left>40</left>
@@ -351,7 +352,7 @@
 						<font>Bold30</font>
 						<textcolor>ffdadada</textcolor>
 						<label>$LOCALIZE[582]:</label>
-						<visible>!IsEmpty(Container.PluginName)</visible>
+						<visible>!String.IsEmpty(Container.PluginName)</visible>
 					</control>
 					<control type="button" id="5022">
 						<height>110</height>
@@ -367,7 +368,7 @@
 						<focusedcolor>ffffaf37</focusedcolor>
 						<texturefocus border="3">dialogs/OptionsBackgroundButtonFO.png</texturefocus>
 						<texturenofocus border="3">dialogs/OptionsBackgroundButtonNF.png</texturenofocus>
-						<visible>!IsEmpty(Container.PluginName)</visible>
+						<visible>!String.IsEmpty(Container.PluginName)</visible>
 					</control>
 					<control type="image" id="5002">
 						<width>640</width>
