@@ -226,7 +226,7 @@
 		<import addon="script.skinshortcuts" version="0.5.0" /> 
 		<import addon="script.playalbum" version="2.0.1" /> 
 		<import addon="weather.openweathermap.extended" version="1.0.1" /> 
-		<import addon="plugin.audio.tuneinradio" version="2.1.0" /> 
+		<import addon="plugin.audio.tuneinradio" version="3.0.0" /> 
 		<import addon="script.toolbox" version="1.0.0" />		 
 		<import addon="script.imdbupdate" version="0.7.4" />			 
 		<import addon="script.bellofredo.extrapack" version="1.1.1" />		 
